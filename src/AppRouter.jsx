@@ -1,11 +1,10 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import HomePage from "./pages/homePage/HomePage";
 import AboutPage from "./pages/aboutPage/AboutPage";
 import SettingsPage from "./pages/settingsPage/SettingsPage";
 import Header from "./components/header/Header";
 import DictionaryPage from "./pages/DictionaryPage/DictionaryPage";
-
 
 import LessonPage from "./pages/LessonPage/LessonPage";
 import TheoryPage from "./pages/LessonPage/pages/TheoryPage";
@@ -14,11 +13,26 @@ import PuzzlePage from "./pages/LessonPage/pages/PuzzlePage";
 import AudioPage from "./pages/LessonPage/pages/AudioPage";
 import TextPage from "./pages/LessonPage/pages/TextPage";
 
-
 const AppRouter = () => {
+  const location = useLocation();
+
+  // роуты, где не нужен Header
+  const hideHeaderRoutes = [
+    "/lesson/:id/theory",
+    "/lesson/:id/matching",
+    "/lesson/:id/puzzle",
+    "/lesson/:id/audio",
+    "/lesson/:id/text",
+  ];
+
+  // проверяем, нужно ли скрыть хедер
+  const shouldHideHeader = hideHeaderRoutes.some((route) =>
+    location.pathname.match(route.replace(":id", "[^/]+"))
+  );
+
   return (
     <div>
-      <Header />
+      {!shouldHideHeader && <Header />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />

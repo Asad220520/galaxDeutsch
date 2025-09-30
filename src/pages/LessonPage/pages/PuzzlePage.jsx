@@ -11,18 +11,13 @@ function PuzzlePage() {
 
   return (
     <div className="max-w-3xl mx-auto p-8">
-      {/* <h1 className="text-2xl font-bold text-gray-800 mb-4">
-        {lesson.title} — {lesson.puzzle.title}
-      </h1> */}
-
-      <PuzzleCard items={lesson.puzzle.items} />
-
       <Link
         to={`/lesson/${lesson.id}`}
         className="inline-block mt-4 text-blue-500 hover:underline"
       >
         ← Назад к уроку
       </Link>
+      <PuzzleCard items={lesson.puzzle.items} />
     </div>
   );
 }

@@ -18,7 +18,7 @@ function PuzzleCard({ title, items }) {
       <div className="p-4 bg-blue-600 text-white flex items-center gap-3">
         <span className="font-semibold text-lg sm:text-xl">{title}</span>
       </div>
-      <div className="p-4 bg-gray-50 text-gray-800 min-h-[220px] sm:min-h-[200px]">
+      <div className="p-4 bg-gray-50 text-gray-800 ">
         {currentIndex < items.length ? (
           <div
             className={`transition-opacity duration-300 ${
@@ -90,7 +90,9 @@ function SinglePuzzle({ sentence, translation, distractors, onNext }) {
   };
 
   return (
-    <>
+    <div className="relative flex flex-col pb-24">
+      {/* добавляем отступ снизу, чтобы не перекрывалась область с кнопкой */}
+
       <p className="mb-2 text-gray-700 font-medium text-sm sm:text-base text-center">
         Соберите фразу
       </p>
@@ -99,7 +101,7 @@ function SinglePuzzle({ sentence, translation, distractors, onNext }) {
       </Button>
 
       {/* Выбранная фраза */}
-      <div className="border rounded-xl p-3 bg-white shadow-sm m-2 sm:m-4 min-h-[48px] flex flex-wrap gap-2 justify-center">
+      <div className="border rounded-xl p-3 bg-white shadow-sm m-2 sm:m-4 flex flex-wrap gap-2 justify-center">
         {selectedWords.length > 0 ? (
           selectedWords.map((word, i) => (
             <button
@@ -118,24 +120,23 @@ function SinglePuzzle({ sentence, translation, distractors, onNext }) {
         )}
       </div>
 
-      {/* Кнопки доступных слов */}
-      <div className="flex flex-wrap gap-2 mb-4 justify-center">
-        {availableWords.map((word, i) => (
-          <button
-            key={i}
-            onClick={() => handleSelect(word)}
-            className={`px-3 py-2 rounded-xl border text-sm sm:text-base ${getWordClass(
-              false,
-              words.includes(word)
-            )}`}
-          >
-            {word}
-          </button>
-        ))}
-      </div>
-
-      {/* Кнопка проверки/дальше */}
-      <div className="mt-auto">
+      {/* Фиксированный футер с кнопкой */}
+      <div className="fixed bottom-0 left-0 w-full bg-white p-3 shadow-[0_-2px_6px_rgba(0,0,0,0.1)]">
+        {/* Кнопки доступных слов */}
+        <div className="flex flex-wrap gap-2 mb-4 justify-center">
+          {availableWords.map((word, i) => (
+            <button
+              key={i}
+              onClick={() => handleSelect(word)}
+              className={`px-3 py-2 rounded-xl border text-sm sm:text-base ${getWordClass(
+                false,
+                words.includes(word)
+              )}`}
+            >
+              {word}
+            </button>
+          ))}
+        </div>
         {!checked ? (
           <Button
             onClick={handleCheck}
@@ -147,7 +148,7 @@ function SinglePuzzle({ sentence, translation, distractors, onNext }) {
             Проверить
           </Button>
         ) : (
-          <>
+          <div className="flex flex-col items-center">
             <p
               className={`text-center font-semibold mb-2 ${
                 isCorrect ? "text-green-600" : "text-red-600"
@@ -156,7 +157,7 @@ function SinglePuzzle({ sentence, translation, distractors, onNext }) {
               {isCorrect ? "Правильно!" : "Неправильно"}
             </p>
             {!isCorrect && (
-              <p className="text-center text-gray-700 mb-4">
+              <p className="text-center text-gray-700 mb-2 text-sm">
                 Правильный ответ:{" "}
                 <span className="font-semibold">{sentence}</span>
               </p>
@@ -169,10 +170,10 @@ function SinglePuzzle({ sentence, translation, distractors, onNext }) {
             >
               Дальше
             </Button>
-          </>
+          </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
 
