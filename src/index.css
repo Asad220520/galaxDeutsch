@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+
+
+/* Убираем стандартные стили списков */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Убираем подчёркивание у ссылок */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Выравниваем изображения */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Наследуем шрифт для форм */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
