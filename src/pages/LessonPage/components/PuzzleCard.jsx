@@ -45,32 +45,29 @@ function PuzzleCard({ title, items }) {
 
 function SinglePuzzle({ sentence, translation, distractors, onNext }) {
   const words = sentence.split(" ");
-  const [shuffledWords, setShuffledWords] = useState([]);
+  const [availableWords, setAvailableWords] = useState([]);
   const [selectedWords, setSelectedWords] = useState([]);
-  const [clickedWord, setClickedWord] = useState(null);
   const [checked, setChecked] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
 
   useEffect(() => {
     const shuffled = [...words, ...distractors].sort(() => Math.random() - 0.5);
-    setShuffledWords(shuffled);
+    setAvailableWords(shuffled);
     setSelectedWords([]);
-    setClickedWord(null);
     setChecked(false);
     setIsCorrect(false);
   }, [sentence, distractors]);
 
-  const handleClick = (word) => {
+  const handleSelect = (word) => {
     if (checked) return;
+    setAvailableWords(availableWords.filter((w) => w !== word));
+    setSelectedWords([...selectedWords, word]);
+  };
 
-    setClickedWord(word);
-    setTimeout(() => setClickedWord(null), 200);
-
-    if (selectedWords.includes(word)) {
-      setSelectedWords(selectedWords.filter((w) => w !== word));
-    } else {
-      setSelectedWords([...selectedWords, word]);
-    }
+  const handleDeselect = (word) => {
+    if (checked) return;
+    setSelectedWords(selectedWords.filter((w) => w !== word));
+    setAvailableWords([...availableWords, word]);
   };
 
   const handleCheck = () => {
@@ -79,19 +76,17 @@ function SinglePuzzle({ sentence, translation, distractors, onNext }) {
     setChecked(true);
   };
 
-  // Функция для подсветки слов после проверки
-  const getWordClass = (word) => {
+  const getWordClass = (isSelected, isCorrectWord) => {
     if (!checked)
       return "bg-gray-100 text-gray-800 border-gray-300 hover:bg-gray-200";
 
-    if (words.includes(word)) {
-      if (selectedWords.includes(word))
-        return "bg-green-500 text-white border-green-500";
-      return "bg-gray-200 text-gray-700 border-gray-300"; // правильное слово, не выбрано
-    } else if (selectedWords.includes(word)) {
-      return "bg-red-500 text-white border-red-500"; // неверное выбранное слово
-    }
-    return "bg-gray-100 text-gray-800 border-gray-300"; // остальные
+    if (isSelected && isCorrectWord)
+      return "bg-green-500 text-white border-green-500";
+    if (isSelected && !isCorrectWord)
+      return "bg-red-500 text-white border-red-500";
+    if (!isSelected && isCorrectWord)
+      return "bg-gray-200 text-gray-700 border-gray-300";
+    return "bg-gray-100 text-gray-800 border-gray-300";
   };
 
   return (
@@ -102,29 +97,45 @@ function SinglePuzzle({ sentence, translation, distractors, onNext }) {
       <Button variant="secondary" size="sm" className="mb-2 w-full" disabled>
         {translation}
       </Button>
-      <div className="border rounded-xl p-6 bg-white shadow-md m-2 sm:m-4">
-        <p className="mb-4 text-gray-800 text-sm sm:text-base text-center min-h-[40px]">
-          <span className="font-semibold">{selectedWords.join(" ")}</span>
-        </p>
-        <div className="flex flex-wrap gap-2 mb-4 justify-center">
-          {shuffledWords.map((word, i) => (
+
+      {/* Выбранная фраза */}
+      <div className="border rounded-xl p-3 bg-white shadow-sm m-2 sm:m-4 min-h-[48px] flex flex-wrap gap-2 justify-center">
+        {selectedWords.length > 0 ? (
+          selectedWords.map((word, i) => (
             <button
               key={i}
-              onClick={() => handleClick(word)}
-              className={`px-3 py-3 rounded-xl border text-base transition-transform duration-200 transform
-                ${getWordClass(word)}
-                ${
-                  clickedWord === word
-                    ? "scale-110 -translate-y-1 rotate-2"
-                    : ""
-                }
-              `}
+              onClick={() => handleDeselect(word)}
+              className={`px-3 py-2 rounded-xl border text-sm sm:text-base ${getWordClass(
+                true,
+                words.includes(word)
+              )}`}
             >
               {word}
             </button>
-          ))}
-        </div>
+          ))
+        ) : (
+          <span className="text-gray-400 text-base">Выберите слова ниже</span>
+        )}
+      </div>
 
+      {/* Кнопки доступных слов */}
+      <div className="flex flex-wrap gap-2 mb-4 justify-center">
+        {availableWords.map((word, i) => (
+          <button
+            key={i}
+            onClick={() => handleSelect(word)}
+            className={`px-3 py-2 rounded-xl border text-sm sm:text-base ${getWordClass(
+              false,
+              words.includes(word)
+            )}`}
+          >
+            {word}
+          </button>
+        ))}
+      </div>
+
+      {/* Кнопка проверки/дальше */}
+      <div className="mt-auto">
         {!checked ? (
           <Button
             onClick={handleCheck}
@@ -144,10 +155,12 @@ function SinglePuzzle({ sentence, translation, distractors, onNext }) {
             >
               {isCorrect ? "Правильно!" : "Неправильно"}
             </p>
-            <p className="text-center text-gray-700 mb-4">
-              Правильный ответ:{" "}
-              <span className="font-semibold">{sentence}</span>
-            </p>
+            {!isCorrect && (
+              <p className="text-center text-gray-700 mb-4">
+                Правильный ответ:{" "}
+                <span className="font-semibold">{sentence}</span>
+              </p>
+            )}
             <Button
               onClick={onNext}
               variant="primary"
@@ -162,6 +175,5 @@ function SinglePuzzle({ sentence, translation, distractors, onNext }) {
     </>
   );
 }
-
 
 export default PuzzleCard;
