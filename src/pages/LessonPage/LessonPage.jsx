@@ -18,22 +18,52 @@ function LessonPage() {
     { key: "text", title: "Текст", icon: <FileText size={24} /> },
   ];
 
+  // Если урок с уровнями
+  const levels = lesson.levels ? Object.entries(lesson.levels) : null;
+
   return (
-    <div className="max-w-3xl mx-auto p-4 space-y-6  text-white">
+    <div className="max-w-3xl mx-auto p-4 space-y-6 text-white">
       <h1 className="text-2xl font-bold text-gray-800 mb-4">{lesson.title}</h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {exercises.map((ex) => (
-          <Link
-            key={ex.key}
-            to={`/lesson/${lesson.id}/${ex.key}`}
-            className="flex items-center gap-3 p-4 bg-blue-500 text-white rounded shadow hover:bg-blue-600 transition"
-          >
-            {ex.icon}
-            <span className="font-semibold">{ex.title}</span>
-          </Link>
-        ))}
-      </div>
+      {levels ? (
+        levels.map(([levelKey, levelData]) => (
+          <div key={levelKey} className="space-y-2">
+            <h2 className="text-xl font-semibold text-gray-700">
+              {levelData.title}
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {exercises.map((ex) => {
+                // Проверяем есть ли соответствующее упражнение на этом уровне
+                if (!levelData[ex.key]) return null;
+
+                return (
+                  <Link
+                    key={ex.key}
+                    to={`/lesson/${lesson.id}/${ex.key}/${levelKey}`}
+                    className="flex items-center gap-3 p-4 bg-blue-500 text-white rounded shadow hover:bg-blue-600 transition"
+                  >
+                    {ex.icon}
+                    <span className="font-semibold">{ex.title}</span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        ))
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {exercises.map((ex) => (
+            <Link
+              key={ex.key}
+              to={`/lesson/${lesson.id}/${ex.key}`}
+              className="flex items-center gap-3 p-4 bg-blue-500 text-white rounded shadow hover:bg-blue-600 transition"
+            >
+              {ex.icon}
+              <span className="font-semibold">{ex.title}</span>
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

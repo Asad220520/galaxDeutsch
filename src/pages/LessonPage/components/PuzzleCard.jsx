@@ -14,8 +14,8 @@ function PuzzleCard({ title, items }) {
   };
 
   return (
-    <div className="rounded-xl shadow-lg overflow-hidden mx-2 my-4 sm:mx-0">
-      <div className="p-4 bg-blue-600 text-white flex items-center gap-3">
+    <div className="overflow-hidden mx-2 my-4 sm:mx-0">
+      <div className="p-4 text-white flex items-center gap-3">
         <span className="font-semibold text-lg sm:text-xl">{title}</span>
       </div>
       <div className="p-4 bg-gray-50 text-gray-800 ">
@@ -25,6 +25,21 @@ function PuzzleCard({ title, items }) {
               showPuzzle ? "opacity-100" : "opacity-0"
             }`}
           >
+            {/* Прогресс */}
+            <div className="mb-3 text-center">
+              <p className="text-sm text-gray-600 font-medium">
+                Задание {currentIndex + 1} из {items.length}
+              </p>
+              <div className="w-full bg-gray-200 rounded-full h-2 mt-1">
+                <div
+                  className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                  style={{
+                    width: `${((currentIndex + 1) / items.length) * 100}%`,
+                  }}
+                ></div>
+              </div>
+            </div>
+
             <SinglePuzzle
               key={currentIndex}
               sentence={items[currentIndex].german}
@@ -50,8 +65,19 @@ function SinglePuzzle({ sentence, translation, distractors, onNext }) {
   const [checked, setChecked] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
 
+  const shuffle = (array) => {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  };
+
+  const normalize = (str) => str.trim().toLowerCase().replace(/\s+/g, " ");
+
   useEffect(() => {
-    const shuffled = [...words, ...distractors].sort(() => Math.random() - 0.5);
+    const shuffled = shuffle([...words, ...distractors]);
     setAvailableWords(shuffled);
     setSelectedWords([]);
     setChecked(false);
@@ -60,18 +86,22 @@ function SinglePuzzle({ sentence, translation, distractors, onNext }) {
 
   const handleSelect = (word) => {
     if (checked) return;
-    setAvailableWords(availableWords.filter((w) => w !== word));
+    setAvailableWords(
+      availableWords.filter((w, i) => i !== availableWords.indexOf(word))
+    );
     setSelectedWords([...selectedWords, word]);
   };
 
   const handleDeselect = (word) => {
     if (checked) return;
-    setSelectedWords(selectedWords.filter((w) => w !== word));
+    setSelectedWords(
+      selectedWords.filter((w, i) => i !== selectedWords.indexOf(word))
+    );
     setAvailableWords([...availableWords, word]);
   };
 
   const handleCheck = () => {
-    const correct = selectedWords.join(" ") === sentence;
+    const correct = normalize(selectedWords.join(" ")) === normalize(sentence);
     setIsCorrect(correct);
     setChecked(true);
   };
@@ -91,8 +121,6 @@ function SinglePuzzle({ sentence, translation, distractors, onNext }) {
 
   return (
     <div className="relative flex flex-col pb-24">
-      {/* добавляем отступ снизу, чтобы не перекрывалась область с кнопкой */}
-
       <p className="mb-2 text-gray-700 font-medium text-sm sm:text-base text-center">
         Соберите фразу
       </p>
@@ -100,13 +128,13 @@ function SinglePuzzle({ sentence, translation, distractors, onNext }) {
         {translation}
       </Button>
 
-      {/* Выбранная фраза */}
-      <div className="border rounded-xl p-3 bg-white shadow-sm m-2 sm:m-4 flex flex-wrap gap-2 justify-center">
+      <div className="rounded-xl p-3 m-2 sm:m-4 flex flex-wrap gap-2 justify-center min-h-[50px]">
         {selectedWords.length > 0 ? (
           selectedWords.map((word, i) => (
             <button
-              key={i}
+              key={word + i}
               onClick={() => handleDeselect(word)}
+              disabled={checked}
               className={`px-3 py-2 rounded-xl border text-sm sm:text-base ${getWordClass(
                 true,
                 words.includes(word)
@@ -120,14 +148,13 @@ function SinglePuzzle({ sentence, translation, distractors, onNext }) {
         )}
       </div>
 
-      {/* Фиксированный футер с кнопкой */}
       <div className="fixed bottom-0 left-0 w-full bg-white p-3 shadow-[0_-2px_6px_rgba(0,0,0,0.1)]">
-        {/* Кнопки доступных слов */}
         <div className="flex flex-wrap gap-2 mb-4 justify-center">
           {availableWords.map((word, i) => (
             <button
-              key={i}
+              key={word + i}
               onClick={() => handleSelect(word)}
+              disabled={checked}
               className={`px-3 py-2 rounded-xl border text-sm sm:text-base ${getWordClass(
                 false,
                 words.includes(word)
@@ -137,6 +164,7 @@ function SinglePuzzle({ sentence, translation, distractors, onNext }) {
             </button>
           ))}
         </div>
+
         {!checked ? (
           <Button
             onClick={handleCheck}

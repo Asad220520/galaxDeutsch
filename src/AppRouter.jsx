@@ -17,17 +17,16 @@ const AppRouter = () => {
   const location = useLocation();
 
   // роуты, где не нужен Header
-  const hideHeaderRoutes = [
-    "/lesson/:id/theory",
-    "/lesson/:id/matching",
-    "/lesson/:id/puzzle",
-    "/lesson/:id/audio",
-    "/lesson/:id/text",
-  ];
+  const hideHeaderRoutes = ["/lesson/:id/:exercise/:level"];
 
   // проверяем, нужно ли скрыть хедер
   const shouldHideHeader = hideHeaderRoutes.some((route) =>
-    location.pathname.match(route.replace(":id", "[^/]+"))
+    location.pathname.match(
+      route
+        .replace(":id", "[^/]+")
+        .replace(":exercise", "[^/]+")
+        .replace(":level", "[^/]+")
+    )
   );
 
   return (
@@ -38,12 +37,16 @@ const AppRouter = () => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/dictionary" element={<DictionaryPage />} />
+
+        {/* Страница выбора урока */}
         <Route path="/lesson/:id" element={<LessonPage />} />
-        <Route path="/lesson/:id/theory" element={<TheoryPage />} />
-        <Route path="/lesson/:id/matching" element={<MatchingPage />} />
-        <Route path="/lesson/:id/puzzle" element={<PuzzlePage />} />
-        <Route path="/lesson/:id/audio" element={<AudioPage />} />
-        <Route path="/lesson/:id/text" element={<TextPage />} />
+
+        {/* Страницы упражнений с уровнями */}
+        <Route path="/lesson/:id/theory/:level" element={<TheoryPage />} />
+        <Route path="/lesson/:id/matching/:level" element={<MatchingPage />} />
+        <Route path="/lesson/:id/puzzle/:level" element={<PuzzlePage />} />
+        <Route path="/lesson/:id/audio/:level" element={<AudioPage />} />
+        <Route path="/lesson/:id/text/:level" element={<TextPage />} />
       </Routes>
     </div>
   );

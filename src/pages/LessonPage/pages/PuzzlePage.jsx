@@ -3,11 +3,22 @@ import { allLessons } from "../allLessons";
 import PuzzleCard from "../components/PuzzleCard";
 
 function PuzzlePage() {
-  const { id } = useParams();
+  const { id, level } = useParams(); // добавили level
   const lesson = allLessons.find((l) => l.id === Number(id));
 
   if (!lesson)
     return <p className="text-center text-red-500 mt-4">Урок не найден</p>;
+
+  // получаем puzzle именно для выбранного уровня
+  const levelData = lesson.levels?.[level] || lesson.puzzle;
+
+  if (!levelData || !levelData.puzzle?.items) {
+    return (
+      <p className="text-center text-red-500 mt-4">
+        Пазлы не найдены для этого уровня
+      </p>
+    );
+  }
 
   return (
     <div className="max-w-3xl mx-auto p-8">
@@ -17,7 +28,11 @@ function PuzzlePage() {
       >
         ← Назад к уроку
       </Link>
-      <PuzzleCard items={lesson.puzzle.items} />
+
+      <PuzzleCard
+        items={levelData.puzzle.items}
+        title={levelData.puzzle.title}
+      />
     </div>
   );
 }

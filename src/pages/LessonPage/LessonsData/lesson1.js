@@ -10,6 +10,8 @@ export const lesson1 = {
     items: [
       { german: "ich", russian: "Я" },
       { german: "du", russian: "Ты" },
+      { german: "er", russian: "Он" },
+      { german: "sie", russian: "Она" },
     ],
   },
   puzzle: {
