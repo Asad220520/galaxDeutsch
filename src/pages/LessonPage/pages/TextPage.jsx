@@ -1,22 +1,21 @@
-import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { allLessons } from "../allLessons";
 import TextCard from "../components/TextCard";
-import { FileText } from "lucide-react";
+import { getLessonProgress, setProgress } from "../../../utils/progress";
+import { useState, useEffect } from "react";
 
 function TextPage() {
-  const { id } = useParams();
+  const { id, level } = useParams();
   const lesson = allLessons.find((l) => l.id === Number(id));
-
-  const [currentLevel, setCurrentLevel] = useState("level1"); // по умолчанию уровень 1
+  const [progress, setLocalProgress] = useState(0);
 
   if (!lesson) {
     return <p className="text-center text-red-500 mt-4">Урок не найден</p>;
   }
 
-  const levelData = lesson.levels[currentLevel];
+  const textData = lesson.levels ? lesson.levels[level]?.text : lesson.text;
 
-  if (!levelData || !levelData.text || levelData.text.items.length === 0) {
+  if (!textData) {
     return (
       <p className="text-center text-red-500 mt-4">
         Текстовые задания не найдены для этого уровня
@@ -24,37 +23,42 @@ function TextPage() {
     );
   }
 
-  const levelsList = Object.keys(lesson.levels);
+  const progressKey = `text_${level || "default"}`;
+
+  useEffect(() => {
+    const lessonProgress = getLessonProgress(lesson.id);
+    setLocalProgress(lessonProgress[progressKey] || 0);
+  }, [lesson.id, progressKey]);
+
+  const handleProgressUpdate = (percent) => {
+    setLocalProgress((prev) => {
+      const newPercent = Math.max(prev, percent);
+      setProgress(lesson.id, progressKey, newPercent);
+      return newPercent;
+    });
+  };
 
   return (
     <div className="max-w-3xl mx-auto p-4 space-y-6">
       <h1 className="text-2xl font-bold text-gray-800 mb-4">
-        {lesson.title} — {levelData.text.title}
+        {lesson.title} — {textData.title} {level ? `(${level})` : ""}
       </h1>
 
-      {/* Выбор уровня */}
-      <div className="flex gap-2 mb-4">
-        {levelsList.map((lvl) => (
-          <button
-            key={lvl}
-            onClick={() => setCurrentLevel(lvl)}
-            className={`px-3 py-1 rounded ${
-              currentLevel === lvl
-                ? "bg-blue-500 text-white"
-                : "bg-gray-200 text-gray-800"
-            }`}
-          >
-            {lesson.levels[lvl].title}
-          </button>
-        ))}
-      </div>
-
-      {/* TextCard с пошаговыми заданиями */}
       <TextCard
-        title={levelData.text.title}
-        items={levelData.text.items}
-        icon={<FileText size={24} />}
+        items={textData.items}
+        lessonId={lesson.id}
+        levelKey={level || "default"}
+        onProgress={handleProgressUpdate}
       />
+
+      {/* Прогрессбар */}
+      <div className="w-full bg-gray-200 h-3 rounded mt-2">
+        <div
+          className="bg-green-500 h-3 rounded transition-all duration-500"
+          style={{ width: `${progress}%` }}
+        ></div>
+      </div>
+      <p className="text-center mt-1 text-gray-700">{progress}%</p>
 
       <Link
         to={`/lesson/${lesson.id}`}

@@ -1,114 +1,102 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function TextCard({ title, items, icon }) {
+function shuffleArray(arr) {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+function TextCard({ items, lessonId, levelKey, onProgress }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selected, setSelected] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
+  const [options, setOptions] = useState([]);
 
-  // Если нет элементов
-  if (!items || items.length === 0) {
-    return (
-      <div className="p-4 text-red-600 font-semibold text-center">
-        Ошибка: отсутствуют данные для карточки.
-      </div>
-    );
-  }
+  // если items нет, присваиваем пустой массив, чтобы хуки всегда вызывались
+  const safeItems = items || [];
 
-  // Если дошли до конца всех заданий
-  if (currentIndex >= items.length) {
-    return (
-      <div className="p-6 text-green-600 font-semibold text-center rounded-xl shadow-lg max-w-md mx-auto">
-        🎉 Поздравляем! Вы завершили все задания.
-      </div>
-    );
-  }
+  const currentItem = safeItems[currentIndex];
+  const correctAnswer = currentItem?.content;
+  const distractors = currentItem?.distractors || [];
 
-  const currentItem = items[currentIndex];
-  const correctAnswer = currentItem.content;
-  const distractors = currentItem.distractors || [];
-
-  // Перемешиваем варианты
-  const options = Array.from(new Set([correctAnswer, ...distractors])).sort(
-    () => Math.random() - 0.5
-  );
-
-  const handleClick = (option) => {
-    if (selected) return; // запрещаем менять после выбора
-    setSelected(option);
-    setIsCorrect(option === correctAnswer);
-  };
-
-  const handleNext = () => {
+  useEffect(() => {
+    if (!currentItem) return;
     setSelected(null);
     setIsCorrect(null);
-    setCurrentIndex((prev) => prev + 1);
+    setOptions(shuffleArray([correctAnswer, ...distractors]));
+  }, [currentIndex, correctAnswer, distractors]);
+
+  const handleClick = (option) => {
+    if (selected) return;
+
+    setSelected(option);
+    const correct = option === correctAnswer;
+    setIsCorrect(correct);
+
+    if (correct && onProgress) {
+      const percent = Math.round(((currentIndex + 1) / safeItems.length) * 100);
+      onProgress(percent);
+    }
   };
 
-  const displayedTitle = currentItem.german.replace("__", selected || "_____");
+  const handleNext = () => setCurrentIndex((prev) => prev + 1);
+
+  if (!safeItems.length) return <div>Нет данных</div>;
+  if (currentIndex >= safeItems.length)
+    return <div>🎉 Все задания выполнены!</div>;
+
+  const displayedTitle = currentItem.german.includes("__")
+    ? currentItem.german.replace("__", selected || "_____")
+    : currentItem.german;
 
   return (
-    <div className="rounded-xl shadow-lg overflow-hidden max-w-md mx-auto transition-transform transform hover:scale-105">
-      {/* Заголовок с пропуском */}
-      <div className="p-4 bg-blue-500 text-white flex items-center gap-3 font-semibold text-lg">
-        {icon}
+    <div className="p-4 bg-gray-50 rounded-xl shadow max-w-md mx-auto">
+      <div className="bg-blue-500 text-white p-4 font-semibold flex flex-col gap-2">
         <span>{displayedTitle}</span>
-      </div>
-
-      <div className="p-4 bg-gray-50 text-gray-800 space-y-4">
-        {/* Прогресс */}
-        <p className="text-sm text-gray-600 text-center">
-          Задание {currentIndex + 1} из {items.length}
-        </p>
-
-        {/* Варианты ответа */}
-        <div className="flex flex-wrap gap-2 justify-center">
-          {options.map((option, i) => {
-            let bgClass = "bg-white hover:bg-gray-100";
-            if (selected) {
-              if (option === correctAnswer)
-                bgClass = "bg-green-200 border-green-400";
-              else if (option === selected)
-                bgClass = "bg-red-200 border-red-400";
-              else bgClass = "bg-gray-100";
-            }
-
-            return (
-              <button
-                key={i}
-                onClick={() => handleClick(option)}
-                disabled={!!selected}
-                className={`px-4 py-2 border rounded-lg shadow-sm font-medium transition-all duration-300 transform ${bgClass} ${
-                  selected === option ? "scale-105" : "scale-100"
-                }`}
-              >
-                {option}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Результат и кнопка "Дальше" */}
-        {selected && (
-          <div className="text-center">
-            <p
-              className={`mt-3 font-semibold text-lg ${
-                isCorrect ? "text-green-600" : "text-red-600"
-              }`}
-            >
-              {isCorrect
-                ? "✅ Правильно!"
-                : `❌ Неправильно. Правильный ответ: ${correctAnswer}`}
-            </p>
-
-            <button
-              onClick={handleNext}
-              className="mt-3 w-full px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600 transition"
-            >
-              Дальше
-            </button>
-          </div>
+        {currentItem.russian && (
+          <span className="text-sm text-gray-100">{currentItem.russian}</span>
         )}
       </div>
+
+      <div className="flex flex-wrap gap-2 mt-4">
+        {options.map((opt) => (
+          <button
+            key={`${currentIndex}_${opt}`}
+            onClick={() => handleClick(opt)}
+            disabled={!!selected}
+            className={`px-3 py-1 border rounded transition-transform duration-200 ${
+              selected === opt ? "scale-105" : ""
+            } ${
+              selected
+                ? opt === correctAnswer
+                  ? "bg-green-200"
+                  : selected === opt
+                  ? "bg-red-200"
+                  : "bg-gray-100"
+                : "bg-white hover:bg-gray-100"
+            }`}
+          >
+            {opt}
+          </button>
+        ))}
+      </div>
+
+      {selected && (
+        <div className="mt-3 text-center">
+          <p className={isCorrect ? "text-green-600" : "text-red-600"}>
+            {isCorrect ? "✅ Правильно" : `❌ Неправильно. ${correctAnswer}`}
+          </p>
+          <button
+            onClick={handleNext}
+            className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            Дальше
+          </button>
+        </div>
+      )}
     </div>
   );
 }

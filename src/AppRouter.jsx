@@ -1,11 +1,13 @@
 import React from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
+// Импорт страниц
 import HomePage from "./pages/homePage/HomePage";
-import AboutPage from "./pages/aboutPage/AboutPage";
-import SettingsPage from "./pages/settingsPage/SettingsPage";
-import Header from "./components/header/Header";
 import DictionaryPage from "./pages/DictionaryPage/DictionaryPage";
-
+import SettingsPage from "./pages/settingsPage/SettingsPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+// Импорт хедера
+import Header from "./components/header/Header";
+// Импорт страниц уроков и упражнений
 import LessonPage from "./pages/LessonPage/LessonPage";
 import TheoryPage from "./pages/LessonPage/pages/TheoryPage";
 import MatchingPage from "./pages/LessonPage/pages/MatchingPage";
@@ -34,7 +36,7 @@ const AppRouter = () => {
       {!shouldHideHeader && <Header />}
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/dictionary" element={<DictionaryPage />} />
 

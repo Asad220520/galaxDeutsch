@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react";
 import Button from "../../../components/UI/Button";
+import { setProgress } from "../../../utils/progress";
 
-function PuzzleCard({ title, items }) {
+function PuzzleCard({ title, items, lessonId, levelKey, onProgressUpdate }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showPuzzle, setShowPuzzle] = useState(true);
 
-  const handleNext = () => {
+  const handleNext = (isCorrect) => {
+    if (isCorrect) {
+      const percent = Math.round(((currentIndex + 1) / items.length) * 100);
+      setProgress(lessonId, `puzzle_${levelKey || "default"}`, percent);
+      if (onProgressUpdate) onProgressUpdate();
+    }
+
     setShowPuzzle(false);
     setTimeout(() => {
       setCurrentIndex((prev) => prev + 1);
@@ -13,46 +20,47 @@ function PuzzleCard({ title, items }) {
     }, 300);
   };
 
+  if (currentIndex >= items.length) {
+    return (
+      <p className="text-green-600 font-semibold text-center mt-4 text-base sm:text-lg">
+        Поздравляем! Вы завершили все предложения.
+      </p>
+    );
+  }
+
   return (
     <div className="overflow-hidden mx-2 my-4 sm:mx-0">
       <div className="p-4 text-white flex items-center gap-3">
         <span className="font-semibold text-lg sm:text-xl">{title}</span>
       </div>
-      <div className="p-4 bg-gray-50 text-gray-800 ">
-        {currentIndex < items.length ? (
-          <div
-            className={`transition-opacity duration-300 ${
-              showPuzzle ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            {/* Прогресс */}
-            <div className="mb-3 text-center">
-              <p className="text-sm text-gray-600 font-medium">
-                Задание {currentIndex + 1} из {items.length}
-              </p>
-              <div className="w-full bg-gray-200 rounded-full h-2 mt-1">
-                <div
-                  className="bg-blue-500 h-2 rounded-full transition-all duration-300"
-                  style={{
-                    width: `${((currentIndex + 1) / items.length) * 100}%`,
-                  }}
-                ></div>
-              </div>
+      <div className="p-4 bg-gray-50 text-gray-800">
+        <div
+          className={`transition-opacity duration-300 ${
+            showPuzzle ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <div className="mb-3 text-center">
+            <p className="text-sm text-gray-600 font-medium">
+              Задание {currentIndex + 1} из {items.length}
+            </p>
+            <div className="w-full bg-gray-200 rounded-full h-2 mt-1">
+              <div
+                className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                style={{
+                  width: `${((currentIndex + 1) / items.length) * 100}%`,
+                }}
+              ></div>
             </div>
-
-            <SinglePuzzle
-              key={currentIndex}
-              sentence={items[currentIndex].german}
-              translation={items[currentIndex].russian}
-              distractors={items[currentIndex].distractors || []}
-              onNext={handleNext}
-            />
           </div>
-        ) : (
-          <p className="text-green-600 font-semibold text-center mt-4 text-base sm:text-lg">
-            Поздравляем! Вы завершили все предложения.
-          </p>
-        )}
+
+          <SinglePuzzle
+            key={currentIndex}
+            sentence={items[currentIndex].german}
+            translation={items[currentIndex].russian}
+            distractors={items[currentIndex].distractors || []}
+            onNext={handleNext}
+          />
+        </div>
       </div>
     </div>
   );
@@ -109,7 +117,6 @@ function SinglePuzzle({ sentence, translation, distractors, onNext }) {
   const getWordClass = (isSelected, isCorrectWord) => {
     if (!checked)
       return "bg-gray-100 text-gray-800 border-gray-300 hover:bg-gray-200";
-
     if (isSelected && isCorrectWord)
       return "bg-green-500 text-white border-green-500";
     if (isSelected && !isCorrectWord)
@@ -191,7 +198,7 @@ function SinglePuzzle({ sentence, translation, distractors, onNext }) {
               </p>
             )}
             <Button
-              onClick={onNext}
+              onClick={() => onNext(isCorrect)}
               variant="primary"
               size="md"
               className="w-full"
