@@ -1,0 +1,131 @@
+{
+  "title": "О себе и семье",
+  "dialogs": [
+    {
+      "german": "Was ist Ihre Schwester von Beruf?",
+      "russian": "Кем работает ваша сестра?",
+      "germanantwort": "Meine Schwester ist Englischlehrerin.",
+      "russianantwort": "Моя сестра работает учителем английского."
+    },
+    {
+      "german": "Wie viele Kinder haben Ihre Eltern?",
+      "russian": "Сколько детей у ваших родителей?",
+      "germanantwort": "Meine Eltern haben drei Kinder.",
+      "russianantwort": "У моих родителей трое детей."
+    },
+    {
+      "german": "Wie viel Geschwister haben Sie?",
+      "russian": "Сколько у вас братьев и сестер?",
+      "germanantwort": "Ich habe zwei Brüder.",
+      "russianantwort": "У меня два брата."
+    },
+    {
+      "german": "Wie alt sind Ihre Geschwister?",
+      "russian": "Сколько лет вашим братьям и сестрам?",
+      "germanantwort": "Mein älterer Bruder ist 25, mein jüngerer Bruder ist 20.",
+      "russianantwort": "Моему старшему брату 25 лет, младшему — 20."
+    },
+    {
+      "german": "Was machen Ihre Geschwister?",
+      "russian": "Чем занимаются ваши братья и сестры?",
+      "germanantwort": "Mein älterer Bruder arbeitet, der jüngere studiert.",
+      "russianantwort": "Старший брат работает, младший учится."
+    },
+    {
+      "german": "Wo studieren/arbeiten Ihre Geschwister?",
+      "russian": "Где учатся или работают ваши братья и сестры?",
+      "germanantwort": "Mein älterer Bruder arbeitet in Moskau, der jüngere studiert in Bischkek.",
+      "russianantwort": "Старший брат работает в Москве, младший учится в Бишкеке."
+    },
+    {
+      "german": "Wo wohnen Ihre Geschwister?",
+      "russian": "Где живут ваши братья и сестры?",
+      "germanantwort": "Sie wohnen bei der Familie und in Bischkek.",
+      "russianantwort": "Они живут с семьёй и в Бишкеке."
+    },
+    {
+      "german": "Mit wem wohnen Sie?",
+      "russian": "С кем вы живёте?",
+      "germanantwort": "Ich wohne mit meinen Freunden.",
+      "russianantwort": "Я живу с друзьями."
+    },
+    {
+      "german": "Wie viel Kinder hat Ihre Schwester?",
+      "russian": "Сколько детей у вашей сестры?",
+      "germanantwort": "Meine Schwester hat zwei Kinder.",
+      "russianantwort": "У моей сестры двое детей."
+    },
+    {
+      "german": "Was macht ihr Mann?",
+      "russian": "Чем занимается её муж?",
+      "germanantwort": "Er arbeitet als Arzt.",
+      "russianantwort": "Он работает врачом."
+    },
+    {
+      "german": "Wie alt sind die Kinder von Ihrer Schwester?",
+      "russian": "Сколько лет детям вашей сестры?",
+      "germanantwort": "Die Kinder sind 5 und 8 Jahre alt.",
+      "russianantwort": "Детям 5 и 8 лет."
+    },
+    {
+      "german": "Was ist Ihr Schwager von Beruf?",
+      "russian": "Кем работает ваш зять?",
+      "germanantwort": "Mein Schwager ist Arzt.",
+      "russianantwort": "Мой зять — врач."
+    },
+    {
+      "german": "Was für ein Arzt ist er?",
+      "russian": "Какой он врач?",
+      "germanantwort": "Er ist Kinderarzt.",
+      "russianantwort": "Он детский врач."
+    },
+    {
+      "german": "Wo arbeitet ihr Mann?",
+      "russian": "Где работает её муж?",
+      "germanantwort": "Er arbeitet im Krankenhaus.",
+      "russianantwort": "Он работает в больнице."
+    },
+    {
+      "german": "In welcher Abteilung arbeitet er?",
+      "russian": "В каком отделении он работает?",
+      "germanantwort": "Er arbeitet in der Kinderabteilung.",
+      "russianantwort": "Он работает в детском отделении."
+    },
+    {
+      "german": "Wie alt ist Ihr Bruder?",
+      "russian": "Сколько лет вашему брату?",
+      "germanantwort": "Mein Bruder ist 20 Jahre alt.",
+      "russianantwort": "Моему брату 20 лет."
+    },
+    {
+      "german": "In welche Klasse geht er?",
+      "russian": "В какой класс он ходит?",
+      "germanantwort": "Er geht in die 10. Klasse.",
+      "russianantwort": "Он ходит в 10-й класс."
+    },
+    {
+      "german": "Wo wohnt er?",
+      "russian": "Где он живёт?",
+      "germanantwort": "Er wohnt bei uns zu Hause.",
+      "russianantwort": "Он живёт у нас дома."
+    },
+    {
+      "german": "Was möchte er in Zukunft werden?",
+      "russian": "Кем он хочет стать в будущем?",
+      "germanantwort": "Er möchte Ingenieur werden.",
+      "russianantwort": "Он хочет стать инженером."
+    },
+    {
+      "german": "Wo hat Ihre Schwester Englisch gelernt?",
+      "russian": "Где ваша сестра учила английский?",
+      "germanantwort": "Sie hat Englisch an der Universität gelernt.",
+      "russianantwort": "Она учила английский в университете."
+    },
+    {
+      "german": "Welche Sprachen dolmetscht sie?",
+      "russian": "На какие языки она делает перевод?",
+      "germanantwort": "Sie dolmetscht Deutsch und Englisch.",
+      "russianantwort": "Она переводит с немецкого и английского."
+    }
+  ]
+}

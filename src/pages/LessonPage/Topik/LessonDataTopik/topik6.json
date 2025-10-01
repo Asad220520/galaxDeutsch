@@ -1,0 +1,113 @@
+{
+  "title": "Freizeit und Hobbys",
+  "dialogs": [
+    {
+      "german": "Was machen Sie in Ihrer Freizeit?",
+      "russian": "Чем вы занимаетесь в свободное время?",
+      "germanantwort": "Ich spiele Fußball und lese Bücher.",
+      "russianantwort": "Я играю в футбол и читаю книги."
+    },
+    {
+      "german": "Haben Sie Hobbys?",
+      "russian": "У вас есть хобби?",
+      "germanantwort": "Ja, ich habe mehrere Hobbys.",
+      "russianantwort": "Да, у меня есть несколько хобби."
+    },
+    {
+      "german": "Wo haben Sie Schachspielen gelernt?",
+      "russian": "Где вы научились играть в шахматы?",
+      "germanantwort": "Ich habe Schach in der Schule gelernt.",
+      "russianantwort": "Я научился играть в шахматы в школе."
+    },
+    {
+      "german": "Wer hat Ihnen das beigebracht?",
+      "russian": "Кто вас этому научил?",
+      "germanantwort": "Mein Bruder hat es mir beigebracht.",
+      "russianantwort": "Мой брат меня этому научил."
+    },
+    {
+      "german": "Warum sind Sie zum Schachklub gegangen?",
+      "russian": "Почему вы пошли в шахматный клуб?",
+      "germanantwort": "Um besser zu werden und neue Freunde zu treffen.",
+      "russianantwort": "Чтобы стать лучше и встретить новых друзей."
+    },
+    {
+      "german": "Wer kann in Ihrer Familie zeichnen?",
+      "russian": "Кто умеет рисовать в вашей семье?",
+      "germanantwort": "Meine Schwester kann sehr gut zeichnen.",
+      "russianantwort": "Моя сестра умеет очень хорошо рисовать."
+    },
+    {
+      "german": "Wer aus Ihrer Familie spielt Schach?",
+      "russian": "Кто из вашей семьи играет в шахматы?",
+      "germanantwort": "Mein Vater und mein Bruder spielen Schach.",
+      "russianantwort": "Мой отец и брат играют в шахматы."
+    },
+    {
+      "german": "Seit wann interessieren Sie sich für Fußball?",
+      "russian": "С каких пор вы интересуетесь футболом?",
+      "germanantwort": "Seit meiner Kindheit.",
+      "russianantwort": "С детства."
+    },
+    {
+      "german": "Wer ist Ihr Favorit? Warum Messi?",
+      "russian": "Кто ваш любимый футболист? Почему Месси?",
+      "germanantwort": "Mein Favorit ist Messi, weil er sehr talentiert ist.",
+      "russianantwort": "Мой любимый — Месси, потому что он очень талантливый."
+    },
+    {
+      "german": "Mit wem spielen Sie Fußball?",
+      "russian": "С кем вы играете в футбол?",
+      "germanantwort": "Ich spiele mit meinen Freunden im Verein.",
+      "russianantwort": "Я играю с друзьями в клубе."
+    },
+    {
+      "german": "Welche Position haben Sie da?",
+      "russian": "На какой позиции вы играете?",
+      "germanantwort": "Ich spiele als Stürmer.",
+      "russianantwort": "Я играю на позиции нападающего."
+    },
+    {
+      "german": "Was ist Ihr Lieblingsbuch?",
+      "russian": "Какая ваша любимая книга?",
+      "germanantwort": "Mein Lieblingsbuch ist 'Der Kleine Prinz'.",
+      "russianantwort": "Моя любимая книга — «Маленький принц»."
+    },
+    {
+      "german": "Was war das letzte Buch, das Sie gelesen haben?",
+      "russian": "Какая была последняя книга, которую вы прочитали?",
+      "germanantwort": "Ich habe zuletzt 'Harry Potter' gelesen.",
+      "russianantwort": "Последней книгой был «Гарри Поттер»."
+    },
+    {
+      "german": "Welches Genre lesen Sie am liebsten?",
+      "russian": "Какой жанр вы любите читать больше всего?",
+      "germanantwort": "Am liebsten lese ich Abenteuerbücher.",
+      "russianantwort": "Больше всего я люблю читать книги о приключениях."
+    },
+    {
+      "german": "Wofür interessieren Sie sich?",
+      "russian": "Чем вы интересуетесь?",
+      "germanantwort": "Ich interessiere mich für Sport und Kunst.",
+      "russianantwort": "Я интересуюсь спортом и искусством."
+    },
+    {
+      "german": "Womit beschäftigen Sie sich in Ihrer Freizeit?",
+      "russian": "Чем вы занимаетесь в свободное время?",
+      "germanantwort": "Ich lese Bücher, spiele Fußball und zeichne.",
+      "russianantwort": "Я читаю книги, играю в футбол и рисую."
+    },
+    {
+      "german": "Haben Sie viel Freizeit?",
+      "russian": "У вас много свободного времени?",
+      "germanantwort": "Ja, meistens am Wochenende.",
+      "russianantwort": "Да, в основном по выходным."
+    },
+    {
+      "german": "Wie schaffen Sie das, Fußball zu spielen?",
+      "russian": "Как вам удаётся играть в футбол?",
+      "germanantwort": "Ich plane meine Zeit sorgfältig.",
+      "russianantwort": "Я тщательно планирую своё время."
+    }
+  ]
+}

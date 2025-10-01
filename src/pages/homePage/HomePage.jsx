@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Book } from "lucide-react";
 import { useState, useEffect } from "react";
-import { allLessons } from "../LessonPage/allLessons";
+import { allLessons } from "../LessonPage/Lection/allLessons";
 import { getProgress } from "../../utils/progress";
 
 function HomePage() {
@@ -65,7 +65,6 @@ function HomePage() {
                 <span className="font-semibold">{lesson.title}</span>
               </div>
 
-              {/* Прогрессбар */}
               <div className="w-full bg-white/30 h-2 rounded mt-2">
                 <div
                   className={`${progressColor} h-2 rounded transition-all duration-500`}

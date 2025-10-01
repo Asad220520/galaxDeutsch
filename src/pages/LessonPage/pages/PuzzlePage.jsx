@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { allLessons } from "../allLessons";
+import { allLessons } from "../Lection/allLessons";
 import PuzzleCard from "../components/PuzzleCard";
 import { getLessonProgress, setProgress } from "../../../utils/progress";
 import { useState, useEffect } from "react";

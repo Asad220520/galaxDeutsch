@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { allLessons } from "../allLessons";
+import { allLessons } from "../Lection/allLessons";
 import MatchingCard from "../components/MatchingCard";
 import { Puzzle } from "lucide-react";
 import { useState, useEffect } from "react";

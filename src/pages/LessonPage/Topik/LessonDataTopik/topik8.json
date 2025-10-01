@@ -1,0 +1,89 @@
+{
+  "title": "Freundschaft und Deutschlernen",
+  "dialogs": [
+    {
+      "german": "Wie heißt Ihr bester Freund?",
+      "russian": "Как зовут вашего лучшего друга?",
+      "germanantwort": "Mein bester Freund heißt Alex.",
+      "russianantwort": "Моего лучшего друга зовут Алекс."
+    },
+    {
+      "german": "Was studiert Ihr Freund?",
+      "russian": "Что изучает ваш друг?",
+      "germanantwort": "Er studiert Wirtschaft.",
+      "russianantwort": "Он изучает экономику."
+    },
+    {
+      "german": "Wie haben Sie sich kennengelernt?",
+      "russian": "Как вы познакомились?",
+      "germanantwort": "Wir haben uns an der Universität kennengelernt.",
+      "russianantwort": "Мы познакомились в университете."
+    },
+    {
+      "german": "Seit wann seid ihr beste Freunde?",
+      "russian": "С каких пор вы лучшие друзья?",
+      "germanantwort": "Wir sind seit drei Jahren beste Freunde.",
+      "russianantwort": "Мы лучшие друзья уже три года."
+    },
+    {
+      "german": "Warum ist er der beste?",
+      "russian": "Почему он лучший?",
+      "germanantwort": "Er ist immer hilfsbereit und verständnisvoll.",
+      "russianantwort": "Он всегда помогает и понимает меня."
+    },
+    {
+      "german": "Wer von euch beiden spricht besser Deutsch?",
+      "russian": "Кто из вас говорит по-немецки лучше?",
+      "germanantwort": "Ich spreche besser Deutsch.",
+      "russianantwort": "Я говорю по-немецки лучше."
+    },
+    {
+      "german": "Seit wann hat er angefangen Deutsch zu lernen?",
+      "russian": "С каких пор он начал учить немецкий?",
+      "germanantwort": "Er lernt seit zwei Jahren Deutsch.",
+      "russianantwort": "Он учит немецкий уже два года."
+    },
+    {
+      "german": "Lernt er auch hier bei Iwex Deutsch?",
+      "russian": "Он тоже учится немецкому здесь, в Iwex?",
+      "germanantwort": "Ja, er besucht auch Kurse bei Iwex.",
+      "russianantwort": "Да, он тоже посещает курсы в Iwex."
+    },
+    {
+      "german": "Wie gut spricht ihr Deutsch, um als Kellner arbeiten zu können?",
+      "russian": "Насколько хорошо вы говорите по-немецки, чтобы работать официантом?",
+      "germanantwort": "Wir sprechen gut genug, um im Restaurant zu arbeiten.",
+      "russianantwort": "Мы говорим достаточно хорошо, чтобы работать в ресторане."
+    },
+    {
+      "german": "Welches Sprachniveau muss man für Kellner haben?",
+      "russian": "Какой уровень языка нужен для работы официантом?",
+      "germanantwort": "Man sollte mindestens B1 Niveau haben.",
+      "russianantwort": "Нужно иметь уровень не ниже B1."
+    },
+    {
+      "german": "Was mögen Sie in Ihrem Freund?",
+      "russian": "Что вам нравится в вашем друге?",
+      "germanantwort": "Seine Ehrlichkeit und Freundlichkeit.",
+      "russianantwort": "Его честность и доброта."
+    },
+    {
+      "german": "Wie würden Sie Ihren Freund beschreiben?",
+      "russian": "Как бы вы описали вашего друга?",
+      "germanantwort": "Er ist freundlich, zuverlässig und humorvoll.",
+      "russianantwort": "Он дружелюбный, надёжный и с хорошим чувством юмора."
+    },
+    {
+      "german": "Wie würde Ihr Freund Sie beschreiben?",
+      "russian": "Как бы ваш друг описал вас?",
+      "germanantwort": "Er würde sagen, dass ich hilfsbereit und lustig bin.",
+      "russianantwort": "Он бы сказал, что я помогаю и веселый."
+    },
+    {
+      "german": "Was bedeutet Freundschaft?",
+      "russian": "Что значит дружба?",
+      "germanantwort": "Freundschaft bedeutet Vertrauen, Unterstützung und gemeinsame Zeit.",
+      "russianantwort": "Дружба означает доверие, поддержку и совместное время."
+    }
+  ]
+}

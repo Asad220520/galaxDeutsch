@@ -1,0 +1,83 @@
+{
+  "title": "Почему я хочу поехать в Германию?",
+  "dialogs": [
+    {
+      "german": "Warum wollen Sie nach Deutschland?",
+      "russian": "Почему вы хотите поехать в Германию?",
+      "germanantwort": "Ich möchte in Deutschland studieren.",
+      "russianantwort": "Я хочу учиться в Германии."
+    },
+    {
+      "german": "Wo haben Sie über dieses Programm gehört?",
+      "russian": "Где вы узнали об этой программе?",
+      "germanantwort": "Ich habe Informationen im Internet gefunden.",
+      "russianantwort": "Я нашёл(нашла) информацию в интернете."
+    },
+    {
+      "german": "Wer aus Ihrer Familie war schon in Deutschland?",
+      "russian": "Кто из вашей семьи уже был в Германии?",
+      "germanantwort": "Noch niemand war in Deutschland.",
+      "russianantwort": "Никто ещё не был в Германии."
+    },
+    {
+      "german": "Wo hat Ihre Cousine gearbeitet?",
+      "russian": "Где работала ваша двоюродная сестра?",
+      "germanantwort": "Sie hat in einem Hotel gearbeitet.",
+      "russianantwort": "Она работала в отеле."
+    },
+    {
+      "german": "Was werden Sie machen, wenn Sie fertig studiert haben?",
+      "russian": "Что вы будете делать, когда закончите учёбу?",
+      "germanantwort": "Ich möchte in meinem Beruf arbeiten.",
+      "russianantwort": "Я хочу работать по профессии."
+    },
+    {
+      "german": "Wo möchten Sie Ihren Master machen?",
+      "russian": "Где вы хотите учиться в магистратуре?",
+      "germanantwort": "Ich möchte meinen Master in Deutschland machen.",
+      "russianantwort": "Я хочу учиться в магистратуре в Германии."
+    },
+    {
+      "german": "Wofür brauchen Sie Deutsch?",
+      "russian": "Для чего вам нужен немецкий язык?",
+      "germanantwort": "Ich brauche Deutsch für Studium und Arbeit.",
+      "russianantwort": "Мне нужен немецкий для учёбы и работы."
+    },
+    {
+      "german": "Was motiviert Sie beim Deutschlernen?",
+      "russian": "Что вас мотивирует в изучении немецкого языка?",
+      "germanantwort": "Neue Chancen motivieren mich.",
+      "russianantwort": "Новые возможности меня мотивируют."
+    },
+    {
+      "german": "Wie motivieren Sie sich?",
+      "russian": "Как вы себя мотивируете?",
+      "germanantwort": "Ich lerne jeden Tag ein bisschen.",
+      "russianantwort": "Я учусь каждый день понемногу."
+    },
+    {
+      "german": "Wie sind Sie auf die Idee gekommen, sich für das Programm zu registrieren?",
+      "russian": "Как у вас появилась идея зарегистрироваться на эту программу?",
+      "germanantwort": "Freunde haben es mir empfohlen.",
+      "russianantwort": "Друзья мне это посоветовали."
+    },
+    {
+      "german": "Wo sehen Sie sich in 5 Jahren?",
+      "russian": "Где вы видите себя через 5 лет?",
+      "germanantwort": "Ich sehe mich in einem guten Job.",
+      "russianantwort": "Я вижу себя на хорошей работе."
+    },
+    {
+      "german": "Was sind Ihre Pläne nach dem Studium?",
+      "russian": "Каковы ваши планы после окончания учёбы?",
+      "germanantwort": "Ich möchte eine gute Arbeit finden.",
+      "russianantwort": "Я хочу найти хорошую работу."
+    },
+    {
+      "german": "Was machen Sie mit Ihrem Studium, wenn Sie beendet haben?",
+      "russian": "Что вы будете делать со своей учёбой, когда закончите её?",
+      "germanantwort": "Ich möchte mein Wissen praktisch anwenden.",
+      "russianantwort": "Я хочу применить знания на практике."
+    }
+  ]
+}

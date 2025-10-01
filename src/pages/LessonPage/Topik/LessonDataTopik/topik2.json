@@ -1,0 +1,95 @@
+{
+  "title": "Мой рабочий день",
+  "dialogs": [
+    {
+      "german": "Wie sieht Ihr Arbeitstag aus?",
+      "russian": "Как проходит ваш рабочий день?",
+      "germanantwort": "Mein Arbeitstag ist flexibel, weil ich zu Hause arbeite. Wichtig ist, alles bis zum Termin fertig zu machen.",
+      "russianantwort": "Мой рабочий день гибкий, потому что я работаю дома. Главное — всё закончить к сроку."
+    },
+    {
+      "german": "Um wie viel Uhr stehen Sie auf?",
+      "russian": "Во сколько вы встаёте?",
+      "germanantwort": "Ich stehe meistens um 8 Uhr auf.",
+      "russianantwort": "Я обычно встаю в 8 часов."
+    },
+    {
+      "german": "Wie viel Stunden Schlaf brauchen Sie?",
+      "russian": "Сколько часов сна вам нужно?",
+      "germanantwort": "Ich brauche ungefähr 7–8 Stunden Schlaf.",
+      "russianantwort": "Мне нужно примерно 7–8 часов сна."
+    },
+    {
+      "german": "Wann gehen Sie ins Bett?",
+      "russian": "Когда вы ложитесь спать?",
+      "germanantwort": "Ich gehe gegen Mitternacht ins Bett.",
+      "russianantwort": "Я ложусь спать около полуночи."
+    },
+    {
+      "german": "Womit beginnt Ihr Arbeitstag?",
+      "russian": "С чего начинается ваш рабочий день?",
+      "germanantwort": "Mein Arbeitstag beginnt mit Frühstück und dem Computer.",
+      "russianantwort": "Мой рабочий день начинается с завтрака и компьютера."
+    },
+    {
+      "german": "Was essen Sie zu Frühstück?",
+      "russian": "Что вы едите на завтрак?",
+      "germanantwort": "Ich esse ein Brötchen und trinke Tee.",
+      "russianantwort": "Я ем булочку и пью чай."
+    },
+    {
+      "german": "Wo essen Sie zu Mittag?",
+      "russian": "Где вы обедаете?",
+      "germanantwort": "Ich esse zu Hause.",
+      "russianantwort": "Я обедаю дома."
+    },
+    {
+      "german": "Wann ist die Mittagspause?",
+      "russian": "Когда обеденный перерыв?",
+      "germanantwort": "Meine Mittagspause ist um 13 Uhr.",
+      "russianantwort": "Мой обеденный перерыв в час дня."
+    },
+    {
+      "german": "Was machen Sie während der Pause?",
+      "russian": "Что вы делаете во время перерыва?",
+      "germanantwort": "Ich esse, höre Musik oder mache einen kurzen Spaziergang.",
+      "russianantwort": "Я ем, слушаю музыку или немного гуляю."
+    },
+    {
+      "german": "Wie kommen Sie zur Arbeit?",
+      "russian": "Как вы добираетесь на работу?",
+      "germanantwort": "Ich muss nicht fahren, ich arbeite zu Hause.",
+      "russianantwort": "Мне не нужно ехать, я работаю дома."
+    },
+    {
+      "german": "Wann endet Ihr Arbeitstag?",
+      "russian": "Когда заканчивается ваш рабочий день?",
+      "germanantwort": "Mein Arbeitstag endet, wenn die Aufgaben fertig sind.",
+      "russianantwort": "Мой рабочий день заканчивается, когда задания выполнены."
+    },
+    {
+      "german": "Was machen Sie nach der Arbeit?",
+      "russian": "Что вы делаете после работы?",
+      "germanantwort": "Nach der Arbeit entspanne ich mich, schaue Filme oder spiele am Computer.",
+      "russianantwort": "После работы я отдыхаю, смотрю фильмы или играю на компьютере."
+    },
+    {
+      "german": "Wer kocht das Abendessen?",
+      "russian": "Кто готовит ужин?",
+      "germanantwort": "Meistens koche ich selbst.",
+      "russianantwort": "Обычно я сам готовлю."
+    },
+    {
+      "german": "Wann gibt es Abendbrot?",
+      "russian": "Когда ужин?",
+      "germanantwort": "Abendbrot gibt es gegen 19 Uhr.",
+      "russianantwort": "Ужин около 7 часов вечера."
+    },
+    {
+      "german": "Womit beschäftigen Sie sich vor dem Schlafen?",
+      "russian": "Чем вы занимаетесь перед сном?",
+      "germanantwort": "Vor dem Schlafen lese ich oder höre Musik.",
+      "russianantwort": "Перед сном я читаю или слушаю музыку."
+    }
+  ]
+}

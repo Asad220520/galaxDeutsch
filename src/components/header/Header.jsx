@@ -14,6 +14,7 @@ function Header() {
     { name: "Словарь", to: "/dictionary", icon: <BookOpen size={20} /> },
     { name: "Настройки", to: "/settings", icon: <Settings size={20} /> },
     { name: "Профиль", to: "/profile", icon: <User size={20} /> },
+    { name: "Топики", to: "/topik-page", icon: <BookOpen size={20} /> },
   ];
 
   // Вычисляем высоту панели

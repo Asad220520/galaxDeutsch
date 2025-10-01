@@ -15,6 +15,8 @@ import PuzzlePage from "./pages/LessonPage/pages/PuzzlePage";
 import AudioPage from "./pages/LessonPage/pages/AudioPage";
 import TextPage from "./pages/LessonPage/pages/TextPage";
 import NotFoundPage from "./pages/LessonPage/pages/NotFoundPage";
+import TopikPage from "./pages/LessonPage/Topik/TopikPage";
+import TopikLesson from "./pages/LessonPage/Topik/TopikLesson";
 
 const AppRouter = () => {
   const location = useLocation();
@@ -40,6 +42,8 @@ const AppRouter = () => {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/dictionary" element={<DictionaryPage />} />
+        <Route path="/topik-page" element={<TopikPage />} />
+        <Route path="/topik-lesson/:id" element={<TopikLesson />} />
         <Route path="*" element={<NotFoundPage />} />
 
         {/* Страница выбора урока */}

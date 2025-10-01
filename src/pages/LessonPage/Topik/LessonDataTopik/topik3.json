@@ -1,0 +1,101 @@
+{
+  "title": "Моя учеба",
+  "dialogs": [
+    {
+      "german": "Wo studieren Sie?",
+      "russian": "Где вы учитесь?",
+      "germanantwort": "An der kirgisischen nationalen Universität in Bischkek.",
+      "russianantwort": "В Киргизском национальном университете в Бишкеке."
+    },
+    {
+      "german": "Was studieren Sie?",
+      "russian": "Что вы изучаете?",
+      "germanantwort": "Englisch und englische Literatur.",
+      "russianantwort": "Английский язык и английскую литературу."
+    },
+    {
+      "german": "Welches Fach studieren Sie?",
+      "russian": "Какую специальность вы изучаете?",
+      "germanantwort": "Englisch und englische Literatur.",
+      "russianantwort": "Английский язык и английскую литературу."
+    },
+    {
+      "german": "In welchem Studienjahr sind Sie?",
+      "russian": "На каком курсе вы учитесь?",
+      "germanantwort": "Im 3. Studienjahr.",
+      "russianantwort": "На третьем курсе."
+    },
+    {
+      "german": "Wie viele Studenten gibt es in Ihrer Gruppe?",
+      "russian": "Сколько студентов в вашей группе?",
+      "germanantwort": "15 Studenten.",
+      "russianantwort": "15 студентов."
+    },
+    {
+      "german": "Welche Fächer haben Sie noch außer Englisch?",
+      "russian": "Какие еще предметы кроме английского?",
+      "germanantwort": "Deutsch als zweite Fremdsprache.",
+      "russianantwort": "Немецкий как второй иностранный."
+    },
+    {
+      "german": "Warum haben Sie diesen Beruf ausgewählt?",
+      "russian": "Почему выбрали эту специальность?",
+      "germanantwort": "Weil ich mich seit Kindheit für Fremdsprachen interessiere.",
+      "russianantwort": "Потому что с детства интересуюсь иностранными языками."
+    },
+    {
+      "german": "Wie lange dauert Ihr Studium?",
+      "russian": "Сколько длится учеба?",
+      "germanantwort": "4 Jahre Bachelor, danach Master.",
+      "russianantwort": "4 года бакалавриат, затем магистратура."
+    },
+    {
+      "german": "Was wollen Sie machen, wenn Sie fertig studiert haben?",
+      "russian": "Что вы хотите делать после учебы?",
+      "germanantwort": "In einer internationalen Schule arbeiten.",
+      "russianantwort": "Работать в международной школе."
+    },
+    {
+      "german": "Wie oft haben Sie an der Uni Deutsch?",
+      "russian": "Как часто вы учите немецкий в университете?",
+      "germanantwort": "2 Mal pro Woche.",
+      "russianantwort": "Два раза в неделю."
+    },
+    {
+      "german": "Welcher Deutschunterricht ist besser?",
+      "russian": "Какой курс немецкого лучше?",
+      "germanantwort": "Der Kurs bei lwex.",
+      "russianantwort": "Курс в lwex."
+    },
+    {
+      "german": "Was bedeutet Budgetabteilung?",
+      "russian": "Что значит «бюджетная форма обучения»?",
+      "germanantwort": "Man zahlt keine Studiengebühren.",
+      "russianantwort": "Не платить за обучение."
+    },
+    {
+      "german": "Wie groß ist das Stipendium?",
+      "russian": "Как велика стипендия?",
+      "germanantwort": "",
+      "russianantwort": ""
+    },
+    {
+      "german": "Was gefällt Ihnen in Ihrem Studium?",
+      "russian": "Что вам нравится в учебе?",
+      "germanantwort": "Der Unterricht und die Seminare.",
+      "russianantwort": "Занятия и семинары."
+    },
+    {
+      "german": "Was macht Ihnen am meisten Spaß?",
+      "russian": "Что доставляет наибольшее удовольствие?",
+      "germanantwort": "Kommunizieren und Sprachen lernen.",
+      "russianantwort": "Общение и изучение языков."
+    },
+    {
+      "german": "Wer finanziert Sie?",
+      "russian": "Кто финансирует ваше обучение?",
+      "germanantwort": "Das Budget und Stipendium.",
+      "russianantwort": "Бюджет и стипендия."
+    }
+  ]
+}

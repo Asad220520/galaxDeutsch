@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { Puzzle, Book, FileText, Headphones } from "lucide-react";
-import { allLessons } from "./allLessons";
+import { allLessons } from "./Lection/allLessons";
 import { getProgress } from "../../utils/progress";
 import { useState, useEffect } from "react";
 

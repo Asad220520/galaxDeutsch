@@ -1,0 +1,95 @@
+{
+  "title": "О себе и семье",
+  "dialogs": [
+    {
+      "german": "Wie heißen Sie?",
+      "russian": "Как вас зовут?",
+      "germanantwort": "Ich heiße Asad.",
+      "russianantwort": "Меня зовут Асад."
+    },
+    {
+      "german": "Woher kommen Sie?",
+      "russian": "Откуда вы?",
+      "germanantwort": "Ich komme aus Batken.",
+      "russianantwort": "Я из Баткена."
+    },
+    {
+      "german": "Wo wohnen Sie?",
+      "russian": "Где вы живёте?",
+      "germanantwort": "Ich wohne in Bischkek.",
+      "russianantwort": "Я живу в Бишкеке."
+    },
+    {
+      "german": "Was studieren Sie?",
+      "russian": "Что вы изучаете?",
+      "germanantwort": "Ich studiere Deutsch.",
+      "russianantwort": "Я изучаю немецкий."
+    },
+    {
+      "german": "Wie heißen Ihre Eltern?",
+      "russian": "Как зовут ваших родителей?",
+      "germanantwort": "Mein Vater heißt Davran, meine Mutter heißt Kanyshai.",
+      "russianantwort": "Моего отца зовут Давран, мою мать — Канышай."
+    },
+    {
+      "german": "Wo wohnen Ihre Eltern?",
+      "russian": "Где живут ваши родители?",
+      "germanantwort": "Sie wohnen in Batken.",
+      "russianantwort": "Они живут в Баткене."
+    },
+    {
+      "german": "Wo arbeiten Ihre Eltern?",
+      "russian": "Где работают ваши родители?",
+      "germanantwort": "Mein Vater arbeitet als Lastwagenfahrer, meine Mutter war Lehrerin.",
+      "russianantwort": "Мой отец работает грузчиком, моя мать — учительница."
+    },
+    {
+      "german": "Aus wie vielen Personen besteht Ihre Familie?",
+      "russian": "Из скольких человек состоит ваша семья?",
+      "germanantwort": "Meine Familie besteht aus 5 Personen.",
+      "russianantwort": "Моя семья состоит из 5 человек."
+    },
+    {
+      "german": "Wie heißen Ihre Geschwister?",
+      "russian": "Как зовут ваших братьев?",
+      "germanantwort": "Meine Brüder heißen Abbas und Arsen.",
+      "russianantwort": "Моих братьев зовут Аббас и Арсен."
+    },
+    {
+      "german": "Was machen Ihre Geschwister?",
+      "russian": "Что делают ваши братья?",
+      "germanantwort": "Der ältere Bruder arbeitet in Moskau, der jüngere studiert noch.",
+      "russianantwort": "Старший брат работает в Москве, младший ещё учится."
+    },
+    {
+      "german": "Wie oft besuchen Sie Ihre Familie?",
+      "russian": "Как часто вы навещаете семью?",
+      "germanantwort": "Ich besuche sie zweimal pro Jahr.",
+      "russianantwort": "Я навещаю их два раза в год."
+    },
+    {
+      "german": "Mit wem wohnen Sie?",
+      "russian": "С кем вы живёте?",
+      "germanantwort": "Ich wohne mit meinen Freunden.",
+      "russianantwort": "Я живу с моими друзьями."
+    },
+    {
+      "german": "Wie lange lernen Sie schon Deutsch?",
+      "russian": "Как долго вы учите немецкий?",
+      "germanantwort": "Ich lerne Deutsch seit 3 Wochen.",
+      "russianantwort": "Я учу немецкий уже 3 недели."
+    },
+    {
+      "german": "Wann beginnt Ihr Deutschkurs?",
+      "russian": "Когда начинается ваш курс немецкого?",
+      "germanantwort": "Der Kurs beginnt um 17:00 Uhr.",
+      "russianantwort": "Курс начинается в 17:00."
+    },
+    {
+      "german": "Wann endet der Deutschkurs?",
+      "russian": "Когда заканчивается курс немецкого?",
+      "germanantwort": "Der Kurs endet um 19:20 Uhr.",
+      "russianantwort": "Курс заканчивается в 19:20."
+    }
+  ]
+}

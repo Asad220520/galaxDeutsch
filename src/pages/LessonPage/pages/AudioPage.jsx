@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { allLessons } from "../allLessons";
+import { allLessons } from "../Lection/allLessons";
 import AudioCard from "../components/AudioCard";
 
 function AudioPage() {
