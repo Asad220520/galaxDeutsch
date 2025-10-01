@@ -14,6 +14,7 @@ import MatchingPage from "./pages/LessonPage/pages/MatchingPage";
 import PuzzlePage from "./pages/LessonPage/pages/PuzzlePage";
 import AudioPage from "./pages/LessonPage/pages/AudioPage";
 import TextPage from "./pages/LessonPage/pages/TextPage";
+import NotFoundPage from "./pages/LessonPage/pages/NotFoundPage";
 
 const AppRouter = () => {
   const location = useLocation();
@@ -39,6 +40,7 @@ const AppRouter = () => {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/dictionary" element={<DictionaryPage />} />
+        <Route path="*" element={<NotFoundPage />} />
 
         {/* Страница выбора урока */}
         <Route path="/lesson/:id" element={<LessonPage />} />
