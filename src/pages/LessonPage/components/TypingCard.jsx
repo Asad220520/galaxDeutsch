@@ -52,7 +52,7 @@ function TypingCard({ items, lessonId, levelKey, onProgress }) {
   return (
     <div className="p-4 bg-gray-50 rounded-xl shadow max-w-md mx-auto">
       <div className="bg-blue-500 text-white p-4 font-semibold flex flex-col gap-2">
-        <span>{currentItem.german}</span>
+        {/* <span>{currentItem.german}</span> */}
         {currentItem.russian && (
           <span className="text-sm text-gray-100">{currentItem.russian}</span>
         )}

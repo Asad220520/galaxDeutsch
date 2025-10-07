@@ -4,91 +4,6 @@ export const lesson8 = {
   levels: {
     level1: {
       title: "Уровень 1",
-      theory: {
-        title: "Теория",
-        content: `
-Новые немецкие слова с переводом на русский, примеры предложений и использование в контексте.
-
----
-
-### Императив (Imperativ) — повелительное наклонение
-
-Императив используется для того, чтобы давать **команды, просьбы, инструкции или советы**.  
-Формы зависят от того, к кому вы обращаетесь: один человек, группа или вежливая форма.
-
----
-
-#### 1️⃣ Обращение к одному человеку (du)
-- Берём основу глагола (Infinitiv минус **-en**) и убираем окончание -st.  
-- Иногда можно оставить **-e**, но часто оно опускается.  
-- Примеры:
-  - **lern(e)!** — Учись!  
-  - **geh!** — Иди!  
-  - **öffne!** — Открой!  
-
-**Отрицание:**
-- Добавляем **nicht** после глагола:  
-  - **Geh nicht!** — Не иди!  
-  - **Iss das nicht!** — Не ешь это!
-
----
-
-#### 2️⃣ Обращение к группе людей (ihr)
-- Форма императива совпадает с формой **ihr** настоящего времени без местоимения.  
-- Примеры:
-  - **lernt!** — Учитесь!  
-  - **geht!** — Идите!  
-  - **öffnet das Fenster!** — Откройте окно!
-
-**Отрицание:**
-- После глагола ставим **nicht**:  
-  - **Geht nicht!** — Не идите!  
-
----
-
-#### 3️⃣ Вежливая форма (Sie) — один или несколько человек
-- Используется для формального обращения.  
-- Конструкция: **Глагол + Sie**  
-- Примеры:
-  - **Lernen Sie Deutsch!** — Учите немецкий!  
-  - **Öffnen Sie bitte das Fenster!** — Пожалуйста, откройте окно!  
-
-**Отрицание:**
-- Добавляем **nicht** перед объектом/действием:  
-  - **Gehen Sie nicht!** — Не идите!  
-  - **Öffnen Sie das Fenster nicht!** — Не открывайте окно!  
-
----
-
-#### 4️⃣ Особенности императива
-- Глаголы с изменением корня (например, **fahren → fahr!**) сохраняют корень в императиве.  
-- Модальные глаголы и вспомогательные (например, **können, sollen**) тоже имеют императив:  
-  - **Könn(e) bitte leise sein!** — Будь(те) пожалуйста тихим/тихими!  
-- Часто добавляют **bitte** для вежливости:  
-  - **Gib mir bitte das Buch!** — Дай мне, пожалуйста, книгу!  
-  - **Schreib bitte deinen Namen!** — Напиши, пожалуйста, своё имя!  
-
----
-
-#### 5️⃣ Примеры в контексте
-- **Du:**  
-  - „Komm hier!“ — Подойди сюда!  
-  - „Iss dein Gemüse!“ — Ешь свои овощи!  
-
-- **Ihr:**  
-  - „Kommt bitte pünktlich!“ — Приходите, пожалуйста, вовремя!  
-  - „Spielt draußen!“ — Играйте на улице!  
-
-- **Sie:**  
-  - „Sprechen Sie langsamer, bitte!“ — Говорите медленнее, пожалуйста!  
-  - „Folgen Sie mir!“ — Следуйте за мной!  
-
----
-
-Императив — очень полезен для повседневного общения, инструкций и команд. Рекомендуется практиковать все три формы: **du, ihr, Sie**.
-  `,
-      },
-
       matching: {
         title: "Мэтчинг",
         items: [
@@ -108,12 +23,12 @@ export const lesson8 = {
         title: "Пазл",
         items: [
           {
-            german: "Es ist __ 8 Uhr.",
+            german: "Es ist erst 8 Uhr.",
             russian: "Сейчас только 8 часов.",
             distractors: ["erst", "einmal", "halb"],
           },
           {
-            german: "Kannst du bitte das Licht __?",
+            german: "Kannst du bitte das Licht einschalten?",
             russian: "Можешь, пожалуйста, включить свет?",
             distractors: ["einschalten", "öffnen", "telefonieren"],
           },
@@ -150,8 +65,12 @@ export const lesson8 = {
             content: "einschalten",
           },
           { german: "einmal", russian: "один раз", content: "einmal" },
-          { german: "der Computer", russian: "компьютер", content: "Computer" },
-          { german: "die Stunde", russian: "час, урок", content: "Stunde" },
+          {
+            german: "der Computer",
+            russian: "компьютер",
+            content: "der Computer",
+          },
+          { german: "die Stunde", russian: "час, урок", content: "die Stunde" },
         ],
       },
     },
@@ -176,14 +95,14 @@ export const lesson8 = {
         title: "Пазл",
         items: [
           {
-            german: "Wir __ morgen.",
+            german: "Wir telefonieren morgen.",
             russian: "Мы поговорим по телефону завтра.",
             distractors: ["telefonieren", "essen", "schreiben"],
           },
           {
-            german: "Mit __ wohnst du?",
+            german: "Mit wem wohnst du?",
             russian: "С кем ты живёшь?",
-            distractors: ["mit", "bei", "für"],
+            distractors: ["mit", "wem", "für"],
           },
         ],
       },
@@ -213,7 +132,7 @@ export const lesson8 = {
             content: "telefonieren",
           },
           { german: "mit", russian: "с, вместе с", content: "mit" },
-          { german: "der Kunde", russian: "клиент", content: "Kunde" },
+          { german: "der Kunde", russian: "клиент", content: "der Kunde" },
           { german: "mittags", russian: "в полдень, днём", content: "mittags" },
           {
             german: "ein paar",
@@ -244,12 +163,12 @@ export const lesson8 = {
         title: "Пазл",
         items: [
           {
-            german: "Meine Freunde sind immer __.",
+            german: "Meine Freunde sind immer fröhlich.",
             russian: "Мои друзья всегда весёлые.",
-            distractors: ["lustig", "ruhig", "traurig"],
+            distractors: ["fröhlich", "ruhig", "traurig"],
           },
           {
-            german: "Erzählen Sie bitte über Ihre __.",
+            german: "Erzählen Sie bitte über Ihre Familie.",
             russian: "Расскажите о вашей семье.",
             distractors: ["Familie", "Freunde", "Arbeit"],
           },
@@ -279,9 +198,9 @@ export const lesson8 = {
           {
             german: "die Geschichte",
             russian: "история, рассказ",
-            content: "Geschichte",
+            content: "die Geschichte",
           },
-          { german: "die Arbeit", russian: "работа", content: "Arbeit" },
+          { german: "die Arbeit", russian: "работа", content: "die Arbeit" },
           { german: "erzählen", russian: "рассказывать", content: "erzählen" },
           { german: "manchmal", russian: "иногда", content: "manchmal" },
         ],
