@@ -64,20 +64,20 @@
     {
       "german": "Wie heißt Ihre Deutschlehrerin?",
       "russian": "Как зовут вашу преподавательницу немецкого?",
-      "germanantwort": "Meine Lehrerin heißt Frau Müller.",
-      "russianantwort": "Мою преподавательницу зовут Фрау Мюллер."
+      "germanantwort": "Meine Lehrerin heißt Valeria.",
+      "russianantwort": "Мою преподавательницу зовут Валерия."
     },
     {
       "german": "Bei wem lernen Sie Deutsch?",
       "russian": "У кого вы учите немецкий?",
-      "germanantwort": "Ich lerne bei Frau Müller im Kurs.",
-      "russianantwort": "Я учу у Фрау Мюллер на курсе."
+      "germanantwort": "Ich lerne bei Valeria im Kurs.",
+      "russianantwort": "Я учу у Валерии на курсе."
     },
     {
       "german": "Wer unterrichtet Ihnen Deutsch?",
       "russian": "Кто вас учит немецкому?",
-      "germanantwort": "Frau Müller unterrichtet mich.",
-      "russianantwort": "Меня учит Фрау Мюллер."
+      "germanantwort": "Valeria unterrichtet mich.",
+      "russianantwort": "Меня учит Валерия."
     },
     {
       "german": "War sie schon mal in Deutschland?",
@@ -88,14 +88,14 @@
     {
       "german": "Wie oft besuchen Sie Deutschkurs?",
       "russian": "Как часто вы посещаете курсы немецкого?",
-      "germanantwort": "Zwei Mal pro Woche.",
-      "russianantwort": "Два раза в неделю."
+      "germanantwort": "Fünf Mal pro Woche.",
+      "russianantwort": "Пять раз в неделю."
     },
     {
       "german": "Was möchten Sie in Deutschland arbeiten?",
       "russian": "Кем вы хотите работать в Германии?",
-      "germanantwort": "Ich möchte als Lehrer arbeiten.",
-      "russianantwort": "Я хочу работать учителем."
+      "germanantwort": "Ich möchte als Programmierer arbeiten.",
+      "russianantwort": "Я хочу работать программистом."
     },
     {
       "german": "Wie haben Sie Iwex gefunden?",

@@ -23,6 +23,11 @@ function LessonPage() {
 
   const exercises = [
     { key: "theory", title: "Теория", icon: <Book size={24} /> },
+    {
+      key: "typing",
+      title: "Проверка написания",
+      icon: <FileText size={24} />,
+    },
     { key: "matching", title: "Мэтчинг", icon: <Puzzle size={24} /> },
     { key: "puzzle", title: "Пазл", icon: <Puzzle size={24} /> },
     { key: "audio", title: "Аудирование", icon: <Headphones size={24} /> },

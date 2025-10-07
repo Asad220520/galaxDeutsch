@@ -1,0 +1,103 @@
+{
+  "title": "Sprachenlernen macht Spaß - Fragen und Antworten",
+  "dialogs": [
+    {
+      "german": "Welche Sprachen sprechen Sie?",
+      "russian": "На каких языках вы говорите?",
+      "germanantwort": "Ich spreche Kirgisisch, Russisch, Englisch und ein bisschen Deutsch.",
+      "russianantwort": "Я говорю на киргизском, русском, английском и немного на немецком."
+    },
+    {
+      "german": "Wer in Ihrer Familie spricht Deutsch?",
+      "russian": "Кто в вашей семье говорит по-немецки?",
+      "germanantwort": "Niemand in meiner Familie spricht Deutsch.",
+      "russianantwort": "Никто в моей семье не говорит по-немецки."
+    },
+    {
+      "german": "Was war das erste deutsche Wort?",
+      "russian": "Какое было ваше первое немецкое слово?",
+      "germanantwort": "Mein erstes deutsches Wort war ‚Hallo‘.",
+      "russianantwort": "Моё первое немецкое слово было «Hallo»."
+    },
+    {
+      "german": "Wo haben Sie Russisch gelernt?",
+      "russian": "Где вы учили русский язык?",
+      "germanantwort": "Ich habe Russisch in der Schule gelernt.",
+      "russianantwort": "Я учил русский язык в школе."
+    },
+    {
+      "german": "Wie gut sprechen Sie Englisch?",
+      "russian": "Насколько хорошо вы говорите по-английски?",
+      "germanantwort": "Ich spreche ein bisschen Englisch.",
+      "russianantwort": "Я немножко говорю по-английски."
+    },
+
+    {
+      "german": "Woher können Sie Englisch?",
+      "russian": "Откуда у вас знания английского?",
+      "germanantwort": "Ich habe Englisch in der Schule gelernt und eine gute Lehrerin gehabt.",
+      "russianantwort": "Я учил английский в школе, у меня была хорошая учительница."
+    },
+    {
+      "german": "Was ist Ihre Muttersprache?",
+      "russian": "Какой ваш родной язык?",
+      "germanantwort": "Meine Muttersprache ist Kirgisisch.",
+      "russianantwort": "Мой родной язык — киргизский."
+    },
+    {
+      "german": "Wie lernen Sie?",
+      "russian": "Как вы учите языки?",
+      "germanantwort": "Ich lerne im Kurs, mit Videos, Apps, Filmen, Musik und Büchern.",
+      "russianantwort": "Я учу языки на курсах, с видео, приложениями, смотрю фильмы, слушаю музыку и читаю книги."
+    },
+    {
+      "german": "Welche Lernquellen können Sie den Studenten empfehlen?",
+      "russian": "Какие ресурсы вы можете порекомендовать студентам?",
+      "germanantwort": "Ich empfehle dw.com, goethe.de, slowgerman.com, Mein Weg nach Deutschland und YouTube-Kanal Easy German.",
+      "russianantwort": "Я рекомендую dw.com, goethe.de, slowgerman.com, приложение Mein Weg nach Deutschland и YouTube-канал Easy German."
+    },
+    {
+      "german": "Wie kann man schneller eine Sprache lernen?",
+      "russian": "Как можно быстрее выучить язык?",
+      "germanantwort": "Man soll viel sprechen, hören, lesen und schreiben.",
+      "russianantwort": "Нужно много говорить, слушать, читать и писать."
+    },
+    {
+      "german": "Was braucht man, um fließend Deutsch zu sprechen?",
+      "russian": "Что нужно, чтобы свободно говорить по-немецки?",
+      "germanantwort": "Man braucht einen großen Wortschatz und viel Übung.",
+      "russianantwort": "Нужны большой словарный запас и много практики."
+    },
+    {
+      "german": "Wieso sprechen Sie Dialekt?",
+      "russian": "Почему вы говорите на диалекте?",
+      "germanantwort": "Ich komme aus dem Süden von Kirgisistan, dort spricht man diesen Dialekt.",
+      "russianantwort": "Я из юга Киргизии, там говорят на этом диалекте."
+    },
+    {
+      "german": "Ist Französisch leichter als Deutsch?",
+      "russian": "Французский легче, чем немецкий?",
+      "germanantwort": "Ich weiß es nicht, ich habe noch kein Französisch gelernt, aber Deutsch fällt mir schwer.",
+      "russianantwort": "Я не знаю, французский не учил, но немецкий трудно даётся мне."
+    },
+
+    {
+      "german": "Wozu brauchen Sie Deutsch?",
+      "russian": "Зачем вам нужен немецкий?",
+      "germanantwort": "Ich brauche Deutsch, um in Deutschland zu arbeiten und zu studieren.",
+      "russianantwort": "Мне нужен немецкий, чтобы работать и учиться в Германии."
+    },
+    {
+      "german": "Warum lernen Sie Deutsch, Sie könnten doch Französisch lernen?",
+      "russian": "Почему вы учите немецкий, ведь могли бы учить французский?",
+      "germanantwort": "Deutsch ist für Arbeit und Studium in Deutschland wichtiger.",
+      "russianantwort": "Немецкий важнее для работы и учёбы в Германии."
+    },
+    {
+      "german": "Wie kann ich schnell Russisch lernen?",
+      "russian": "Как можно быстро выучить русский язык?",
+      "germanantwort": "Man soll viel hören, sprechen und mit Muttersprachlern üben.",
+      "russianantwort": "Нужно много слушать, говорить и практиковаться с носителями языка."
+    }
+  ]
+}

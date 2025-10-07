@@ -17,6 +17,7 @@ import TextPage from "./pages/LessonPage/pages/TextPage";
 import NotFoundPage from "./pages/LessonPage/pages/NotFoundPage";
 import TopikPage from "./pages/LessonPage/Topik/TopikPage";
 import TopikLesson from "./pages/LessonPage/Topik/TopikLesson";
+import TypingPage from "./pages/LessonPage/pages/TypingPage";
 
 const AppRouter = () => {
   const location = useLocation();
@@ -55,6 +56,7 @@ const AppRouter = () => {
         <Route path="/lesson/:id/puzzle/:level" element={<PuzzlePage />} />
         <Route path="/lesson/:id/audio/:level" element={<AudioPage />} />
         <Route path="/lesson/:id/text/:level" element={<TextPage />} />
+        <Route path="/lesson/:id/typing/:level" element={<TypingPage />} />
       </Routes>
     </div>
   );

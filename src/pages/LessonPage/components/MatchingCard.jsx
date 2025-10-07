@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { setProgress } from "../../../utils/progress";
 
-function MatchingCard({
+function LessonCard({
   title,
   icon,
   words,
@@ -11,11 +11,15 @@ function MatchingCard({
   onComplete,
 }) {
   const [currentPage, setCurrentPage] = useState(0);
+  const [matches, setMatches] = useState({});
+  const [typingIndex, setTypingIndex] = useState(0);
+  const [phase, setPhase] = useState("matching"); // "matching" или "typing"
+
+  // === Matching state ===
   const [leftWords, setLeftWords] = useState([]);
   const [rightWords, setRightWords] = useState([]);
   const [selectedLeft, setSelectedLeft] = useState(null);
-  const [matches, setMatches] = useState({});
-  const [showAnswer, setShowAnswer] = useState(true);
+  const [shakeWord, setShakeWord] = useState(null);
 
   const shuffle = (array) => {
     const arr = [...array];
@@ -31,188 +35,274 @@ function MatchingCard({
     return words.slice(start, start + pageSize);
   };
 
+  const pageItems = getPageItems();
+
+  // === Matching logic ===
   useEffect(() => {
-    const pageItems = getPageItems();
     setLeftWords(pageItems.map((w) => w.german));
     setRightWords(shuffle(pageItems.map((w) => w.russian)));
     setSelectedLeft(null);
-    setMatches({});
-    setShowAnswer(true);
-  }, [words, currentPage]);
+  }, [currentPage, words]);
+
+  const isCorrect = (german, russian) =>
+    words.find((w) => w.german === german)?.russian === russian;
 
   const handleSelect = (side, value) => {
-    if (side === "left") setSelectedLeft(value);
-    else if (side === "right" && selectedLeft) {
-      setMatches((prev) => {
-        const newMatches = { ...prev, [selectedLeft]: value };
+    if (side === "left") {
+      setSelectedLeft(value);
+      setShakeWord(null);
+    } else if (side === "right" && selectedLeft) {
+      if (isCorrect(selectedLeft, value)) {
+        setMatches((prev) => {
+          const newMatches = { ...prev, [selectedLeft]: value };
 
-        // считаем только правильные пары
-        const correctCount = Object.keys(newMatches).filter(
-          (g) => newMatches[g] === words.find((w) => w.german === g).russian
-        ).length;
+          // Прогресс
+          const correctCountAll = Object.keys(newMatches).filter((g) =>
+            isCorrect(g, newMatches[g])
+          ).length;
 
-        const percent = Math.round((correctCount / words.length) * 100);
+          const percent = Math.round((correctCountAll / words.length) * 100);
+          setProgress(lessonId, `lesson_${levelKey}`, percent);
 
-        const savedProgress = Math.max(
-          percent,
-          parseInt(localStorage.getItem(`matching_${levelKey}`)) || 0
-        );
-        setProgress(
-          lessonId,
-          `matching_${levelKey || "default"}`,
-          savedProgress
-        );
-
-        if (onComplete) onComplete(savedProgress);
-
-        return newMatches;
-      });
-      setSelectedLeft(null);
+          return newMatches;
+        });
+        setSelectedLeft(null);
+      } else {
+        setShakeWord(selectedLeft);
+        setTimeout(() => setShakeWord(null), 500);
+      }
     }
   };
 
-  const isCorrect = (german) =>
-    matches[german] === words.find((w) => w.german === german).russian;
+  const allMatched = pageItems.every((item) => matches[item.german]);
 
-  const totalPages = Math.ceil(words.length / pageSize);
-  const pageItems = getPageItems();
+  // === Typing logic ===
+  const currentTypingItem = pageItems[typingIndex] || {};
+  const [inputValue, setInputValue] = useState("");
+  const [isCorrectTyping, setIsCorrectTyping] = useState(null);
+  const [showHint, setShowHint] = useState(false);
 
-  const allMatched = Object.keys(matches).length === pageItems.length;
+  const handleTypingSubmit = (e) => {
+    e.preventDefault();
+    if (!inputValue) return;
+    if (!currentTypingItem || !currentTypingItem.german) return;
+
+    const correct =
+      inputValue.trim().toLowerCase() ===
+      currentTypingItem.german.toLowerCase();
+    setIsCorrectTyping(correct);
+
+    if (correct) {
+      const completedCount = typingIndex + 1;
+      const percent = Math.round(
+        ((Object.keys(matches).length + completedCount) / words.length) * 100
+      );
+      setProgress(lessonId, `lesson_${levelKey}`, percent);
+    }
+  };
+
+  const handleTypingNext = () => {
+    if (typingIndex + 1 < pageItems.length) {
+      setTypingIndex((i) => i + 1);
+      setInputValue("");
+      setIsCorrectTyping(null);
+      setShowHint(false);
+    } else {
+      // Переходим к следующей странице
+      if (currentPage + 1 < Math.ceil(words.length / pageSize)) {
+        setCurrentPage((p) => p + 1);
+        setTypingIndex(0);
+        setPhase("matching");
+      } else {
+        // Все страницы пройдены
+        if (onComplete) onComplete();
+      }
+    }
+  };
+
+  const getHighlightedAnswer = () => {
+    if (!currentTypingItem || !currentTypingItem.german) return null;
+
+    return currentTypingItem.german.split("").map((char, i) => {
+      const userChar = inputValue[i] || "";
+      const correct = userChar.toLowerCase() === char.toLowerCase();
+      return (
+        <span key={i} className={correct ? "text-green-600" : "text-gray-400"}>
+          {char}
+        </span>
+      );
+    });
+  };
 
   return (
-    <div className="rounded-lg shadow overflow-hidden hover:shadow-lg transition">
-      <div className="p-4 bg-blue-500 text-white flex items-center gap-3">
-        {icon}
-        <span className="font-semibold">{title}</span>
+    <div className="p-4 max-w-md mx-auto bg-white rounded-xl shadow-lg">
+      <div className="flex items-center gap-3 mb-4 text-xl font-bold text-blue-600">
+        {icon} {title}
       </div>
-      <div className="p-4 bg-gray-50 text-gray-800 min-h-[200px]">
-        {showAnswer ? (
-          <div className="space-y-2">
-            {pageItems.map((item, i) => (
-              <div
-                key={item.german + i}
-                className="flex justify-between p-2 border rounded bg-gray-100"
-              >
-                <span className="font-medium">{item.german}</span>
-                <span className="font-semibold text-blue-600">
-                  {item.russian}
-                </span>
-              </div>
-            ))}
-            <button
-              onClick={() => setShowAnswer(false)}
-              className="mt-4 w-full px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-            >
-              Перемешать и начать
-            </button>
-          </div>
-        ) : allMatched ? (
-          <div className="text-center py-8">
-            <h2 className="text-2xl font-bold text-green-600 mb-2">
-              🎉 Поздравляем!
-            </h2>
-            <p className="text-gray-700">
-              Вы завершили все пары на этой странице.
-            </p>
-            {currentPage < totalPages - 1 ? (
+
+      {phase === "matching" ? (
+        <>
+          {allMatched ? (
+            <div className="text-center py-8">
+              <h2 className="text-2xl text-green-500 mb-2">🎉 Отлично!</h2>
               <button
-                onClick={() => setCurrentPage((p) => p + 1)}
-                className="mt-4 px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                onClick={() => setPhase("typing")}
+                className="mt-4 px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold w-full"
               >
-                Следующая страница
+                Перейти к вводу немецких слов
               </button>
-            ) : null}
-          </div>
-        ) : (
-          <>
-            <div className="grid grid-cols-2 gap-4">
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 gap-2">
               <div className="space-y-2">
-                {leftWords.map((word) => (
-                  <div key={word}>
+                {leftWords.map((word) => {
+                  const matched = matches[word];
+                  const wrong = shakeWord === word;
+                  return (
                     <button
+                      key={word}
                       onClick={() => handleSelect("left", word)}
-                      className={`p-2 border rounded w-full transition ${
-                        selectedLeft === word
-                          ? "bg-blue-200"
-                          : "bg-white hover:bg-gray-200"
-                      } ${
-                        matches[word]
-                          ? isCorrect(word)
-                            ? "bg-green-400 text-white font-semibold"
-                            : "bg-red-400 text-white font-semibold"
-                          : ""
-                      }`}
+                      disabled={!!matched}
+                      className={`
+                        w-full p-4 rounded-lg font-medium text-center text-lg transition
+                        ${
+                          selectedLeft === word
+                            ? "bg-blue-200 border-2 border-blue-500"
+                            : ""
+                        }
+                        ${
+                          matched
+                            ? "bg-green-500 text-white border-green-600 font-bold"
+                            : "bg-white hover:bg-gray-100"
+                        }
+                        ${
+                          wrong
+                            ? "bg-red-500 text-white border-red-600 shake"
+                            : ""
+                        }
+                      `}
                     >
-                      {word}
+                      🇩🇪 {word}
                     </button>
-                    {matches[word] && !isCorrect(word) && (
-                      <p className="text-sm text-gray-700 mt-1">
-                        Правильный ответ:{" "}
-                        <span className="font-semibold">
-                          {words.find((w) => w.german === word).russian}
-                        </span>
-                      </p>
-                    )}
-                  </div>
-                ))}
+                  );
+                })}
               </div>
+
               <div className="space-y-2">
-                {rightWords.map((word) => (
-                  <button
-                    key={word}
-                    onClick={() => handleSelect("right", word)}
-                    className={`p-2 border rounded w-full transition ${
-                      Object.values(matches).includes(word)
-                        ? "opacity-50 cursor-not-allowed"
-                        : "bg-white hover:bg-gray-200"
-                    }`}
-                    disabled={Object.values(matches).includes(word)}
-                  >
-                    {word}
-                  </button>
-                ))}
+                {rightWords.map((word) => {
+                  const leftKey = Object.keys(matches).find(
+                    (k) => matches[k] === word
+                  );
+                  const correct = leftKey && isCorrect(leftKey, word);
+                  const wrong = leftKey && !isCorrect(leftKey, word);
+                  return (
+                    <button
+                      key={word}
+                      onClick={() => handleSelect("right", word)}
+                      disabled={!!leftKey}
+                      className={`
+                        w-full p-4 rounded-lg font-medium text-center text-lg transition
+                        ${
+                          correct
+                            ? "bg-green-500 text-white border-green-600 font-bold"
+                            : ""
+                        }
+                        ${
+                          wrong
+                            ? "bg-red-500 text-white border-red-600 shake"
+                            : ""
+                        }
+                        ${
+                          !leftKey
+                            ? "bg-white hover:bg-gray-100"
+                            : "opacity-50 cursor-not-allowed"
+                        }
+                      `}
+                    >
+                      🇷🇺 {word}
+                    </button>
+                  );
+                })}
               </div>
             </div>
+          )}
+        </>
+      ) : (
+        <>
+          <div className="bg-blue-500 text-white p-4 font-semibold flex flex-col gap-2">
+            <span>{currentTypingItem.russian}</span>
+            {currentTypingItem.german && (
+              <span className="text-sm text-gray-100">
+                Введите немецкое слово
+              </span>
+            )}
+          </div>
 
-            <div className="mt-4 text-center">
-              <p className="text-sm text-gray-600 font-medium">
-                Сопоставлено {Object.keys(matches).length} из {pageItems.length}
+          <form
+            onSubmit={handleTypingSubmit}
+            className="mt-4 flex flex-col gap-2"
+          >
+            <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              className="border rounded p-2 text-lg"
+              placeholder="Введите немецкое слово..."
+              disabled={isCorrectTyping !== null}
+            />
+            <button
+              type="submit"
+              disabled={isCorrectTyping !== null}
+              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            >
+              Проверить
+            </button>
+          </form>
+
+          {isCorrectTyping !== null && (
+            <div className="mt-3 text-center">
+              <p
+                className={isCorrectTyping ? "text-green-600" : "text-red-600"}
+              >
+                {isCorrectTyping
+                  ? "✅ Правильно"
+                  : showHint
+                  ? getHighlightedAnswer()
+                  : "❌ Неправильно. Попробуйте ещё раз!"}
               </p>
-              <div className="w-full bg-gray-200 rounded-full h-2 mt-1">
-                <div
-                  className="bg-blue-500 h-2 rounded-full transition-all duration-300"
-                  style={{
-                    width: `${
-                      (Object.keys(matches).length / pageItems.length) * 100
-                    }%`,
-                  }}
-                ></div>
-              </div>
-            </div>
 
-            <div className="flex justify-between mt-4">
+              {!isCorrectTyping && !showHint && (
+                <button
+                  onClick={() => setShowHint(true)}
+                  className="mt-1 text-sm text-blue-500 underline"
+                >
+                  Показать подсказку
+                </button>
+              )}
+
               <button
-                onClick={() => setCurrentPage((p) => Math.max(p - 1, 0))}
-                disabled={currentPage === 0}
-                className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+                onClick={handleTypingNext}
+                className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
               >
-                Предыдущие 5
-              </button>
-              <button
-                onClick={() =>
-                  setCurrentPage((p) => Math.min(p + 1, totalPages - 1))
-                }
-                disabled={currentPage === totalPages - 1}
-                className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
-              >
-                Следующие 5
+                Дальше
               </button>
             </div>
-          </>
-        )}
-      </div>
+          )}
+        </>
+      )}
+
+      <style>{`
+        .shake { animation: shake 0.3s ease-in-out; }
+        @keyframes shake {
+          0% { transform: translateX(0); }
+          25% { transform: translateX(-6px); }
+          50% { transform: translateX(6px); }
+          75% { transform: translateX(-6px); }
+          100% { transform: translateX(0); }
+        }
+      `}</style>
     </div>
   );
 }
 
-export default MatchingCard;
+export default LessonCard;

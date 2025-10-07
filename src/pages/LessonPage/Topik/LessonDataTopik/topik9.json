@@ -1,0 +1,125 @@
+{
+  "title": "Mein gewünschter Job in Deutschland - Fragen und Antworten",
+  "dialogs": [
+    {
+      "german": "Warum lernen Sie Deutsch?",
+      "russian": "Почему вы учите немецкий язык?",
+      "germanantwort": "Ich lerne Deutsch, weil ich in Deutschland arbeiten möchte.",
+      "russianantwort": "Я учу немецкий язык, потому что хочу работать в Германии."
+    },
+    {
+      "german": "Warum wollen Sie nach Deutschland?",
+      "russian": "Почему вы хотите поехать в Германию?",
+      "germanantwort": "Ich möchte nach Deutschland, weil es viele gute Arbeitsmöglichkeiten gibt.",
+      "russianantwort": "Я хочу поехать в Германию, потому что там много хороших возможностей для работы."
+    },
+    {
+      "german": "Welche Arbeit würden Sie gerne machen?",
+      "russian": "Какую работу вы хотели бы выполнять?",
+      "germanantwort": "Ich würde gerne als Kellnerin arbeiten.",
+      "russianantwort": "Я хотела бы работать официанткой."
+    },
+    {
+      "german": "Was wollen Sie in Deutschland machen?",
+      "russian": "Что вы хотите делать в Германии?",
+      "germanantwort": "Ich möchte in einem Hotel oder Restaurant arbeiten.",
+      "russianantwort": "Я хочу работать в отеле или ресторане."
+    },
+    {
+      "german": "Was möchten Sie gerne arbeiten?",
+      "russian": "Кем вы хотели бы работать?",
+      "germanantwort": "Ich möchte als Kellnerin arbeiten.",
+      "russianantwort": "Я хотела бы работать официанткой."
+    },
+    {
+      "german": "Wo möchten Sie am liebsten arbeiten?",
+      "russian": "Где вы бы хотели работать больше всего?",
+      "germanantwort": "Am liebsten würde ich in einem Hotel arbeiten.",
+      "russianantwort": "Больше всего я хотела бы работать в отеле."
+    },
+    {
+      "german": "Warum möchten Sie als Kellnerin arbeiten?",
+      "russian": "Почему вы хотите работать официанткой?",
+      "germanantwort": "Weil ich Erfahrung als Kellnerin habe und gerne mit Menschen arbeite.",
+      "russianantwort": "Потому что у меня есть опыт работы официанткой, и мне нравится работать с людьми."
+    },
+    {
+      "german": "Wie gut ist Ihr Deutsch zurzeit?",
+      "russian": "Какой у вас сейчас уровень немецкого языка?",
+      "germanantwort": "Ich denke, mein Niveau ist A2.",
+      "russianantwort": "Думаю, мой уровень сейчас A2."
+    },
+    {
+      "german": "Welches Sprachniveau braucht man für Kellnerin?",
+      "russian": "Какой уровень языка нужен для официантки?",
+      "germanantwort": "Man braucht ungefähr C1, um gut mit Gästen zu sprechen.",
+      "russianantwort": "Нужен примерно уровень C1, чтобы хорошо общаться с гостями."
+    },
+    {
+      "german": "Wie würden Sie sich beschreiben?",
+      "russian": "Как бы вы себя описали?",
+      "germanantwort": "Ich bin fleißig, freundlich und zuverlässig.",
+      "russianantwort": "Я трудолюбивая, дружелюбная и надёжная."
+    },
+    {
+      "german": "Welche Eigenschaften haben Sie?",
+      "russian": "Какие у вас качества?",
+      "germanantwort": "Ich bin teamfähig, hilfsbereit und verantwortungsbewusst.",
+      "russianantwort": "Я умею работать в команде, готова помочь и ответственная."
+    },
+    {
+      "german": "Was bedeutet für Sie Pünktlichkeit?",
+      "russian": "Что для вас значит пунктуальность?",
+      "germanantwort": "Pünktlichkeit bedeutet, respektvoll und zuverlässig zu sein.",
+      "russianantwort": "Пунктуальность означает быть уважительным и надёжным."
+    },
+    {
+      "german": "Auf einer Skala von 1 bis 10, wie pünktlich sind Sie?",
+      "russian": "По шкале от 1 до 10, насколько вы пунктуальны?",
+      "germanantwort": "Ich bin eine 10, ich komme immer pünktlich.",
+      "russianantwort": "Я на 10, я всегда прихожу вовремя."
+    },
+    {
+      "german": "Wenn ich keine Stelle als Kellnerin anbieten kann, wo würden Sie noch arbeiten?",
+      "russian": "Если я не смогу предложить вам место официантки, где бы вы ещё хотели работать?",
+      "germanantwort": "Ich würde auch gerne bei McDonald's oder im Café arbeiten.",
+      "russianantwort": "Я бы с удовольствием поработала в McDonald's или в кафе."
+    },
+    {
+      "german": "Wofür brauchen Sie Geld?",
+      "russian": "Для чего вам нужны деньги?",
+      "germanantwort": "Ich möchte meine Familie finanziell unterstützen.",
+      "russianantwort": "Я хочу помочь своей семье финансово."
+    },
+    {
+      "german": "Wer arbeitet in Ihrer Familie?",
+      "russian": "Кто работает в вашей семье?",
+      "germanantwort": "Nur meine Mutter arbeitet, meine Geschwister sind Schüler.",
+      "russianantwort": "Только моя мама работает, а мои младшие братья и сёстры — школьники."
+    },
+    {
+      "german": "Warum müssen Sie arbeiten?",
+      "russian": "Почему вы должны работать?",
+      "germanantwort": "Ich möchte Geld verdienen, um meine Familie zu unterstützen.",
+      "russianantwort": "Я хочу зарабатывать деньги, чтобы поддерживать свою семью."
+    },
+    {
+      "german": "Was ist Ihnen am wichtigsten in Ihrer Arbeit in Deutschland?",
+      "russian": "Что для вас самое важное в работе в Германии?",
+      "germanantwort": "Am wichtigsten ist für mich, gute Arbeit zu leisten und Erfahrung zu sammeln.",
+      "russianantwort": "Для меня самое важное — хорошо работать и получить опыт."
+    },
+    {
+      "german": "Wie viele Teller können Sie auf einmal tragen?",
+      "russian": "Сколько тарелок вы можете нести одновременно?",
+      "germanantwort": "Ich kann drei bis vier Teller gleichzeitig tragen.",
+      "russianantwort": "Я могу нести одновременно три-четыре тарелки."
+    },
+    {
+      "german": "Wie viele Stunden am Tag können Sie arbeiten?",
+      "russian": "Сколько часов в день вы можете работать?",
+      "germanantwort": "Ich kann acht bis zehn Stunden pro Tag arbeiten.",
+      "russianantwort": "Я могу работать восемь-десять часов в день."
+    }
+  ]
+}

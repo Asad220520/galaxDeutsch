@@ -1,0 +1,125 @@
+{
+  "title": "Mein Lieblingsessen - Fragen und Antworten (männlich)",
+  "dialogs": [
+    {
+      "german": "Was ist Ihr Lieblingsessen?",
+      "russian": "Какое у вас любимое блюдо?",
+      "germanantwort": "Mein Lieblingsessen ist Plow.",
+      "russianantwort": "Моё любимое блюдо — плов."
+    },
+    {
+      "german": "Wer hat Ihnen Kochen beigebracht?",
+      "russian": "Кто вас научил готовить?",
+      "germanantwort": "Meine Mutter hat mir das Kochen beigebracht.",
+      "russianantwort": "Меня научила готовить мама."
+    },
+    {
+      "german": "Wo haben Sie kochen gelernt?",
+      "russian": "Где вы научились готовить?",
+      "germanantwort": "Ich habe zu Hause kochen gelernt.",
+      "russianantwort": "Я научился готовить дома."
+    },
+    {
+      "german": "Wer kocht zu Hause?",
+      "russian": "Кто готовит дома?",
+      "germanantwort": "Zu Hause koche meistens ich oder meine Mutter.",
+      "russianantwort": "Дома готовлю в основном я или моя мама."
+    },
+    {
+      "german": "Wohin gehen Sie meistens essen?",
+      "russian": "Куда вы обычно ходите есть?",
+      "germanantwort": "Ich esse meistens in der Kantine, weil ich im Wohnheim wohne.",
+      "russianantwort": "Я обычно ем в столовой, потому что живу в общежитии."
+    },
+    {
+      "german": "Was essen Sie gern?",
+      "russian": "Что вы любите есть?",
+      "germanantwort": "Ich esse gern Reisgerichte, besonders Plow.",
+      "russianantwort": "Я люблю блюда с рисом, особенно плов."
+    },
+    {
+      "german": "Was mögen Sie?",
+      "russian": "Что вы любите?",
+      "germanantwort": "Ich mag auch unser Nationalgericht Beschbarmak.",
+      "russianantwort": "Мне также нравится наше национальное блюдо бешбармак."
+    },
+    {
+      "german": "Wie kocht man Plow?",
+      "russian": "Как готовят плов?",
+      "germanantwort": "Man brät zuerst Fleisch und Karotten, dann gibt man Reis und Wasser dazu.",
+      "russianantwort": "Сначала обжаривают мясо и морковь, затем добавляют рис и воду."
+    },
+    {
+      "german": "Was ist kirgisisches typisches Essen?",
+      "russian": "Какая еда типична для Киргизии?",
+      "germanantwort": "Typisches kirgisisches Essen ist Beschbarmak.",
+      "russianantwort": "Типичное киргизское блюдо — бешбармак."
+    },
+    {
+      "german": "Welche Zutaten braucht man für Beschbarmak?",
+      "russian": "Какие ингредиенты нужны для бешбармака?",
+      "germanantwort": "Man braucht Fleisch, Mehl, Zwiebeln, Salz, Pfeffer und Wasser.",
+      "russianantwort": "Нужны мясо, мука, лук, соль, перец и вода."
+    },
+    {
+      "german": "Wie wird es serviert?",
+      "russian": "Как его подают?",
+      "germanantwort": "Man legt das Fleisch auf die gekochten Nudeln und gießt Brühe darüber.",
+      "russianantwort": "Мясо кладут на лапшу и поливают бульоном."
+    },
+    {
+      "german": "Was kann man dazu anbieten?",
+      "russian": "Что можно подать к нему?",
+      "germanantwort": "Man kann Salat oder Zwiebeln mit Brühe dazu anbieten.",
+      "russianantwort": "Можно подать салат или лук с бульоном."
+    },
+    {
+      "german": "Mit welcher Soße isst man das?",
+      "russian": "С каким соусом его едят?",
+      "germanantwort": "Mit Zwiebelsoße oder einfach mit Brühe.",
+      "russianantwort": "С луковым соусом или просто с бульоном."
+    },
+    {
+      "german": "Wo kann man das probieren?",
+      "russian": "Где можно попробовать это блюдо?",
+      "germanantwort": "Man kann Beschbarmak in jedem Restaurant in Kirgisien probieren.",
+      "russianantwort": "Бешбармак можно попробовать в любом ресторане в Киргизии."
+    },
+    {
+      "german": "Was kostet eine Portion Beschbarmak?",
+      "russian": "Сколько стоит порция бешбармака?",
+      "germanantwort": "Eine Portion kostet etwa 150 Som.",
+      "russianantwort": "Порция стоит примерно 150 сомов."
+    },
+    {
+      "german": "Wieso heißt es Beschbarmak?",
+      "russian": "Почему это блюдо называется бешбармак?",
+      "germanantwort": "Weil man es früher mit den Händen gegessen hat – fünf Finger.",
+      "russianantwort": "Потому что раньше его ели руками — «пять пальцев»."
+    },
+    {
+      "german": "Was trinken Sie gerne?",
+      "russian": "Что вы любите пить?",
+      "germanantwort": "Ich trinke gerne Maksym, das ist ein Nationalgetränk.",
+      "russianantwort": "Я люблю пить Максым — это национальный напиток."
+    },
+    {
+      "german": "Wo kann man Maksym kaufen?",
+      "russian": "Где можно купить Максым?",
+      "germanantwort": "Man kann Maksym im Supermarkt oder im Sommer auf der Straße kaufen.",
+      "russianantwort": "Максым можно купить в супермаркете или летом на улице."
+    },
+    {
+      "german": "Was essen Sie gar nicht?",
+      "russian": "Что вы совсем не едите?",
+      "germanantwort": "Ich esse kein Schweinefleisch.",
+      "russianantwort": "Я не ем свинину."
+    },
+    {
+      "german": "Warum dürfen Sie kein Schweinefleisch essen?",
+      "russian": "Почему вы не можете есть свинину?",
+      "germanantwort": "Weil ich Muslim bin.",
+      "russianantwort": "Потому что я мусульманин."
+    }
+  ]
+}

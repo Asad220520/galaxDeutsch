@@ -6,6 +6,10 @@ import topik5 from "./LessonDataTopik/topik5.json";
 import topik6 from "./LessonDataTopik/topik6.json";
 import topik7 from "./LessonDataTopik/topik7.json";
 import topik8 from "./LessonDataTopik/topik8.json";
+import topik9 from "./LessonDataTopik/topik9.json";
+import topik10 from "./LessonDataTopik/topik10.json";
+import topik11 from "./LessonDataTopik/topik11.json";
+import topik12 from "./LessonDataTopik/topik12.json";
 
 export const topikLessons = [
   { id: 1, title: "meine Familie - О себе и семье", data: topik1 },
@@ -25,4 +29,18 @@ export const topikLessons = [
     data: topik7,
   },
   { id: 8, title: "Mein bester Freund - Мой лучший друг", data: topik8 },
+  {
+    id: 9,
+    title:
+      "Mein gewünschter Job in Deutschland - Моя желаемая работа в Германии",
+    data: topik9,
+  },
+
+  { id: 10, title: "Mein Lieblingsessen - Моя любимая еда", data: topik10 },
+  { id: 11, title: "Meine Großeltern - Мои бабушка и дедушка", data: topik11 },
+  {
+    id: 12,
+    title: "Sprachenlernen macht Spaß - Изучение языков приносит удовольствие",
+    data: topik12,
+  },
 ];

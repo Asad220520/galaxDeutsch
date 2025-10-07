@@ -1,0 +1,96 @@
+{
+  "title": "Meine Großeltern - Fragen und Antworten",
+  "dialogs": [
+    {
+      "german": "Was bedeutet Ihr Name?",
+      "russian": "Что означает ваше имя?",
+      "germanantwort": "Mein Name Asad kommt aus dem Arabischen und bedeutet ‚starker Löwe‘.",
+      "russianantwort": "Моё имя Асад происходит из арабского и означает «сильный лев»."
+    },
+
+    {
+      "german": "Wer hat Ihnen diesen Namen gegeben?",
+      "russian": "Кто дал вам это имя?",
+      "germanantwort": "Meine Großmutter hat mir diesen Namen gegeben.",
+      "russianantwort": "Моя бабушка дала мне это имя."
+    },
+    {
+      "german": "Wer in Kirgisien sucht für das Neugeborene den Namen aus?",
+      "russian": "Кто в Киргизии выбирает имя для новорождённого?",
+      "germanantwort": "In Kirgisien suchen die Eltern oder Großeltern den Namen aus.",
+      "russianantwort": "В Киргизии имя выбирают родители или бабушки с дедушками."
+    },
+    {
+      "german": "Was haben Ihre Großeltern früher gearbeitet?",
+      "russian": "Кем раньше работали ваши бабушка и дедушка?",
+      "germanantwort": "Meine Oma war Erzieherin und mein Opa LKW-Fahrer.",
+      "russianantwort": "Моя бабушка была воспитательницей, а дедушка — водителем грузовика."
+    },
+    {
+      "german": "Ab welchem Alter bekommt man in Kirgisistan Rente?",
+      "russian": "С какого возраста получают пенсию в Киргизии?",
+      "germanantwort": "In Kirgisien bekommt man die Rente normalerweise ab 63 Jahren.",
+      "russianantwort": "В Киргизии обычно пенсию получают с 63 лет."
+    },
+    {
+      "german": "Wie viel ist die Rente?",
+      "russian": "Сколько составляет пенсия?",
+      "germanantwort": "Die Rente ist nicht so hoch. Meine Oma gibt mir manchmal etwas Geld, wenn ich nach Hause fahre.",
+      "russianantwort": "Пенсия невысокая. Моя бабушка иногда даёт мне деньги, когда я еду домой."
+    },
+    {
+      "german": "Wie ist es in KG mit der Rentenversicherung?",
+      "russian": "Как в Киргизии обстоит дело с пенсионным страхованием?",
+      "germanantwort": "Wenn man Rente bekommen will, muss man monatlich an einen Pensionsfonds zahlen. Mein Opa hat privat gearbeitet und keine Rentenversicherung bezahlt.",
+      "russianantwort": "Если хочешь получать пенсию, нужно ежемесячно платить в пенсионный фонд. Мой дедушка работал частным образом и не платил в пенсионное страхование."
+    },
+    {
+      "german": "Was ist der schönste Ort in Kirgisistan?",
+      "russian": "Какое самое красивое место в Киргизии?",
+      "germanantwort": "Ich finde, dass das Issyk-Kul-See ein sehr schöner Ort ist.",
+      "russianantwort": "Я считаю, что озеро Иссык-Куль — очень красивое место."
+    },
+    {
+      "german": "Wo liegt Talas?",
+      "russian": "Где находится Талас?",
+      "germanantwort": "Talas liegt im Nordwesten Kirgisistans.",
+      "russianantwort": "Талас находится на северо-западе Киргизии."
+    },
+    {
+      "german": "Was gibt es dort zu sehen?",
+      "russian": "Что там можно увидеть?",
+      "germanantwort": "In Talas gibt es Berge, Flüsse und schöne Natur.",
+      "russianantwort": "В Таласе есть горы, реки и красивая природа."
+    },
+    {
+      "german": "Wie viele Einwohner wohnen dort?",
+      "russian": "Сколько там жителей?",
+      "germanantwort": "In Talas wohnen ungefähr 130.000 Einwohner.",
+      "russianantwort": "В Таласе живёт примерно 130 000 человек."
+    },
+    {
+      "german": "Wie groß ist Talas?",
+      "russian": "Насколько большой Талас?",
+      "germanantwort": "Die Stadt ist mittelgroß, mit einer Fläche von etwa 150 Quadratkilometern.",
+      "russianantwort": "Город средний по размеру, площадь примерно 150 квадратных километров."
+    },
+    {
+      "german": "Wie kommt man nach Talas?",
+      "russian": "Как добраться до Таласа?",
+      "germanantwort": "Man kann mit dem Auto oder Bus fahren.",
+      "russianantwort": "Можно добраться на машине или автобусе."
+    },
+    {
+      "german": "Wie viel Stunden Fahrt braucht man bis dahin?",
+      "russian": "Сколько часов занимает дорога до туда?",
+      "germanantwort": "Die Fahrt dauert ungefähr 5-6 Stunden.",
+      "russianantwort": "Дорога занимает примерно 5–6 часов."
+    },
+    {
+      "german": "Mit welchem Transportmittel ist das zu erreichen?",
+      "russian": "На каком транспорте туда можно добраться?",
+      "germanantwort": "Am besten erreicht man Talas mit Auto oder Bus.",
+      "russianantwort": "Лучше всего доехать до Таласа на машине или автобусе."
+    }
+  ]
+}

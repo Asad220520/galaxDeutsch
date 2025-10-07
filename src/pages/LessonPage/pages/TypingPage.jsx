@@ -1,41 +1,41 @@
 import { useParams, Link } from "react-router-dom";
+import TypingCard from "../components/TypingCard";
 import { allLessons } from "../Lection/allLessons";
-import MatchingCardColumns from "../components/MatchingCard";
-import { Puzzle } from "lucide-react";
-import { useState, useEffect } from "react";
 import { getProgress, setProgress } from "../../../utils/progress";
+import { useState, useEffect } from "react";
 
-function MatchingPage() {
+function TypingPage() {
   const { id, level } = useParams();
   const lesson = allLessons.find((l) => l.id === Number(id));
-
-  const [completed, setCompleted] = useState(0);
+  const [progress, setLocalProgress] = useState(0);
 
   if (!lesson) {
     return <p className="text-center text-red-500 mt-4">Урок не найден</p>;
   }
 
-  const matchingData = lesson.levels
-    ? lesson.levels[level]?.matching
-    : lesson.matching;
+  const typingData = lesson.levels
+    ? lesson.levels[level]?.typing
+    : lesson.typing;
 
-  if (!matchingData) {
+  if (!typingData || !typingData.items) {
     return (
       <p className="text-center text-red-500 mt-4">
-        Мэтчинг не найден для этого уровня
+        Упражнения на проверку написания не найдены для этого уровня
       </p>
     );
   }
 
-  const progressKey = `matching_${level || "default"}`;
+  const progressKey = `typing_${level || "default"}`;
 
+  // Загружаем сохранённый прогресс
   useEffect(() => {
     const lessonProgress = getProgress()[lesson.id] || {};
-    setCompleted(lessonProgress[progressKey] || 0);
+    setLocalProgress(lessonProgress[progressKey] || 0);
   }, [lesson.id, progressKey]);
 
-  const handleComplete = (percent) => {
-    setCompleted((prev) => {
+  // Обновление прогресса
+  const handleProgressUpdate = (percent) => {
+    setLocalProgress((prev) => {
       const newPercent = Math.max(prev, percent); // сохраняем максимум
       setProgress(lesson.id, progressKey, newPercent);
       return newPercent;
@@ -45,26 +45,24 @@ function MatchingPage() {
   return (
     <div className="max-w-3xl mx-auto p-4 space-y-6">
       <h1 className="text-2xl font-bold text-gray-800 mb-4">
-        {lesson.title} — {matchingData.title} {level ? `(${level})` : ""}
+        {lesson.title} — {typingData.title} {level ? `(${level})` : ""}
       </h1>
 
-      <MatchingCardColumns
-        title={matchingData.title}
-        icon={<Puzzle size={24} />}
-        words={matchingData.items}
+      <TypingCard
+        items={typingData.items}
         lessonId={lesson.id}
         levelKey={level || "default"}
-        onComplete={handleComplete}
+        onProgress={handleProgressUpdate}
       />
 
-      {/* Прогресс выполнения */}
-      {/* <div className="w-full bg-gray-200 h-3 rounded mt-2">
+      {/* Прогрессбар */}
+      <div className="w-full bg-gray-200 h-3 rounded mt-2">
         <div
           className="bg-green-500 h-3 rounded transition-all duration-500"
-          style={{ width: `${completed}%` }}
+          style={{ width: `${progress}%` }}
         ></div>
       </div>
-      <p className="text-right text-gray-700">{completed}%</p> */}
+      <p className="text-center mt-1 text-gray-700">{progress}%</p>
 
       <Link
         to={`/lesson/${lesson.id}`}
@@ -76,4 +74,4 @@ function MatchingPage() {
   );
 }
 
-export default MatchingPage;
+export default TypingPage;
