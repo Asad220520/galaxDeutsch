@@ -1,27 +1,20 @@
 import { useState, useEffect } from "react";
-import { setProgress } from "../../../utils/progress";
 import AudioPlayer from "../../../components/UI/AudioPlayer";
 
-function MatchingCardColumns({
-  title,
-  icon,
-  words,
-  pageSize = 5,
-  lessonId,
-  levelKey,
-  onComplete,
-}) {
+function MatchingCardColumns({ title, icon, words, pageSize = 5, onComplete }) {
   const [currentPage, setCurrentPage] = useState(0);
   const [leftWords, setLeftWords] = useState([]);
   const [rightWords, setRightWords] = useState([]);
   const [selectedLeft, setSelectedLeft] = useState(null);
   const [matches, setMatches] = useState({});
   const [shakeWord, setShakeWord] = useState(null);
-  const [pendingProgress, setPendingProgress] = useState(null);
   const [showCongrats, setShowCongrats] = useState(false);
   const [awaitingChoice, setAwaitingChoice] = useState(false);
-  const [previewMode, setPreviewMode] = useState(true); // показываем правильный вариант до перемешивания
+  const [previewMode, setPreviewMode] = useState(true);
 
+  // ————————————————————————————————
+  // Вспомогательные функции
+  // ————————————————————————————————
   const shuffle = (array) => {
     const arr = [...array];
     for (let i = arr.length - 1; i > 0; i--) {
@@ -36,50 +29,37 @@ function MatchingCardColumns({
     return words.slice(start, start + pageSize);
   };
 
+  const isCorrect = (german, russian) =>
+    words.find((w) => w.german === german)?.russian === russian;
+
+  // ————————————————————————————————
   // Инициализация страницы
+  // ————————————————————————————————
   useEffect(() => {
     const pageItems = getPageItems();
     setLeftWords(pageItems.map((w) => w.german));
-    setRightWords(pageItems.map((w) => w.russian)); // правильный вариант
+    setRightWords(pageItems.map((w) => w.russian));
     setSelectedLeft(null);
-    setMatches({});
     setShowCongrats(false);
     setAwaitingChoice(false);
     setPreviewMode(true);
   }, [words, currentPage]);
 
-  useEffect(() => {
-    if (pendingProgress !== null) {
-      if (onComplete) onComplete(pendingProgress);
-      setPendingProgress(null);
-    }
-  }, [pendingProgress, onComplete]);
-
-  const isCorrect = (german, russian) =>
-    words.find((w) => w.german === german)?.russian === russian;
-
+  // ————————————————————————————————
+  // Обработка кликов
+  // ————————————————————————————————
   const handleSelect = (side, value) => {
     if (side === "left") {
+      if (matches[value]) return; // уже сопоставлено
       setSelectedLeft(value);
       setShakeWord(null);
     } else if (side === "right" && selectedLeft) {
       if (isCorrect(selectedLeft, value)) {
-        setMatches((prev) => {
-          const newMatches = { ...prev, [selectedLeft]: value };
-          const correctCountAll = Object.keys(newMatches).filter((g) =>
-            isCorrect(g, newMatches[g])
-          ).length;
-          const percent = Math.round((correctCountAll / words.length) * 100);
-
-          setProgress(lessonId, `matching_${levelKey}`, percent);
-          setPendingProgress(percent);
-
-          return newMatches;
-        });
+        setMatches((prev) => ({ ...prev, [selectedLeft]: value }));
         setSelectedLeft(null);
       } else {
         setShakeWord(selectedLeft);
-        setTimeout(() => setShakeWord(null), 500);
+        setTimeout(() => setShakeWord(null), 400);
       }
     }
   };
@@ -88,39 +68,61 @@ function MatchingCardColumns({
   const totalPages = Math.ceil(words.length / pageSize);
   const allMatched = pageItems.every((item) => matches[item.german]);
 
+  // ————————————————————————————————
+  // Вызываем onComplete после обновления matches
+  // ————————————————————————————————
   useEffect(() => {
-    if (allMatched) {
+    const percent = Math.round(
+      (Object.keys(matches).length / words.length) * 100
+    );
+    if (onComplete) onComplete(percent);
+  }, [matches, words, onComplete]);
+
+  // ————————————————————————————————
+  // Показ "отлично" при завершении страницы
+  // ————————————————————————————————
+  useEffect(() => {
+    if (allMatched && pageItems.length > 0) {
       setShowCongrats(true);
       setAwaitingChoice(true);
     }
-  }, [allMatched]);
+  }, [allMatched, pageItems.length]);
 
+  // ————————————————————————————————
+  // Поведение кнопок “далее / повторить”
+  // ————————————————————————————————
   const handleChoice = (choice) => {
     if (choice === "next" && currentPage < totalPages - 1) {
       setCurrentPage((p) => p + 1);
-    } else if (choice === "repeat" || currentPage === totalPages - 1) {
-      const pageItems = getPageItems();
-      setLeftWords(pageItems.map((w) => w.german));
-      setRightWords(pageItems.map((w) => w.russian));
-      setMatches({});
+    } else if (choice === "repeat") {
+      // сбрасываем только текущую страницу
+      const newMatches = { ...matches };
+      pageItems.forEach((item) => delete newMatches[item.german]);
+      setMatches(newMatches);
       setPreviewMode(true);
+      setRightWords(pageItems.map((w) => w.russian));
+      setSelectedLeft(null);
     }
     setShowCongrats(false);
     setAwaitingChoice(false);
   };
 
   const handleShuffle = () => {
-    const pageItems = getPageItems();
-    setRightWords(shuffle(pageItems.map((w) => w.russian)));
+    const items = getPageItems();
+    setRightWords(shuffle(items.map((w) => w.russian)));
     setPreviewMode(false);
   };
 
+  // ————————————————————————————————
+  // Рендер
+  // ————————————————————————————————
   return (
     <div className="p-4 max-w-md mx-auto bg-white rounded-xl shadow-lg">
       <div className="flex items-center gap-3 mb-4 text-xl font-bold text-blue-600">
         {icon} {title}
       </div>
 
+      {/* Прогресс бар */}
       <div className="w-full bg-gray-200 rounded-full h-3 mb-4">
         <div
           className="bg-blue-500 h-3 rounded-full transition-all duration-300"
@@ -142,6 +144,7 @@ function MatchingCardColumns({
         </div>
       )}
 
+      {/* Экран “отлично!” */}
       {showCongrats && awaitingChoice ? (
         <div className="text-center py-8">
           <h2 className="text-2xl text-green-500 mb-4 animate-bounce">
@@ -170,30 +173,32 @@ function MatchingCardColumns({
           {/* Левая колонка */}
           <div className="space-y-2">
             {leftWords.map((word) => {
-              const matched = matches[word];
+              const matched = !!matches[word];
               const wrong = shakeWord === word;
-
               return (
                 <div key={word} className="flex items-center">
                   <div className="flex rounded-lg items-center w-full border border-gray-300">
-                    {/* Кнопка озвучки */}
                     <AudioPlayer word={word} />
                     <button
                       onClick={() => handleSelect("left", word)}
-                      disabled={!!matched || previewMode}
-                      className={`flex-1 p-4 rounded-lg font-medium text-start  text-lg transition 
-              ${
-                selectedLeft === word
-                  ? "bg-blue-200 border-2 border-blue-500"
-                  : ""
-              }
-              ${
-                matched
-                  ? "bg-green-500 text-white border-green-600 font-bold"
-                  : "bg-white hover:bg-gray-100"
-              }
-              ${wrong ? "bg-red-500 text-white border-red-600 shake" : ""}
-              ${previewMode ? "opacity-50 cursor-not-allowed" : ""}`}
+                      disabled={matched || previewMode}
+                      className={`flex-1 p-4 rounded-lg font-medium text-start text-lg transition
+                        ${
+                          selectedLeft === word
+                            ? "bg-blue-200 border-2 border-blue-500"
+                            : ""
+                        }
+                        ${
+                          matched
+                            ? "bg-green-500 text-white border-green-600 font-bold"
+                            : "bg-white hover:bg-gray-100"
+                        }
+                        ${
+                          wrong
+                            ? "bg-red-500 text-white border-red-600 shake"
+                            : ""
+                        }
+                        ${previewMode ? "opacity-50 cursor-not-allowed" : ""}`}
                     >
                       🇩🇪 {word}
                     </button>
@@ -209,26 +214,18 @@ function MatchingCardColumns({
               const leftKey = Object.keys(matches).find(
                 (k) => matches[k] === word
               );
-              const correct = leftKey && isCorrect(leftKey, word);
-              const wrong = leftKey && !isCorrect(leftKey, word);
-
+              const disabled = !!leftKey || previewMode || !selectedLeft;
               return (
                 <div key={word + index} className="flex items-center gap-2">
                   <button
                     onClick={() => handleSelect("right", word)}
-                    disabled={!!leftKey || previewMode}
+                    disabled={disabled}
                     className={`flex-1 p-4 rounded-lg font-medium text-start border border-gray-300 text-lg transition 
-              ${
-                correct
-                  ? "bg-green-500 text-white border-green-600 font-bold"
-                  : ""
-              }
-              ${wrong ? "bg-red-500 text-white border-red-600 shake" : ""}
-              ${
-                !leftKey && !previewMode
-                  ? "bg-white hover:bg-gray-100"
-                  : "opacity-50 cursor-not-allowed"
-              }`}
+                      ${
+                        leftKey
+                          ? "opacity-50 cursor-not-allowed"
+                          : "bg-white hover:bg-gray-100"
+                      }`}
                   >
                     🇷🇺 {word}
                   </button>

@@ -15,9 +15,8 @@ function MatchingPage() {
     return <p className="text-center text-red-500 mt-4">Урок не найден</p>;
   }
 
-  const matchingData = lesson.levels
-    ? lesson.levels[level]?.matching
-    : lesson.matching;
+  const levelData = lesson.levels?.[level] || {};
+  const matchingData = levelData.matching || lesson.matching;
 
   if (!matchingData) {
     return (
@@ -35,11 +34,9 @@ function MatchingPage() {
   }, [lesson.id, progressKey]);
 
   const handleComplete = (percent) => {
-    setCompleted((prev) => {
-      const newPercent = Math.max(prev, percent); // сохраняем максимум
-      setProgress(lesson.id, progressKey, newPercent);
-      return newPercent;
-    });
+    // Обновляем локальный прогресс и записываем
+    setCompleted(percent);
+    setProgress(lesson.id, progressKey, percent);
   };
 
   return (
@@ -58,13 +55,13 @@ function MatchingPage() {
       />
 
       {/* Прогресс выполнения */}
-      {/* <div className="w-full bg-gray-200 h-3 rounded mt-2">
+      <div className="w-full bg-gray-200 h-3 rounded mt-2">
         <div
           className="bg-green-500 h-3 rounded transition-all duration-500"
           style={{ width: `${completed}%` }}
         ></div>
       </div>
-      <p className="text-right text-gray-700">{completed}%</p> */}
+      <p className="text-right text-gray-700">{completed}%</p>
 
       <Link
         to={`/lesson/${lesson.id}`}

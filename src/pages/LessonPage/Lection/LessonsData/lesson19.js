@@ -25,8 +25,60 @@ export const lesson14 = {
           { german: "sich vorbereiten", russian: "подготовиться" },
         ],
       },
-      puzzle: { title: "Пазл", items: [] },
-      text: { title: "Заполните пропуск", items: [] },
+      puzzle: {
+        title: "Пазл",
+        items: [
+          {
+            german: "Ich wohne im Studentenwohnheim.",
+            russian: "Я живу в студенческом общежитии.",
+            distractors: ["das Studentenwohnheim", "die Wohnung", "das Haus"],
+          },
+          {
+            german: "Welches Fach hast du am meisten gemocht?",
+            russian: "Какой предмет тебе больше всего понравился?",
+            distractors: ["das Fach", "die Spezialität", "der Kurs"],
+          },
+          {
+            german: "Seine Spezialität ist Informatik.",
+            russian: "Его специальность — информатика.",
+            distractors: ["die Spezialität", "das Hobby", "die Idee"],
+          },
+          {
+            german: "Sie macht einen Master in Biologie.",
+            russian: "Она учится на магистра по биологии.",
+            distractors: ["der Master", "der Doktor", "das Praktikum"],
+          },
+        ],
+      },
+      text: {
+        title: "Заполните пропуск",
+        items: [
+          {
+            german: "Ich habe einen __ für das Wochenende.",
+            russian: "У меня есть план на выходные.",
+            content: "Plan",
+            distractors: ["Job", "Termin", "Kurs"],
+          },
+          {
+            german: "Er studiert nicht an der Universität, sondern am __.",
+            russian: "Он учится не в университете, а в колледже.",
+            content: "College",
+            distractors: ["Gymnasium", "Kindergarten", "Betrieb"],
+          },
+          {
+            german: "Nach dem Bachelor macht sie einen __.",
+            russian: "После бакалавра она делает магистратуру.",
+            content: "Master",
+            distractors: ["Praktikum", "Kurs", "Job"],
+          },
+          {
+            german: "Ich muss mich auf die Prüfung __.",
+            russian: "Мне нужно подготовиться к экзамену.",
+            content: "vorbereiten",
+            distractors: ["vergessen", "verspäten", "aufgeben"],
+          },
+        ],
+      },
       typing: {
         title: "Проверка написания",
         items: [
@@ -76,10 +128,7 @@ export const lesson14 = {
           { german: "gründen", russian: "основывать" },
           { german: "finden", russian: "находить, считать" },
           { german: "servieren", russian: "подавать на стол" },
-          {
-            german: "schaffen",
-            russian: "создавать, творить, справляться с чем-то",
-          },
+          { german: "schaffen", russian: "создавать, справляться с чем-то" },
           { german: "moderieren", russian: "вести передачу" },
           { german: "organiesieren", russian: "организовать" },
           { german: "sollen", russian: "быть обязанным, быть должным" },
@@ -92,8 +141,60 @@ export const lesson14 = {
           { german: "gleich", russian: "сейчас, немедленно, одинаковый" },
         ],
       },
-      puzzle: { title: "Пазл", items: [] },
-      text: { title: "Заполните пропуск", items: [] },
+      puzzle: {
+        title: "Пазл",
+        items: [
+          {
+            german: "Er möchte eine Firma __.",
+            russian: "Он хочет основать компанию.",
+            distractors: ["gründen", "verkaufen", "kaufen"],
+          },
+          {
+            german: "Der Kellner __ das Essen an den Tisch.",
+            russian: "Официант подаёт еду на стол.",
+            distractors: ["serviert", "isst", "schreibt"],
+          },
+          {
+            german: "Funktioniert alles? Ja, es __ gut.",
+            russian: "Всё работает? Да, получается хорошо.",
+            distractors: ["klappt", "fällt", "versagt"],
+          },
+          {
+            german: "Heute habe ich ein bisschen Zeit.",
+            russian: "Сегодня у меня немного времени.",
+            distractors: ["bisschen", "viel", "nie"],
+          },
+        ],
+      },
+      text: {
+        title: "Заполните пропуск",
+        items: [
+          {
+            german: "Du __ deine Hausaufgaben bis morgen machen.",
+            russian: "Ты должен сделать домашние задания до завтра.",
+            content: "sollst",
+            distractors: ["kannst", "musst", "wirst"],
+          },
+          {
+            german: "Ich __ meinen Freund sehr nett.",
+            russian: "Я считаю своего друга очень приятным.",
+            content: "finde",
+            distractors: ["sehe", "habe", "kenne"],
+          },
+          {
+            german: "Wenn wir das gut __, gewinnen wir Zeit.",
+            russian: "Если мы это хорошо сделаем, мы выиграем время.",
+            content: "schaffen",
+            distractors: ["zerstören", "verlieren", "schreiben"],
+          },
+          {
+            german: "Sie __ mehr als ich.",
+            russian: "Она зарабатывает больше, чем я.",
+            content: "verdient",
+            distractors: ["isst", "läuft", "spielt"],
+          },
+        ],
+      },
       typing: {
         title: "Проверка написания",
         items: [
@@ -106,7 +207,7 @@ export const lesson14 = {
           },
           {
             german: "schaffen",
-            russian: "создавать, творить, справляться с чем-то",
+            russian: "создавать, справляться с чем-то",
             content: "schaffen",
           },
           {
@@ -170,8 +271,60 @@ export const lesson14 = {
           { german: "eigentlich", russian: "собственно" },
         ],
       },
-      puzzle: { title: "Пазл", items: [] },
-      text: { title: "Заполните пропуск", items: [] },
+      puzzle: {
+        title: "Пазл",
+        items: [
+          {
+            german: "Wir sprechen miteinander über das Projekt.",
+            russian: "Мы разговариваем друг с другом о проекте.",
+            distractors: ["miteinander", "zusammen", "allein"],
+          },
+          {
+            german: "Soweit ich weiß, kommt er morgen nicht.",
+            russian: "Насколько я знаю, он завтра не придёт.",
+            distractors: ["Soweit", "Vielleicht", "Sobald"],
+          },
+          {
+            german: "Beide Studenten sind pünktlich.",
+            russian: "Оба студента пунктуальны.",
+            distractors: ["Beide", "Jeder", "Keiner"],
+          },
+          {
+            german: "Sie antwortet sofort auf die Nachricht.",
+            russian: "Она отвечает немедленно на сообщение.",
+            distractors: ["sofort", "später", "manchmal"],
+          },
+        ],
+      },
+      text: {
+        title: "Заполните пропуск",
+        items: [
+          {
+            german: "Am Anfang war alles sehr __.",
+            russian: "В начале всё было очень сложно.",
+            content: "schwierig",
+            distractors: ["leicht", "spät", "lustig"],
+          },
+          {
+            german: "Im Gegensatz zu ihm mag ich Kaffee.",
+            russian: "В отличие от него, я люблю кофе.",
+            content: "Im Gegensatz zu",
+            distractors: ["Trotzdem", "Weil", "Deshalb"],
+          },
+          {
+            german: "Das ist klipp und __ gesagt.",
+            russian: "Это сказано коротко и ясно.",
+            content: "klar",
+            distractors: ["lang", "laut", "leise"],
+          },
+          {
+            german: "Je mehr du übst, __ besser wirst du.",
+            russian: "Чем больше ты практикуешься, тем лучше становишься.",
+            content: "desto",
+            distractors: ["umso", "aber", "weil"],
+          },
+        ],
+      },
       typing: {
         title: "Проверка написания",
         items: [
@@ -234,6 +387,7 @@ export const lesson14 = {
         ],
       },
     },
+
     level4: {
       title: "Уровень 4",
       matching: {
@@ -274,8 +428,66 @@ export const lesson14 = {
           { german: "interessante Dinge", russian: "интересные вещи" },
         ],
       },
-      puzzle: { title: "Пазл", items: [] },
-      text: { title: "Заполните пропуск", items: [] },
+      puzzle: {
+        title: "Пазл",
+        items: [
+          {
+            german: "Jeder Mensch hat seine eigene Geschichte.",
+            russian: "У каждого человека своя история.",
+            distractors: ["jeder Mensch", "alle Leute", "ein Mensch"],
+          },
+          {
+            german: "Es gibt über 200 Sprachen in der Welt.",
+            russian: "В мире есть более 200 языков.",
+            distractors: [
+              "es gibt über 200 Sprachen in der Welt",
+              "es fehlen Sprachen",
+              "es sind wenige Sprachen",
+            ],
+          },
+          {
+            german: "Die Sendung beginnt um 20 Uhr.",
+            russian: "Передача начинается в 20:00.",
+            distractors: ["die Sendung", "das Spiel", "der Brief"],
+          },
+          {
+            german: "Mit Hilfe des Lehrers habe ich viel gelernt.",
+            russian: "С помощью преподавателя я многое выучил.",
+            distractors: ["mithilfe", "ohne Hilfe", "mit Problemen"],
+          },
+        ],
+      },
+      text: {
+        title: "Заполните пропуск",
+        items: [
+          {
+            german: "Ich kann die Sprache noch nicht __.",
+            russian: "Я ещё не владею языком в совершенстве.",
+            content: "beherrschen",
+            distractors: ["lernen", "vergessen", "hassen"],
+          },
+          {
+            german: "Dieses Buch ist __ interessant.",
+            russian: "Эта книга невероятно интересна.",
+            content: "unglaublich",
+            distractors: ["langweilig", "klein", "einfach"],
+          },
+          {
+            german: "Der Lehrer __ das Projekt sehr __.",
+            russian:
+              "Учитель рекомендует проект очень (strongly) / Рекомендовать.",
+            content: "empfiehlt",
+            distractors: ["verbindet", "verwirrt", "vergisst"],
+          },
+          {
+            german: "Wir brauchen mehr __, um besser zu sprechen.",
+            russian:
+              "Нам нужно больше словарного запаса, чтобы лучше говорить.",
+            content: "Wortschatz",
+            distractors: ["Geld", "Stunden", "Bücher"],
+          },
+        ],
+      },
       typing: {
         title: "Проверка написания",
         items: [
