@@ -1,5 +1,5 @@
 // RepeatFavoritesMatching.jsx
-import { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setQueue, markCorrect, markWrong } from "../../store/repeatSlice";
 import AudioPlayer from "../../components/UI/AudioPlayer";
@@ -18,20 +18,6 @@ function MatchingFavorites({ pageSize = 5 }) {
   const [showCongrats, setShowCongrats] = useState(false);
   const [previewMode, setPreviewMode] = useState(true);
   const [rightWords, setRightWords] = useState([]);
-
-  const shakeTimer = useRef(null);
-  const highlightTimer = useRef(null);
-  const wrongTimer = useRef(null);
-
-  // Звуки
-  const correctAudio = useRef(new Audio("/sounds/correct.mp3"));
-  const wrongAudio = useRef(new Audio("/sounds/wrong.mp3"));
-
-  const playSound = (correct = true) => {
-    const audio = correct ? correctAudio.current : wrongAudio.current;
-    audio.currentTime = 0;
-    audio.play();
-  };
 
   const shuffle = (array) => {
     const arr = [...array];
@@ -68,6 +54,13 @@ function MatchingFavorites({ pageSize = 5 }) {
   const isCorrect = (german, russian) =>
     queue.find((w) => w.german === german)?.russian === russian;
 
+  const playSound = (correct = true) => {
+    const audio = new Audio(
+      correct ? "/sounds/correct.mp3" : "/sounds/wrong.mp3"
+    );
+    audio.play().catch((err) => console.log("Ошибка воспроизведения:", err));
+  };
+
   const handleSelect = (side, value) => {
     if (side === "left") {
       if (matches[value]) return;
@@ -80,23 +73,19 @@ function MatchingFavorites({ pageSize = 5 }) {
         setSelectedLeft(null);
         dispatch(markCorrect());
 
-        playSound(true);
+        playSound(true); // ✅ звук при правильном ответе
 
         setHighlightWord(selectedLeft);
-        if (highlightTimer.current) clearTimeout(highlightTimer.current);
-        highlightTimer.current = setTimeout(() => setHighlightWord(null), 600);
+        setTimeout(() => setHighlightWord(null), 600);
       } else {
         setShakeWord(selectedLeft);
         setWrongWord(selectedLeft);
         dispatch(markWrong());
 
-        playSound(false);
+        playSound(false); // ✅ звук при неправильном ответе
 
-        if (shakeTimer.current) clearTimeout(shakeTimer.current);
-        shakeTimer.current = setTimeout(() => setShakeWord(null), 400);
-
-        if (wrongTimer.current) clearTimeout(wrongTimer.current);
-        wrongTimer.current = setTimeout(() => setWrongWord(null), 600);
+        setTimeout(() => setShakeWord(null), 400);
+        setTimeout(() => setWrongWord(null), 600);
       }
     }
   };
@@ -181,6 +170,7 @@ function MatchingFavorites({ pageSize = 5 }) {
         Повторение избранного
       </h2>
 
+      {/* Прогресс */}
       <div className="w-full bg-gray-200 rounded-full h-3 mb-4">
         <div
           className="bg-blue-500 h-3 rounded-full transition-all duration-500"
@@ -190,6 +180,7 @@ function MatchingFavorites({ pageSize = 5 }) {
         ></div>
       </div>
 
+      {/* Кнопка перемешать */}
       {previewMode && !allMatched && (
         <div className="text-center mb-4">
           <button
@@ -201,6 +192,7 @@ function MatchingFavorites({ pageSize = 5 }) {
         </div>
       )}
 
+      {/* Экран "Отлично!" */}
       {showCongrats ? (
         <div className="text-center py-6">
           <h2 className="text-2xl text-green-500 mb-4 animate-bounce">
@@ -233,6 +225,7 @@ function MatchingFavorites({ pageSize = 5 }) {
         </div>
       ) : (
         <div className="grid grid-cols-2 gap-2">
+          {/* Левая колонка */}
           <div className="space-y-2">
             {leftWords.map((word) => (
               <div key={word} className="flex items-center">
@@ -248,6 +241,7 @@ function MatchingFavorites({ pageSize = 5 }) {
             ))}
           </div>
 
+          {/* Правая колонка */}
           <div className="space-y-2">
             {rightWords.map((word, idx) => (
               <button
