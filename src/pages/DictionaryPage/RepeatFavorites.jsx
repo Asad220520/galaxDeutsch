@@ -24,8 +24,8 @@ function MatchingFavorites({ pageSize = 5 }) {
   const wrongTimer = useRef(null);
 
   // Звуки
-  const correctAudio = useRef(new Audio("../../../public/sounds/correct.mp3"));
-  const wrongAudio = useRef(new Audio("../../../public/sounds/wrong.mp3"));
+  const correctAudio = useRef(new Audio("/sounds/correct.mp3"));
+  const wrongAudio = useRef(new Audio("/sounds/wrong.mp3"));
 
   const playSound = (correct = true) => {
     const audio = correct ? correctAudio.current : wrongAudio.current;
