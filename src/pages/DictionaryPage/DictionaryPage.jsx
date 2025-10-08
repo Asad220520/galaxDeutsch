@@ -2,10 +2,29 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addFavorite, removeFavorite } from "../../store/favoritesSlice";
 import { allLessons } from "../LessonPage/Lection/allLessons";
-// import MatchingCardUniversal from "./MatchingCardUniversal";
-import RepeatFavorites from "./RepeatFavorites";
+import WordLearningModule from "./WordLearningModule";
 
-// Подсветка поиска
+// ===== Компонент аудио-кнопки =====
+const AudioButton = ({ word }) => {
+  const speak = () => {
+    if (!word) return;
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = "de-DE";
+    speechSynthesis.speak(utterance);
+  };
+
+  return (
+    <button
+      onClick={speak}
+      className="ml-2 text-xl hover:scale-110 transition-transform"
+      title={`Прослушать "${word}"`}
+    >
+      🔊
+    </button>
+  );
+};
+
+// ===== Подсветка поиска =====
 const highlightMatch = (text, query) => {
   if (!query) return text;
   const regex = new RegExp(`(${query})`, "gi");
@@ -20,7 +39,7 @@ const highlightMatch = (text, query) => {
   );
 };
 
-// Цвет карточки по артиклю
+// ===== Цвет карточки =====
 const getCardBg = (text) => {
   const match = text.match(/^(der|die|das)\s+/i);
   if (!match) return "bg-gray-50";
@@ -36,15 +55,15 @@ const DictionaryPage = () => {
   const favorites = useSelector((state) => state.favorites.items);
 
   const [search, setSearch] = useState("");
-  const [tab, setTab] = useState("all"); // all / favorites / repeat
+  const [tab, setTab] = useState("all");
   const [selectedLesson, setSelectedLesson] = useState("all");
   const [selectedLevel, setSelectedLevel] = useState("all");
 
-  // Получаем все слова с уровнями
+  // ===== Словарь =====
   const getDictionaryItems = () => {
     const vocab = [];
     allLessons.forEach((lesson) => {
-      Object.entries(lesson.levels).forEach(([levelKey, level]) => {
+      Object.entries(lesson.levels).forEach(([_, level]) => {
         level.matching?.items.forEach((item) => {
           vocab.push({
             german: item.german,
@@ -59,7 +78,6 @@ const DictionaryPage = () => {
   };
 
   let items = getDictionaryItems();
-
   if (tab === "favorites") items = favorites;
 
   if (selectedLesson !== "all")
@@ -81,7 +99,6 @@ const DictionaryPage = () => {
     }
   };
 
-  // Получаем уровни выбранного урока
   const levelsForLesson =
     selectedLesson === "all"
       ? []
@@ -89,27 +106,30 @@ const DictionaryPage = () => {
           allLessons.find((l) => l.title === selectedLesson)?.levels || []
         ).map((l) => l.title);
 
-  // ————————————————————————————————
-  // Вкладка повторения
-  // ————————————————————————————————
+  // ===== Повторение =====
   if (tab === "repeat") {
     return (
-      <div className="max-w-5xl mx-auto p-4 sm:p-6">
-        <RepeatFavorites
+      <div key="repeat" className="max-w-5xl mx-auto p-4 sm:p-6">
+        <button
+          onClick={() => setTab("favorites")}
+          className="mb-4 px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded"
+        >
+          ← Назад к избранному
+        </button>
+
+        <WordLearningModule
           title="Повторение избранного"
           icon="🔁"
-          useRedux={true} // используем repeatSlice
+          useRedux={true}
           pageSize={5}
         />
       </div>
     );
   }
 
-  // ————————————————————————————————
-  // Вкладки "Все слова" и "Избранное"
-  // ————————————————————————————————
+  // ===== Основное содержимое =====
   return (
-    <div className="max-w-5xl mx-auto p-4 sm:p-6">
+    <div key={tab} className="max-w-5xl mx-auto p-4 sm:p-6">
       <h1 className="text-3xl font-bold mb-4 text-center">Словарь</h1>
 
       {/* Вкладки */}
@@ -131,7 +151,7 @@ const DictionaryPage = () => {
         ))}
       </div>
 
-      {/* Поиск и селекты */}
+      {/* Поиск и фильтры */}
       <div className="flex flex-col sm:flex-row justify-center gap-2 mb-4 flex-wrap">
         <input
           type="text"
@@ -171,7 +191,15 @@ const DictionaryPage = () => {
         )}
       </div>
 
-      {/* Словарь */}
+      {/* 🔢 Количество найденных слов */}
+      <div className="text-center text-sm text-gray-600 mb-3">
+        Найдено слов: <b>{filtered.length}</b> / Всего:{" "}
+        <b>
+          {tab === "favorites" ? favorites.length : getDictionaryItems().length}
+        </b>
+      </div>
+
+      {/* Список слов */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {filtered.map((item, idx) => (
           <div
@@ -180,12 +208,13 @@ const DictionaryPage = () => {
               item.german
             )}`}
           >
-            <div>
-              <div className="font-medium">
+            <div className="flex items-center">
+              <div className="font-medium flex items-center">
+                <AudioButton word={item.german} />
                 {highlightMatch(item.german, search)}
               </div>
               <div
-                className={`text-sm ${
+                className={`text-sm ml-2 ${
                   getCardBg(item.german).includes("bg-gray")
                     ? "text-gray-800"
                     : "text-white"

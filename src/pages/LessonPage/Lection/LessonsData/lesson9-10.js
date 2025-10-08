@@ -31,12 +31,12 @@ export const lesson9 = {
         title: "Пазл",
         items: [
           {
-            german: "Eigentlich mag ich keinen __.",
+            german: "Eigentlich mag ich keinen Kaffee.",
             russian: "На самом деле я не люблю кофе.",
             distractors: ["Tee", "Kaffee", "Wasser"],
           },
           {
-            german: "Er spart __ für ein Auto.",
+            german: "Er spart Geld für ein Auto.",
             russian: "Он копит деньги на машину.",
             distractors: ["Geld", "Zeit", "Bücher"],
           },
@@ -81,12 +81,12 @@ export const lesson9 = {
         title: "Пазл",
         items: [
           {
-            german: "In meiner __ spiele ich gerne Tennis.",
+            german: "In meiner Freizeit spiele ich gerne Tennis.",
             russian: "В свободное время я люблю играть в теннис.",
             distractors: ["Freizeit", "Arbeit", "Schule"],
           },
           {
-            german: "Der Schüler schreibt seine __.",
+            german: "Der Schüler schreibt seine Hausaufgaben.",
             russian: "Ученик пишет домашнее задание.",
             distractors: ["Hausaufgaben", "Test", "Bücher"],
           },
@@ -134,12 +134,12 @@ export const lesson9 = {
         title: "Пазл",
         items: [
           {
-            german: "Sie kennt sich in der Stadt gut __.",
+            german: "Sie kennt sich in der Stadt gut aus.",
             russian: "Она хорошо ориентируется в городе.",
             distractors: ["auskennen", "verirren", "vergessen"],
           },
           {
-            german: "Wir laden unsere Kollegen zur __ ein.",
+            german: "Wir laden unsere Kollegen zur Hochzeit ein.",
             russian: "Мы приглашаем наших коллег на свадьбу.",
             distractors: ["Hochzeit", "Geburtstag", "Party"],
           },
@@ -159,6 +159,106 @@ export const lesson9 = {
             russian: "Я убираю свою комнату.",
             content: "Zimmer",
             distractors: ["Haus", "Auto", "Büro"],
+          },
+        ],
+      },
+    },
+    level4: {
+      title: "Уровень 4 Mein Studium",
+      matching: {
+        title: "Мэтчинг",
+        items: [
+          { german: "das Fach", russian: "предмет, специальность, профессия" },
+          {
+            german: "das Hauptgebäude",
+            russian: "главное здание, главный корпус",
+          },
+          { german: "das Gebäude", russian: "здание, корпус" },
+          { german: "das Studienjahr", russian: "учебный год, курс(в ВУЗе)" },
+          { german: "es gibt", russian: "есть, имеется" },
+          { german: "gefallen", russian: "нравиться" },
+          { german: "miteinander sprechen", russian: "говорить друг с другом" },
+          { german: "Filme schauen", russian: "смотреть фильмы" },
+          {
+            german: "verschiedene Seminare besuchen",
+            russian: "разные семинары посещать",
+          },
+          { german: "erzählen über", russian: "рассказывать о" },
+          { german: "effizient", russian: "эффективный, действенный" },
+          { german: "auswählen", russian: "выбирать" },
+          { german: "kommunizieren", russian: "общаться" },
+          { german: "inspirieren", russian: "вдохновлять, инспирировать" },
+          {
+            german: "in einer internationalen Schule arbeiten",
+            russian: "работать в одной из международных школ",
+          },
+          { german: "verbessern", russian: "улучшать" },
+          { german: "vielleicht", russian: "может быть, возможно" },
+          {
+            german: "als Deutschlehrer arbeiten",
+            russian: "работать как учитель немецкого",
+          },
+          { german: "die Budget Abteilung", russian: "бюджетное отделение" },
+          { german: "das Studentengebühr", russian: "студенческие сборы" },
+          {
+            german: "einen Test gut bestehen",
+            russian: "пройти тест хорошо, хорошо сдать тест",
+          },
+          { german: "zahlen", russian: "платить" },
+          { german: "bekommen", russian: "получать" },
+        ],
+      },
+      puzzle: {
+        title: "Пазл",
+        items: [
+          {
+            german: "Ich möchte das Fach wählen.",
+            russian: "Я хочу выбрать этот предмет.",
+            distractors: ["Gebäude", "Hauptgebäude"],
+          },
+          {
+            german: "Im Hauptgebäude gibt es viele Studenten.",
+            russian: "В главном здании много студентов.",
+            distractors: ["das Fach", "das Studienjahr"],
+          },
+          {
+            german: "Wir sprechen miteinander über Projekte.",
+            russian: "Мы говорим друг с другом о проектах.",
+            distractors: ["schauen", "auswählen"],
+          },
+          {
+            german: "Ich möchte einen Test gut bestehen.",
+            russian: "Я хочу хорошо сдать тест.",
+            distractors: ["zahlen", "bekommen"],
+          },
+        ],
+      },
+      text: {
+        title: "Заполните пропуск",
+        items: [
+          {
+            german: "Es __ viele Möglichkeiten hier.",
+            russian: "Здесь есть много возможностей.",
+            content: "gibt",
+            distractors: ["ist", "hat", "macht"],
+          },
+          {
+            german: "Dieser Kurs gefällt mir sehr __.",
+            russian: "Этот курс мне очень нравится.",
+            content: "gefallen",
+            distractors: ["auswählen", "verbessern", "kommunizieren"],
+          },
+          {
+            german: "Ich möchte als Deutschlehrer __.",
+            russian: "Я хочу работать как учитель немецкого.",
+            content: "arbeiten",
+            distractors: ["lernen", "besuchen", "auswählen"],
+          },
+          {
+            german: "Wir können verschiedene Seminare __.",
+            russian: "Мы можем посещать разные семинары.",
+            content: "besuchen",
+            distractors: ["zahlen", "bekommen", "verbessern"],
           },
         ],
       },

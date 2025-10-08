@@ -1,6 +1,6 @@
 export const lesson1 = {
   id: 1,
-  title: "Урок 1: Приветствия",
+  title: "Урок 1 + 2: Приветствия и базовые фразы",
   theory: {
     title: "Теория",
     content:
@@ -12,22 +12,25 @@ export const lesson1 = {
       matching: {
         title: "Мэтчинг",
         items: [
-          { german: "die Cola", russian: "кола" },
-          { german: "die Einladung", russian: "приглашение" },
+          { german: "Hallo", russian: "Привет" },
+          { german: "Guten Tag", russian: "Добрый день" },
+          { german: "Guten Morgen", russian: "Доброе утро" },
+          { german: "Guten Abend", russian: "Добрый вечер" },
+          { german: "Gute Nacht", russian: "Доброй ночи" },
         ],
       },
       puzzle: {
         title: "Пазл",
         items: [
           {
-            german: "Wie heißt deine Mutter?",
-            russian: "Как зовут твою маму?",
-            distractors: ["Wer", "Wo"],
+            german: "Wie geht es dir?",
+            russian: "Как у тебя дела?",
+            distractors: ["Wo", "Wann"],
           },
           {
-            german: "Wann kann ich Einladung bekommen?",
-            russian: "Когда я могу получить приглашение?",
-            distractors: ["Warum", "Wie"],
+            german: "Wie geht es Ihnen?",
+            russian: "Как у Вас дела?",
+            distractors: ["Wer", "Woher"],
           },
         ],
       },
@@ -35,16 +38,16 @@ export const lesson1 = {
         title: "Заполните пропуск",
         items: [
           {
-            german: "Ich gehe nach __.",
-            russian: "После работы я иду домой.",
-            content: "Hause",
-            distractors: ["Arbeit", "Schule", "Park"],
+            german: "___! Schön dich zu sehen.",
+            russian: "Привет! Рад тебя видеть.",
+            content: "Hallo",
+            distractors: ["Guten Abend", "Tschüss", "Bis bald"],
           },
           {
-            german: "Ich möchte deutsche Kultur besser __.",
-            russian: "Я хочу лучше узнать немецкую культуру.",
-            content: "kennenlernen",
-            distractors: ["kennen", "lernen", "studieren"],
+            german: "Ich sage __, wenn ich gehe.",
+            russian: "Я говорю до свидания, когда ухожу.",
+            content: "Auf Wiedersehen",
+            distractors: ["Hallo", "Guten Tag", "Danke"],
           },
         ],
       },
@@ -54,22 +57,37 @@ export const lesson1 = {
       matching: {
         title: "Мэтчинг",
         items: [
-          { german: "kennen", russian: "знать" },
-          { german: "fast", russian: "почти" },
+          { german: "Danke! Gut", russian: "Спасибо! Хорошо" },
+          { german: "Es geht", russian: "Пойдёт" },
+          { german: "Entschuldigung", russian: "Извините" },
+          {
+            german: "Entschuldigen Sie bitte",
+            russian: "Извините, пожалуйста",
+          },
         ],
       },
       puzzle: {
         title: "Пазл",
         items: [
           {
-            german: "Ich kann schon auf Deutsch sprechen.",
-            russian: "Я уже могу говорить на немецком.",
-            distractors: ["noch", "nicht"],
+            german: "Darf ich hinein?",
+            russian: "Могу я войти?",
+            distractors: ["Darf ich hinaus?", "Möchte ich hinein?"],
           },
           {
-            german: "Wo studierst du?",
-            russian: "Где ты учишься?",
-            distractors: ["Wann", "Wie"],
+            german: "Darf ich hinaus?",
+            russian: "Могу я выйти?",
+            distractors: ["Darf ich hinein?", "Kann ich bleiben?"],
+          },
+          {
+            german: "Ich sage Tschüss, wenn ich gehe.",
+            russian: "Я говорю пока, когда ухожу.",
+            distractors: ["Ich sage Hallo", "Ich sage Guten Tag"],
+          },
+          {
+            german: "Bis morgen!",
+            russian: "До завтра!",
+            distractors: ["Bis bald!", "Gute Nacht!"],
           },
         ],
       },
@@ -77,16 +95,16 @@ export const lesson1 = {
         title: "Заполните пропуск",
         items: [
           {
-            german: "Alles ist __ Ordnung.",
-            russian: "Всё в порядке.",
-            content: "in",
-            distractors: ["auf", "bei", "mit"],
+            german: "Ich sage __, wenn ich gehe.",
+            russian: "Я говорю пока, когда ухожу.",
+            content: "Tschüss",
+            distractors: ["Hallo", "Danke", "Guten Abend"],
           },
           {
-            german: "Warum gibst du so viel __?",
-            russian: "Почему ты тратишь так много?",
-            content: "aus",
-            distractors: ["an", "mit", "für"],
+            german: "__ morgen!",
+            russian: "До завтра!",
+            content: "Bis",
+            distractors: ["Guten", "Auf", "Ja"],
           },
         ],
       },
@@ -96,22 +114,43 @@ export const lesson1 = {
       matching: {
         title: "Мэтчинг",
         items: [
-          { german: "gegen", russian: "против; около" },
-          { german: "das Büro", russian: "офис" },
+          { german: "machen", russian: "делать" },
+          { german: "spielen", russian: "играть" },
+          { german: "wohnen", russian: "жить" },
+          { german: "hören", russian: "слушать" },
+          { german: "kommen", russian: "приходить" },
+          { german: "lernen", russian: "учиться" },
+          { german: "lieben", russian: "любить" },
+          { german: "fragen", russian: "спрашивать" },
+          { german: "lügen", russian: "лгать" },
+          { german: "heißen", russian: "зваться, называться" },
         ],
       },
       puzzle: {
         title: "Пазл",
         items: [
           {
-            german: "Er hat bestimmt viel Arbeit.",
-            russian: "У него, определённо, много работы.",
-            distractors: ["nicht", "wenig"],
+            german: "Ich lerne jeden Tag Deutsch.",
+            russian: "Я учусь немецкому каждый день.",
+            distractors: [
+              "Ich spiele jeden Tag Deutsch.",
+              "Ich höre jeden Tag Deutsch.",
+            ],
           },
           {
-            german: "Macht dir Spaß Deutsch zu lernen?",
-            russian: "Ты с удовольствием учишь немецкий?",
-            distractors: ["nicht", "nie"],
+            german: "Wir spielen oft im Park.",
+            russian: "Мы часто играем в парке.",
+            distractors: ["Wir wohnen oft im Park.", "Wir machen oft im Park."],
+          },
+          {
+            german: "Ich wohne in Berlin.",
+            russian: "Я живу в Берлине.",
+            distractors: ["Ich höre in Berlin.", "Ich lerne in Berlin."],
+          },
+          {
+            german: "Wie heißt du?",
+            russian: "Как тебя зовут?",
+            distractors: ["Wie liebst du?", "Wie lernst du?"],
           },
         ],
       },
@@ -119,16 +158,16 @@ export const lesson1 = {
         title: "Заполните пропуск",
         items: [
           {
-            german: "Mein Arbeitstag beginnt __ 9 Uhr.",
-            russian: "Мой рабочий день начинается в 9 часов.",
-            content: "um",
-            distractors: ["an", "bei", "gegen"],
+            german: "Ich __ in Berlin.",
+            russian: "Я живу в Берлине.",
+            content: "wohne",
+            distractors: ["spiele", "komme", "mache"],
           },
           {
-            german: "Ich bin __ diese Idee.",
-            russian: "Я против этой идеи.",
-            content: "gegen",
-            distractors: ["für", "mit", "bei"],
+            german: "Wie __ du?",
+            russian: "Как тебя зовут?",
+            content: "heißt",
+            distractors: ["liebst", "fragst", "lernst"],
           },
         ],
       },
@@ -136,6 +175,6 @@ export const lesson1 = {
   },
   audio: {
     title: "Аудирование",
-    src: "/audio/lesson2.mp3",
+    src: "/audio/lesson1.mp3",
   },
 };

@@ -1,8 +1,8 @@
 // RepeatFavoritesMatching.jsx
 import { useState, useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setQueue, markCorrect, markWrong } from "../../store/repeatSlice";
-import AudioPlayer from "../../components/UI/AudioPlayer";
+import { setQueue, markCorrect, markWrong } from "../../../store/repeatSlice";
+import AudioPlayer from "../../../components/UI/AudioPlayer";
 
 function MatchingFavorites({ pageSize = 5 }) {
   const dispatch = useDispatch();
@@ -28,6 +28,7 @@ function MatchingFavorites({ pageSize = 5 }) {
     return arr;
   };
 
+  // Загружаем очередь из избранного
   useEffect(() => {
     if (favorites.length) dispatch(setQueue(favorites));
   }, [favorites, dispatch]);
@@ -55,9 +56,8 @@ function MatchingFavorites({ pageSize = 5 }) {
     queue.find((w) => w.german === german)?.russian === russian;
 
   const playSound = (correct = true) => {
-    const audio = new Audio(
-      correct ? "/sounds/correct.mp3" : "/sounds/wrong.mp3"
-    );
+    const audioPath = correct ? "/sounds/correct.mp3" : "/sounds/wrong.mp3";
+    const audio = new Audio(audioPath);
     audio.play().catch((err) => console.log("Ошибка воспроизведения:", err));
   };
 
@@ -72,18 +72,14 @@ function MatchingFavorites({ pageSize = 5 }) {
         setMatches((prev) => ({ ...prev, [selectedLeft]: value }));
         setSelectedLeft(null);
         dispatch(markCorrect());
-
-        playSound(true); // ✅ звук при правильном ответе
-
+        playSound(true);
         setHighlightWord(selectedLeft);
         setTimeout(() => setHighlightWord(null), 600);
       } else {
         setShakeWord(selectedLeft);
         setWrongWord(selectedLeft);
         dispatch(markWrong());
-
-        playSound(false); // ✅ звук при неправильном ответе
-
+        playSound(false);
         setTimeout(() => setShakeWord(null), 400);
         setTimeout(() => setWrongWord(null), 600);
       }
@@ -144,7 +140,7 @@ function MatchingFavorites({ pageSize = 5 }) {
     ].join(" ");
   };
 
-  const getRightButtonClasses = (word, idx) => {
+  const getRightButtonClasses = (word) => {
     const leftKey = Object.keys(matches).find((k) => matches[k] === word);
     const disabled = !!leftKey || previewMode || !selectedLeft;
 
@@ -170,10 +166,10 @@ function MatchingFavorites({ pageSize = 5 }) {
         Повторение избранного
       </h2>
 
-      {/* Прогресс */}
-      <div className="w-full bg-gray-200 rounded-full h-3 mb-4">
+      {/* Унифицированный прогресс-бар */}
+      <div className="w-full bg-gray-200 rounded-full h-4 mb-4">
         <div
-          className="bg-blue-500 h-3 rounded-full transition-all duration-500"
+          className="bg-blue-500 h-4 rounded-full transition-all duration-500"
           style={{
             width: `${(Object.keys(matches).length / pageItems.length) * 100}%`,
           }}
@@ -248,7 +244,7 @@ function MatchingFavorites({ pageSize = 5 }) {
                 key={word + idx}
                 disabled={!!matches[word] || previewMode || !selectedLeft}
                 onClick={() => handleSelect("right", word)}
-                className={getRightButtonClasses(word, idx)}
+                className={getRightButtonClasses(word)}
               >
                 🇷🇺 {word}
               </button>

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useImperativeHandle, forwardRef } from "react";
 
-function AudioPlayer({ word }) {
+const AudioPlayer = forwardRef(({ word }, ref) => {
   const speak = () => {
     if (!word) return;
 
@@ -8,6 +8,11 @@ function AudioPlayer({ word }) {
     utterance.lang = "de-DE"; // немецкий язык
     speechSynthesis.speak(utterance);
   };
+
+  // expose speak() через ref
+  useImperativeHandle(ref, () => ({
+    play: speak,
+  }));
 
   return (
     <button
@@ -18,6 +23,6 @@ function AudioPlayer({ word }) {
       🔊
     </button>
   );
-}
+});
 
 export default AudioPlayer;

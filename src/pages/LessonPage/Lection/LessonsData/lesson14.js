@@ -1,6 +1,11 @@
-export const lesson12 = {
+export const lesson14 = {
   id: 12,
-  title: "Урок 14: Новые слова и выражения",
+  title: "Lektion 14: Время, помещения и повседневные действия (4 уровень)",
+  theory: {
+    title: "Теория",
+    content:
+      "Новые немецкие слова с переводом на русский, примеры предложений и использование в контексте.",
+  },
   levels: {
     level1: {
       title: "Уровень 1",
@@ -15,45 +20,41 @@ export const lesson12 = {
           { german: "das Zimmer", russian: "комната" },
           { german: "der Tisch", russian: "стол" },
           { german: "die Küche", russian: "кухня" },
-          { german: "die Wohnung", russian: "квартира" },
-          { german: "der Fußbodenbelag", russian: "линолеум" },
         ],
       },
-      puzzle: { title: "Пазл", items: [] },
-      text: { title: "Заполните пропуск", items: [] },
-      typing: {
-        title: "Проверка написания",
+      puzzle: {
+        title: "Пазл",
         items: [
           {
-            german: "der Montag",
-            russian: "понедельник",
-            content: "der Montag",
+            german: "Am Montag habe ich einen Termin.",
+            russian: "В понедельник у меня встреча.",
+            distractors: ["Dienstag", "Erste"],
           },
           {
-            german: "der Dienstag",
-            russian: "вторник",
-            content: "der Dienstag",
+            german: "Welches Datum haben wir heute?",
+            russian: "Какое сегодня число?",
+            distractors: ["Fenster", "Zimmer"],
           },
-          { german: "der Erste", russian: "первый", content: "der Erste" },
-          { german: "das Datum", russian: "дата, даты", content: "das Datum" },
-          { german: "das Fenster", russian: "окно", content: "das Fenster" },
-          { german: "das Zimmer", russian: "комната", content: "das Zimmer" },
-          { german: "der Tisch", russian: "стол", content: "der Tisch" },
-          { german: "die Küche", russian: "кухня", content: "die Küche" },
+        ],
+      },
+      text: {
+        title: "Заполните пропуск",
+        items: [
           {
-            german: "die Wohnung",
-            russian: "квартира",
-            content: "die Wohnung",
+            german: "Die Wohnung ist sehr __.",
+            russian: "Квартира очень просторная.",
+            content: "geräumig",
+            distractors: ["klein", "schön"],
           },
           {
-            german: "der Fußbodenbelag",
-            russian: "линолеум",
-            content: "der Fußbodenbelag",
+            german: "Ich koche gerne in der __.",
+            russian: "Мне нравится готовить на кухне.",
+            content: "Küche",
+            distractors: ["Zimmer", "Wohnung"],
           },
         ],
       },
     },
-
     level2: {
       title: "Уровень 2",
       matching: {
@@ -67,50 +68,47 @@ export const lesson12 = {
           { german: "warten", russian: "ждать" },
           { german: "suchen", russian: "искать" },
           { german: "mitbringen", russian: "приносить с собой" },
-          { german: "sich bemühen", russian: "стараться" },
-          { german: "von", russian: "от, из" },
         ],
       },
-      puzzle: { title: "Пазл", items: [] },
-      text: { title: "Заполните пропуск", items: [] },
-      typing: {
-        title: "Проверка написания",
+      puzzle: {
+        title: "Пазл",
         items: [
           {
-            german: "mitnehmen",
-            russian: "брать с собой",
-            content: "mitnehmen",
-          },
-          { german: "kaufen", russian: "покупать", content: "kaufen" },
-          { german: "angucken", russian: "глядеть", content: "angucken" },
-          {
-            german: "sollen",
-            russian: "быть обязанным, быть должным",
-            content: "sollen",
-          },
-          { german: "hingucken", russian: "смотреть", content: "hingucken" },
-          { german: "warten", russian: "ждать", content: "warten" },
-          { german: "suchen", russian: "искать", content: "suchen" },
-          {
-            german: "mitbringen",
-            russian: "приносить с собой",
-            content: "mitbringen",
+            german: "Kannst du bitte das Buch bringen?",
+            russian: "Можешь, пожалуйста, принести книгу?",
+            distractors: ["mitnehmen", "kaufen"],
           },
           {
-            german: "sich bemühen",
-            russian: "стараться",
-            content: "sich bemühen",
+            german: "Wir müssen noch zehn Minuten warten.",
+            russian: "Нам нужно подождать еще десять минут.",
+            distractors: ["suchen", "angucken"],
           },
-          { german: "von", russian: "от, из", content: "von" },
+        ],
+      },
+      text: {
+        title: "Заполните пропуск",
+        items: [
+          {
+            german: "Du __ deine Hausaufgaben machen.",
+            russian: "Ты должен сделать свои домашние задания.",
+            content: "sollst",
+            distractors: ["kaufst", "gehst"],
+          },
+          {
+            german: "Ich __ mich, Deutsch gut zu lernen.",
+            russian: "Я стараюсь хорошо учить немецкий.",
+            content: "bemühe",
+            distractors: ["warten", "suchen"],
+          },
         ],
       },
     },
-
     level3: {
       title: "Уровень 3",
       matching: {
         title: "Мэтчинг",
         items: [
+          { german: "von", russian: "от, из" },
           { german: "in", russian: "в" },
           { german: "bis", russian: "до" },
           { german: "zu", russian: "к" },
@@ -135,57 +133,94 @@ export const lesson12 = {
           { german: "möglicherweise", russian: "может быть" },
         ],
       },
-      puzzle: { title: "Пазл", items: [] },
-      text: { title: "Заполните пропуск", items: [] },
-      typing: {
-        title: "Проверка написания",
+      puzzle: {
+        title: "Пазл",
         items: [
-          { german: "in", russian: "в", content: "in" },
-          { german: "bis", russian: "до", content: "bis" },
-          { german: "zu", russian: "к", content: "zu" },
-          { german: "um", russian: "около", content: "um" },
-          { german: "nach", russian: "после", content: "nach" },
-          { german: "für", russian: "для, за", content: "für" },
-          { german: "oder", russian: "или, либо", content: "oder" },
-          { german: "mit", russian: "с", content: "mit" },
-          { german: "ab", russian: "начиная с", content: "ab" },
-          { german: "sozusagen", russian: "так сказать", content: "sozusagen" },
           {
-            german: "übrigens",
-            russian: "кстати, к слову",
-            content: "übrigens",
+            german: "Ich gehe an die Haltestelle.",
+            russian: "Я иду на автобусную остановку.",
+            distractors: ["um", "mit"],
           },
           {
-            german: "wahrscheinlich",
-            russian: "вероятно",
+            german: "Wir treffen uns an dem Kino.",
+            russian: "Мы встречаемся около кино.",
+            distractors: ["von", "zu"],
+          },
+        ],
+      },
+      text: {
+        title: "Заполните пропуск",
+        items: [
+          {
+            german:
+              "__ versteht sich von selbst, dass man pünktlich sein soll.",
+            russian: "Само собой разумеется, что нужно быть пунктуальным.",
+            content: "Es",
+            distractors: ["Wir", "Ihr"],
+          },
+          {
+            german: "Das Wetter ist heute __ schön.",
+            russian: "Погода сегодня, вероятно, хорошая.",
             content: "wahrscheinlich",
+            distractors: ["übrigens", "sozusagen"],
+          },
+        ],
+      },
+    },
+    level4: {
+      title: "Уровень 4 In meiner Freizeit",
+      matching: {
+        title: "Мэтчинг",
+        items: [
+          { german: "wenig", russian: "мало" },
+          { german: "versuchen", russian: "пытаться" },
+          { german: "die Zeit sparen", russian: "экономить время" },
+          { german: "sich beschäftigen", russian: "заниматься" },
+          { german: "verschiedene", russian: "разные, различные" },
+          { german: "zeichnen", russian: "рисовать" },
+          { german: "erleben", russian: "переживать, испытать, познать" },
+          { german: "sich interessieren", russian: "интересоваться" },
+          { german: "der Fußballfan", russian: "фанат футбола" },
+          { german: "die Lieblingsmannschaft", russian: "любимая команда" },
+          { german: "die Weltmeisterschaft", russian: "чемпионат мира" },
+          { german: "die Europameisterschaft", russian: "чемпионат Европы" },
+          { german: "der Torwart", russian: "вратарь" },
+          {
+            german: "eine verantwortungsvolle Aufgabe",
+            russian: "ответственное задание",
+          },
+          { german: "der Amateurfußball", russian: "любительский футбол" },
+          { german: "Glück haben", russian: "иметь удачу" },
+          {
+            german: "Ich wäre gerne ein Fußballer",
+            russian: "был/стал бы охотно футболистом",
+          },
+          { german: "Lieblingswerk", russian: "любимое произведение" },
+          {
+            german: "im Kopf drehen",
+            russian: "рисовать / прокручивать в голове",
+          },
+        ],
+      },
+      puzzle: {
+        title: "Пазл",
+        items: [
+          {
+            german: "Ich spiele jeden Tag Fußball.",
+            russian: "Я играю в футбол каждый день.",
           },
           {
-            german: "offen gesagt",
-            russian: "откровенно говоря",
-            content: "offen gesagt",
+            german:
+              "Ein Fußballfan unterstützt immer seine Lieblingsmannschaft.",
+            russian: "Фанат футбола всегда поддерживает свою любимую команду.",
           },
           {
-            german: "ehrlich gesagt",
-            russian: "честно говоря",
-            content: "ehrlich gesagt",
-          },
-          { german: "außerdem", russian: "кроме того", content: "außerdem" },
-          { german: "überhaupt", russian: "вообще", content: "überhaupt" },
-          {
-            german: "auf jeden Fall",
-            russian: "в любом случае",
-            content: "auf jeden Fall",
+            german: "Ich habe Glück beim Fußball.",
+            russian: "Мне везет в футболе.",
           },
           {
-            german: "es versteht sich von selbst",
-            russian: "само собой разумеется",
-            content: "es versteht sich von selbst",
-          },
-          {
-            german: "möglicherweise",
-            russian: "может быть",
-            content: "möglicherweise",
+            german: "Ich liebe mein Lieblingswerk.",
+            russian: "Я люблю своё любимое произведение.",
           },
         ],
       },
@@ -193,6 +228,6 @@ export const lesson12 = {
   },
   audio: {
     title: "Аудирование",
-    src: "/audio/lesson10.mp3",
+    src: "/audio/lesson14.mp3",
   },
 };
