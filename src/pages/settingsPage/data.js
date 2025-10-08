@@ -412,7 +412,7 @@ const data = {
         word: "meine",
         sentence: "Ich sehe meine Freunde.",
         translation: "Я вижу своих друзей.",
-        note: "Притяжательное множественное — мои.",
+        note: "Притяжательное во множественном числе — мои.",
       },
       {
         word: "diese",
@@ -643,6 +643,544 @@ const data = {
       },
     ],
   },
+
+  pairsExercise: [
+    // ---------------- Nominativ ----------------
+    // Определённые
+    {
+      question:
+        "Выберите правильный определённый артикль для 'Mann' в Nominativ:",
+      options: ["der", "die", "das"],
+      answer: "der",
+      explanation:
+        "Мужской род, именительный падеж — определённый артикль 'der'.",
+    },
+    {
+      question:
+        "Выберите правильный определённый артикль для 'Frau' в Nominativ:",
+      options: ["die", "der", "das"],
+      answer: "die",
+      explanation:
+        "Женский род, именительный падеж — определённый артикль 'die'.",
+    },
+    {
+      question:
+        "Выберите правильный определённый артикль для 'Kind' в Nominativ:",
+      options: ["das", "der", "die"],
+      answer: "das",
+      explanation:
+        "Средний род, именительный падеж — определённый артикль 'das'.",
+    },
+    {
+      question:
+        "Выберите правильный определённый артикль для 'Kinder' в Nominativ:",
+      options: ["die", "der", "das"],
+      answer: "die",
+      explanation:
+        "Множественное число, именительный падеж — определённый артикль 'die'.",
+    },
+
+    // Неопределённые
+    {
+      question:
+        "Выберите правильный неопределённый артикль для 'Hund' в Nominativ:",
+      options: ["ein", "eine", "einen"],
+      answer: "ein",
+      explanation:
+        "Мужской род, именительный падеж — неопределённый артикль 'ein'.",
+    },
+    {
+      question:
+        "Выберите правильный неопределённый артикль для 'Katze' в Nominativ:",
+      options: ["eine", "ein", "einer"],
+      answer: "eine",
+      explanation:
+        "Женский род, именительный падеж — неопределённый артикль 'eine'.",
+    },
+    {
+      question:
+        "Выберите правильный неопределённый артикль для 'Haus' в Nominativ:",
+      options: ["ein", "eine", "eines"],
+      answer: "ein",
+      explanation:
+        "Средний род, именительный падеж — неопределённый артикль 'ein'.",
+    },
+
+    // Отрицательные
+    {
+      question:
+        "Выберите правильный отрицательный артикль для 'Lehrer' в Nominativ:",
+      options: ["kein", "keine", "keinen"],
+      answer: "kein",
+      explanation:
+        "Мужской род, именительный падеж — отрицательный артикль 'kein'.",
+    },
+    {
+      question:
+        "Выберите правильный отрицательный артикль для 'Blume' в Nominativ:",
+      options: ["keine", "kein", "keiner"],
+      answer: "keine",
+      explanation:
+        "Женский род, именительный падеж — отрицательный артикль 'keine'.",
+    },
+    {
+      question:
+        "Выберите правильный отрицательный артикль для 'Auto' в Nominativ:",
+      options: ["kein", "keine", "keines"],
+      answer: "kein",
+      explanation:
+        "Средний род, именительный падеж — отрицательный артикль 'kein'.",
+    },
+
+    // Притяжательные
+    {
+      question: "Выберите правильное притяжательное для 'Freund' в Nominativ:",
+      options: ["mein", "dein", "sein"],
+      answer: "mein",
+      explanation: "Мужской род, именительный падеж — притяжательное 'мой'.",
+    },
+    {
+      question:
+        "Выберите правильное притяжательное для 'Schwester' в Nominativ:",
+      options: ["meine", "deine", "seine"],
+      answer: "meine",
+      explanation: "Женский род, именительный падеж — притяжательное 'моя'.",
+    },
+    {
+      question: "Выберите правильное притяжательное для 'Kind' в Nominativ:",
+      options: ["mein", "sein", "unser"],
+      answer: "mein",
+      explanation: "Средний род, именительный падеж — притяжательное 'мой'.",
+    },
+    {
+      question: "Выберите правильное притяжательное для 'Freunde' в Nominativ:",
+      options: ["meine", "deine", "unsere"],
+      answer: "meine",
+      explanation:
+        "Множественное число, именительный падеж — притяжательное 'мои'.",
+    },
+
+    // Вежливые формы
+    {
+      question:
+        "Выберите правильное вежливое притяжательное для 'Chef' в Nominativ:",
+      options: ["Ihr", "Ihre", "Ihren"],
+      answer: "Ihr",
+      explanation: "Вежливая форма, именительный падеж — 'Ihr'.",
+    },
+    {
+      question:
+        "Выберите правильное вежливое притяжательное для 'Chefin' в Akkusativ:",
+      options: ["Ihre", "Ihr", "Ihren"],
+      answer: "Ihre",
+      explanation: "Вежливая форма, винительный падеж — 'Ihre'.",
+    },
+    {
+      question:
+        "Выберите правильное вежливое притяжательное для 'Chef' в Dativ:",
+      options: ["Ihrem", "Ihr", "Ihren"],
+      answer: "Ihrem",
+      explanation: "Вежливая форма, дательный падеж — 'Ihrem'.",
+    },
+
+    // Указательные
+    {
+      question: "Выберите правильное указательное для 'Mann' в Nominativ:",
+      options: ["dieser", "diese", "dieses"],
+      answer: "dieser",
+      explanation: "Мужской род, именительный падеж — указательное 'dieser'.",
+    },
+    {
+      question: "Выберите правильное указательное для 'Frau' в Nominativ:",
+      options: ["diese", "dieser", "dieses"],
+      answer: "diese",
+      explanation: "Женский род, именительный падеж — указательное 'diese'.",
+    },
+    {
+      question: "Выберите правильное указательное для 'Kind' в Nominativ:",
+      options: ["dieses", "dieser", "diese"],
+      answer: "dieses",
+      explanation: "Средний род, именительный падеж — указательное 'dieses'.",
+    },
+    {
+      question: "Выберите правильное указательное для 'Kinder' в Nominativ:",
+      options: ["diese", "dieser", "dieses"],
+      answer: "diese",
+      explanation:
+        "Множественное число, именительный падеж — указательное 'diese'.",
+    },
+
+    // Вопросительные
+    {
+      question: "Выберите правильное вопросительное для 'Mann' в Nominativ:",
+      options: ["welcher", "wer", "wie"],
+      answer: "welcher",
+      explanation:
+        "Мужской род, именительный падеж — вопросительное 'welcher'.",
+    },
+    {
+      question: "Выберите правильное вопросительное для 'Frau' в Nominativ:",
+      options: ["welche", "wer", "wie"],
+      answer: "welche",
+      explanation: "Женский род, именительный падеж — вопросительное 'welche'.",
+    },
+    {
+      question: "Выберите правильное вопросительное для 'Kind' в Nominativ:",
+      options: ["welches", "wer", "wie"],
+      answer: "welches",
+      explanation:
+        "Средний род, именительный падеж — вопросительное 'welches'.",
+    },
+    {
+      question: "Выберите правильное вопросительное для 'Kinder' в Nominativ:",
+      options: ["welche", "wer", "wie"],
+      answer: "welche",
+      explanation:
+        "Множественное число, именительный падеж — вопросительное 'welche'.",
+    },
+
+    // ---------------- Akkusativ ----------------
+    // Определённые
+    {
+      question:
+        "Выберите правильный определённый артикль для 'Mann' в Akkusativ:",
+      options: ["den", "der", "das"],
+      answer: "den",
+      explanation:
+        "Мужской род, винительный падеж — определённый артикль 'den'.",
+    },
+    {
+      question:
+        "Выберите правильный определённый артикль для 'Frau' в Akkusativ:",
+      options: ["die", "der", "das"],
+      answer: "die",
+      explanation:
+        "Женский род, винительный падеж — определённый артикль 'die'.",
+    },
+    {
+      question:
+        "Выберите правильный определённый артикль для 'Kind' в Akkusativ:",
+      options: ["das", "der", "die"],
+      answer: "das",
+      explanation:
+        "Средний род, винительный падеж — определённый артикль 'das'.",
+    },
+    {
+      question:
+        "Выберите правильный определённый артикль для 'Kinder' в Akkusativ:",
+      options: ["die", "der", "das"],
+      answer: "die",
+      explanation:
+        "Множественное число, винительный падеж — определённый артикль 'die'.",
+    },
+
+    // Неопределённые
+    {
+      question:
+        "Выберите правильный неопределённый артикль для 'Hund' в Akkusativ:",
+      options: ["einen", "ein", "eine"],
+      answer: "einen",
+      explanation:
+        "Мужской род, винительный падеж — неопределённый артикль 'einen'.",
+    },
+    {
+      question:
+        "Выберите правильный неопределённый артикль для 'Katze' в Akkusativ:",
+      options: ["eine", "ein", "einer"],
+      answer: "eine",
+      explanation:
+        "Женский род, винительный падеж — неопределённый артикль 'eine'.",
+    },
+    {
+      question:
+        "Выберите правильный неопределённый артикль для 'Haus' в Akkusativ:",
+      options: ["ein", "eine", "eines"],
+      answer: "ein",
+      explanation:
+        "Средний род, винительный падеж — неопределённый артикль 'ein'.",
+    },
+
+    // Отрицательные
+    {
+      question:
+        "Выберите правильный отрицательный артикль для 'Lehrer' в Akkusativ:",
+      options: ["keinen", "kein", "keine"],
+      answer: "keinen",
+      explanation:
+        "Мужской род, винительный падеж — отрицательный артикль 'keinen'.",
+    },
+    {
+      question:
+        "Выберите правильный отрицательный артикль для 'Blume' в Akkusativ:",
+      options: ["keine", "kein", "keiner"],
+      answer: "keine",
+      explanation:
+        "Женский род, винительный падеж — отрицательный артикль 'keine'.",
+    },
+    {
+      question:
+        "Выберите правильный отрицательный артикль для 'Auto' в Akkusativ:",
+      options: ["kein", "keine", "keines"],
+      answer: "kein",
+      explanation:
+        "Средний род, винительный падеж — отрицательный артикль 'kein'.",
+    },
+
+    // Притяжательные
+    {
+      question: "Выберите правильное притяжательное для 'Freund' в Akkusativ:",
+      options: ["meinen", "deinen", "seinen"],
+      answer: "meinen",
+      explanation: "Мужской род, винительный падеж — притяжательное 'мой'.",
+    },
+    {
+      question:
+        "Выберите правильное притяжательное для 'Schwester' в Akkusativ:",
+      options: ["meine", "deine", "seine"],
+      answer: "meine",
+      explanation: "Женский род, винительный падеж — притяжательное 'моя'.",
+    },
+    {
+      question: "Выберите правильное притяжательное для 'Kind' в Akkusativ:",
+      options: ["mein", "sein", "unser"],
+      answer: "mein",
+      explanation: "Средний род, винительный падеж — притяжательное 'мой'.",
+    },
+    {
+      question: "Выберите правильное притяжательное для 'Freunde' в Akkusativ:",
+      options: ["meine", "deine", "unsere"],
+      answer: "meine",
+      explanation:
+        "Множественное число, винительный падеж — притяжательное 'мои'.",
+    },
+
+    // Указательные
+    {
+      question: "Выберите правильное указательное для 'Mann' в Akkusativ:",
+      options: ["diesen", "dieser", "dieses"],
+      answer: "diesen",
+      explanation: "Мужской род, винительный падеж — указательное 'diesen'.",
+    },
+    {
+      question: "Выберите правильное указательное для 'Frau' в Akkusativ:",
+      options: ["diese", "dieser", "dieses"],
+      answer: "diese",
+      explanation: "Женский род, винительный падеж — указательное 'diese'.",
+    },
+    {
+      question: "Выберите правильное указательное для 'Kind' в Akkusativ:",
+      options: ["dieses", "dieser", "diese"],
+      answer: "dieses",
+      explanation: "Средний род, винительный падеж — указательное 'dieses'.",
+    },
+    {
+      question: "Выберите правильное указательное для 'Kinder' в Akkusativ:",
+      options: ["diese", "dieser", "dieses"],
+      answer: "diese",
+      explanation:
+        "Множественное число, винительный падеж — указательное 'diese'.",
+    },
+
+    // Вопросительные
+    {
+      question: "Выберите правильное вопросительное для 'Mann' в Akkusativ:",
+      options: ["welchen", "wer", "wie"],
+      answer: "welchen",
+      explanation: "Мужской род, винительный падеж — вопросительное 'welchen'.",
+    },
+    {
+      question: "Выберите правильное вопросительное для 'Frau' в Akkusativ:",
+      options: ["welche", "wer", "wie"],
+      answer: "welche",
+      explanation: "Женский род, винительный падеж — вопросительное 'welche'.",
+    },
+    {
+      question: "Выберите правильное вопросительное для 'Kind' в Akkusativ:",
+      options: ["welches", "wer", "wie"],
+      answer: "welches",
+      explanation: "Средний род, винительный падеж — вопросительное 'welches'.",
+    },
+    {
+      question: "Выберите правильное вопросительное для 'Kinder' в Akkusativ:",
+      options: ["welche", "wer", "wie"],
+      answer: "welche",
+      explanation:
+        "Множественное число, винительный падеж — вопросительное 'welche'.",
+    }, // ---------------- Dativ ----------------
+    // Определённые
+    {
+      question: "Выберите правильный определённый артикль для 'Mann' в Dativ:",
+      options: ["dem", "der", "den"],
+      answer: "dem",
+      explanation: "Мужской род, дательный падеж — определённый артикль 'dem'.",
+    },
+    {
+      question: "Выберите правильный определённый артикль для 'Frau' в Dativ:",
+      options: ["der", "dem", "den"],
+      answer: "der",
+      explanation: "Женский род, дательный падеж — определённый артикль 'der'.",
+    },
+    {
+      question: "Выберите правильный определённый артикль для 'Kind' в Dativ:",
+      options: ["dem", "der", "den"],
+      answer: "dem",
+      explanation: "Средний род, дательный падеж — определённый артикль 'dem'.",
+    },
+    {
+      question:
+        "Выберите правильный определённый артикль для 'Kinder' в Dativ:",
+      options: ["den", "der", "dem"],
+      answer: "den",
+      explanation:
+        "Множественное число, дательный падеж — определённый артикль 'den'.",
+    },
+
+    // Неопределённые
+    {
+      question:
+        "Выберите правильный неопределённый артикль для 'Hund' в Dativ:",
+      options: ["einem", "ein", "eine"],
+      answer: "einem",
+      explanation:
+        "Мужской род, дательный падеж — неопределённый артикль 'einem'.",
+    },
+    {
+      question:
+        "Выберите правильный неопределённый артикль для 'Katze' в Dativ:",
+      options: ["einer", "ein", "eine"],
+      answer: "einer",
+      explanation:
+        "Женский род, дательный падеж — неопределённый артикль 'einer'.",
+    },
+    {
+      question:
+        "Выберите правильный неопределённый артикль для 'Haus' в Dativ:",
+      options: ["einem", "ein", "eine"],
+      answer: "einem",
+      explanation:
+        "Средний род, дательный падеж — неопределённый артикль 'einem'.",
+    }, // Отрицательные (продолжение)
+    {
+      question:
+        "Выберите правильный отрицательный артикль для 'Blume' в Dativ:",
+      options: ["keiner", "keine", "kein"],
+      answer: "keiner",
+      explanation:
+        "Женский род, дательный падеж — отрицательный артикль 'keiner'.",
+    },
+    {
+      question: "Выберите правильный отрицательный артикль для 'Auto' в Dativ:",
+      options: ["keinem", "kein", "keine"],
+      answer: "keinem",
+      explanation:
+        "Средний род, дательный падеж — отрицательный артикль 'keinem'.",
+    },
+    {
+      question:
+        "Выберите правильный отрицательный артикль для 'Kinder' в Dativ:",
+      options: ["keinen", "keine", "kein"],
+      answer: "keinen",
+      explanation:
+        "Множественное число, дательный падеж — отрицательный артикль 'keinen'.",
+    },
+
+    // Притяжательные
+    {
+      question: "Выберите правильное притяжательное для 'Freund' в Dativ:",
+      options: ["meinem", "deinem", "seinem"],
+      answer: "meinem",
+      explanation: "Мужской род, дательный падеж — притяжательное 'мой'.",
+    },
+    {
+      question: "Выберите правильное притяжательное для 'Schwester' в Dativ:",
+      options: ["meiner", "deiner", "ihrer"],
+      answer: "meiner",
+      explanation: "Женский род, дательный падеж — притяжательное 'моя'.",
+    },
+    {
+      question: "Выберите правильное притяжательное для 'Kind' в Dativ:",
+      options: ["meinem", "seinem", "unserem"],
+      answer: "meinem",
+      explanation: "Средний род, дательный падеж — притяжательное 'мой'.",
+    },
+    {
+      question: "Выберите правильное притяжательное для 'Freunde' в Dativ:",
+      options: ["meinen", "deinen", "unseren"],
+      answer: "meinen",
+      explanation:
+        "Множественное число, дательный падеж — притяжательное 'мои'.",
+    },
+
+    // Вежливые формы
+    {
+      question:
+        "Выберите правильное вежливое притяжательное для 'Chef' в Dativ:",
+      options: ["Ihrem", "Ihr", "Ihren"],
+      answer: "Ihrem",
+      explanation: "Вежливая форма, дательный падеж — 'Ihrem'.",
+    },
+    {
+      question:
+        "Выберите правильное вежливое притяжательное для 'Chefin' в Dativ:",
+      options: ["Ihrer", "Ihr", "Ihren"],
+      answer: "Ihrer",
+      explanation: "Вежливая форма, дательный падеж — 'Ihrer'.",
+    },
+
+    // Указательные
+    {
+      question: "Выберите правильное указательное для 'Mann' в Dativ:",
+      options: ["diesem", "dieser", "diesen"],
+      answer: "diesem",
+      explanation: "Мужской род, дательный падеж — указательное 'diesem'.",
+    },
+    {
+      question: "Выберите правильное указательное для 'Frau' в Dativ:",
+      options: ["dieser", "diesem", "diese"],
+      answer: "dieser",
+      explanation: "Женский род, дательный падеж — указательное 'dieser'.",
+    },
+    {
+      question: "Выберите правильное указательное для 'Kind' в Dativ:",
+      options: ["diesem", "dieser", "dieses"],
+      answer: "diesem",
+      explanation: "Средний род, дательный падеж — указательное 'diesem'.",
+    },
+    {
+      question: "Выберите правильное указательное для 'Kinder' в Dativ:",
+      options: ["diesen", "diesem", "dieser"],
+      answer: "diesen",
+      explanation:
+        "Множественное число, дательный падеж — указательное 'diesen'.",
+    },
+
+    // Вопросительные
+    {
+      question: "Выберите правильное вопросительное для 'Mann' в Dativ:",
+      options: ["welchem", "wer", "wie"],
+      answer: "welchem",
+      explanation: "Мужской род, дательный падеж — вопросительное 'welchem'.",
+    },
+    {
+      question: "Выберите правильное вопросительное для 'Frau' в Dativ:",
+      options: ["welcher", "wer", "wie"],
+      answer: "welcher",
+      explanation: "Женский род, дательный падеж — вопросительное 'welcher'.",
+    },
+    {
+      question: "Выберите правильное вопросительное для 'Kind' в Dativ:",
+      options: ["welchem", "wer", "wie"],
+      answer: "welchem",
+      explanation: "Средний род, дательный падеж — вопросительное 'welchem'.",
+    },
+    {
+      question: "Выберите правильное вопросительное для 'Kinder' в Dativ:",
+      options: ["welchen", "wer", "wie"],
+      answer: "welchen",
+      explanation:
+        "Множественное число, дательный падеж — вопросительное 'welchen'.",
+    },
+  ],
 };
 
 export default data;
