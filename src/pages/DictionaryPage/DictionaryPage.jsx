@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { addFavorite, removeFavorite } from "../../store/favoritesSlice";
 import { allLessons } from "../LessonPage/Lection/allLessons";
+// import MatchingCardUniversal from "./MatchingCardUniversal";
+import RepeatFavorites from "./RepeatFavorites";
 
 // Подсветка поиска
 const highlightMatch = (text, query) => {
   if (!query) return text;
   const regex = new RegExp(`(${query})`, "gi");
-  return text.split(regex).map((part, index) =>
+  return text.split(regex).map((part, idx) =>
     regex.test(part) ? (
-      <span key={index} className="bg-yellow-200">
+      <span key={idx} className="bg-yellow-200">
         {part}
       </span>
     ) : (
@@ -16,103 +20,128 @@ const highlightMatch = (text, query) => {
   );
 };
 
-// Определяем фон карточки по артиклю
+// Цвет карточки по артиклю
 const getCardBg = (text) => {
-  const articleRegex = /^(der|die|das)\s+/i;
-  const match = text.match(articleRegex);
-
-  if (!match) return "bg-gray-50"; // слова без артикля
-
+  const match = text.match(/^(der|die|das)\s+/i);
+  if (!match) return "bg-gray-50";
   const article = match[1].toLowerCase();
-  if (article === "der") return "bg-blue-400";
-  if (article === "die") return "bg-red-400";
-  if (article === "das") return "bg-green-400";
-
+  if (article === "der") return "bg-blue-400 text-white";
+  if (article === "die") return "bg-red-400 text-white";
+  if (article === "das") return "bg-green-400 text-white";
   return "bg-gray-50";
 };
 
 const DictionaryPage = () => {
+  const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.favorites.items);
+
   const [search, setSearch] = useState("");
-  const [selectedWord, setSelectedWord] = useState(null);
+  const [tab, setTab] = useState("all"); // all / favorites / repeat
   const [selectedLesson, setSelectedLesson] = useState("all");
   const [selectedLevel, setSelectedLevel] = useState("all");
 
-  const getDictionaryItems = (lesson) => {
+  // Получаем все слова с уровнями
+  const getDictionaryItems = () => {
     const vocab = [];
-
-    Object.entries(lesson.levels).forEach(([levelKey, level]) => {
-      if (level.matching?.items) {
-        level.matching.items.forEach((item) => {
-          const examples = [];
-          if (level.puzzle?.items) {
-            level.puzzle.items.forEach((p) => {
-              if (p.german.includes(item.german)) {
-                examples.push(p.german + " — " + p.russian);
-              }
-            });
-          }
-          if (level.text?.items) {
-            level.text.items.forEach((t) => {
-              if (t.german.includes(item.german)) {
-                examples.push(t.german + " — " + t.russian);
-              }
-            });
-          }
-
+    allLessons.forEach((lesson) => {
+      Object.entries(lesson.levels).forEach(([levelKey, level]) => {
+        level.matching?.items.forEach((item) => {
           vocab.push({
             german: item.german,
             russian: item.russian,
-            examples,
             lessonTitle: lesson.title,
             levelTitle: level.title,
           });
         });
-      }
+      });
     });
-
-    return Array.from(
-      new Map(vocab.map((item) => [item.german, item])).values()
-    );
+    return vocab;
   };
 
-  const allVocab = allLessons.flatMap((lesson) => getDictionaryItems(lesson));
+  let items = getDictionaryItems();
 
-  const filteredVocab = allVocab
-    .filter(
-      (item) =>
-        (selectedLesson === "all" || item.lessonTitle === selectedLesson) &&
-        (selectedLevel === "all" || item.levelTitle === selectedLevel) &&
-        (item.german.toLowerCase().includes(search.toLowerCase()) ||
-          item.russian.toLowerCase().includes(search.toLowerCase()))
-    )
-    .sort((a, b) => a.german.localeCompare(b.german));
+  if (tab === "favorites") items = favorites;
 
+  if (selectedLesson !== "all")
+    items = items.filter((w) => w.lessonTitle === selectedLesson);
+  if (selectedLevel !== "all")
+    items = items.filter((w) => w.levelTitle === selectedLevel);
+
+  const filtered = items.filter(
+    (item) =>
+      item.german.toLowerCase().includes(search.toLowerCase()) ||
+      item.russian.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const toggleFavorite = (word) => {
+    if (favorites.find((w) => w.german === word.german)) {
+      dispatch(removeFavorite(word));
+    } else {
+      dispatch(addFavorite(word));
+    }
+  };
+
+  // Получаем уровни выбранного урока
   const levelsForLesson =
     selectedLesson === "all"
       ? []
       : Object.values(
-          allLessons.find((l) => l.title === selectedLesson).levels
-        ).map((l) => ({ title: l.title }));
+          allLessons.find((l) => l.title === selectedLesson)?.levels || []
+        ).map((l) => l.title);
 
+  // ————————————————————————————————
+  // Вкладка повторения
+  // ————————————————————————————————
+  if (tab === "repeat") {
+    return (
+      <div className="max-w-5xl mx-auto p-4 sm:p-6">
+        <RepeatFavorites
+          title="Повторение избранного"
+          icon="🔁"
+          useRedux={true} // используем repeatSlice
+          pageSize={5}
+        />
+      </div>
+    );
+  }
+
+  // ————————————————————————————————
+  // Вкладки "Все слова" и "Избранное"
+  // ————————————————————————————————
   return (
-    <div className="max-w-5xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-2 text-center">
-        Словарь всех уроков
-      </h1>
-      <p className="text-center mb-4 text-gray-600">
-        Всего слов: {filteredVocab.length}
-      </p>
+    <div className="max-w-5xl mx-auto p-4 sm:p-6">
+      <h1 className="text-3xl font-bold mb-4 text-center">Словарь</h1>
 
-      <div className="flex flex-col sm:flex-row items-center justify-center mb-4 gap-4">
+      {/* Вкладки */}
+      <div className="flex justify-center gap-2 mb-4 flex-wrap">
+        {["all", "favorites", "repeat"].map((t) => (
+          <button
+            key={t}
+            className={`px-4 py-2 rounded ${
+              tab === t ? "bg-blue-500 text-white" : "bg-gray-200"
+            }`}
+            onClick={() => setTab(t)}
+          >
+            {t === "all"
+              ? "Все слова"
+              : t === "favorites"
+              ? "Избранное"
+              : "Повторение"}
+          </button>
+        ))}
+      </div>
+
+      {/* Поиск и селекты */}
+      <div className="flex flex-col sm:flex-row justify-center gap-2 mb-4 flex-wrap">
         <input
           type="text"
-          placeholder="Поиск по слову или переводу..."
-          className="w-full sm:w-2/3 px-4 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          placeholder="Поиск..."
+          className="px-4 py-2 border rounded flex-1 min-w-[180px]"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
         <select
-          className="w-full sm:w-1/3 px-4 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="px-4 py-2 border rounded min-w-[120px]"
           value={selectedLesson}
           onChange={(e) => {
             setSelectedLesson(e.target.value);
@@ -126,85 +155,58 @@ const DictionaryPage = () => {
             </option>
           ))}
         </select>
+        {levelsForLesson.length > 0 && (
+          <select
+            className="px-4 py-2 border rounded min-w-[120px]"
+            value={selectedLevel}
+            onChange={(e) => setSelectedLevel(e.target.value)}
+          >
+            <option value="all">Все уровни</option>
+            {levelsForLesson.map((lvl, idx) => (
+              <option key={idx} value={lvl}>
+                {lvl}
+              </option>
+            ))}
+          </select>
+        )}
       </div>
 
-      {levelsForLesson.length > 0 && (
-        <div className="flex flex-wrap justify-center gap-2 mb-4">
-          <button
-            className={`px-4 py-1 rounded ${
-              selectedLevel === "all" ? "bg-blue-700 text-white" : "bg-gray-200"
-            }`}
-            onClick={() => setSelectedLevel("all")}
-          >
-            Все уровни
-          </button>
-          {levelsForLesson.map((level, idx) => (
-            <button
-              key={idx}
-              className={`px-4 py-1 rounded ${
-                selectedLevel === level.title
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-200"
-              }`}
-              onClick={() => setSelectedLevel(level.title)}
-            >
-              {level.title}
-            </button>
-          ))}
-        </div>
-      )}
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {filteredVocab.map((item, index) => (
+      {/* Словарь */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {filtered.map((item, idx) => (
           <div
-            key={index}
-            className={`${getCardBg(
+            key={idx}
+            className={`p-4 border rounded flex justify-between items-center ${getCardBg(
               item.german
-            )} p-4 border rounded transition cursor-pointer flex flex-col hover:brightness-95`}
-            onClick={() => setSelectedWord(item)}
+            )}`}
           >
-            <div className="text-white text-sm mb-1">#{index + 1}</div>
-            <div className="text-blue-700 font-medium">
-              {highlightMatch(item.german, search)}
+            <div>
+              <div className="font-medium">
+                {highlightMatch(item.german, search)}
+              </div>
+              <div
+                className={`text-sm ${
+                  getCardBg(item.german).includes("bg-gray")
+                    ? "text-gray-800"
+                    : "text-white"
+                }`}
+              >
+                {highlightMatch(item.russian, search)}
+              </div>
             </div>
-            <div className="text-gray-700">
-              {highlightMatch(item.russian, search)}
-            </div>
-            <div className="text-gray-700 text-xs mt-1">
-              {item.lessonTitle} — {item.levelTitle}
-            </div>
+            <button
+              className={`px-2 py-1 rounded text-white ${
+                favorites.find((w) => w.german === item.german)
+                  ? "bg-red-500"
+                  : "bg-green-500"
+              }`}
+              onClick={() => toggleFavorite(item)}
+            >
+              {favorites.find((w) => w.german === item.german) ? "★" : "☆"}
+            </button>
           </div>
         ))}
       </div>
-
-      {selectedWord && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded shadow-lg max-w-xl w-full relative">
-            <button
-              className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
-              onClick={() => setSelectedWord(null)}
-            >
-              ✕
-            </button>
-            <h2 className="text-2xl font-bold mb-4">{selectedWord.german}</h2>
-            <p className="text-gray-700 mb-4">{selectedWord.russian}</p>
-            {selectedWord.examples.length > 0 ? (
-              <div>
-                <h3 className="font-semibold mb-2">Примеры:</h3>
-                <ul className="list-disc list-inside">
-                  {selectedWord.examples.map((ex, idx) => (
-                    <li key={idx} className="mb-1">
-                      {ex}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : (
-              <p className="text-gray-500">Примеры отсутствуют</p>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 };

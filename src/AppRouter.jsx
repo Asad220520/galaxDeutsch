@@ -53,6 +53,7 @@ const AppRouter = () => {
         {/* Страницы упражнений с уровнями */}
         <Route path="/lesson/:id/theory/:level" element={<TheoryPage />} />
         <Route path="/lesson/:id/matching/:level" element={<MatchingPage />} />
+       
         <Route path="/lesson/:id/puzzle/:level" element={<PuzzlePage />} />
         <Route path="/lesson/:id/audio/:level" element={<AudioPage />} />
         <Route path="/lesson/:id/text/:level" element={<TextPage />} />
