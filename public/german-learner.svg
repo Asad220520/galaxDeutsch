@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-labelledby="titleDesc">
+  <title id="titleDesc">Иконка: изучающий немецкий</title>
+  <!-- фон (круг) -->
+  <circle cx="32" cy="32" r="30" fill="#F8F9FA" stroke="#E6E7E9" stroke-width="2"/>
+  <!-- голова -->
+  <circle cx="22" cy="20" r="8" fill="#FFD9B3" stroke="#D9A875" stroke-width="0.8"/>
+  <!-- туловище (пуловер) -->
+  <path d="M14 34c0-4 8-8 18-8s18 4 18 8v8c0 2-2 4-4 4H18c-2 0-4-2-4-4v-8z"
+        fill="#4E7AC7" opacity="0.95"/>
+  <!-- книга на переднем плане -->
+  <g transform="translate(30,30) rotate(-12)">
+    <rect x="-10" y="0" width="22" height="14" rx="1.2" fill="#FFFFFF" stroke="#2B2F3A" stroke-width="0.9"/>
+    <!-- полоски флага Германии на обложке -->
+    <rect x="-9.2" y="1" width="20.4" height="4" fill="#000000"/>
+    <rect x="-9.2" y="5" width="20.4" height="4" fill="#DD0000"/>
+    <rect x="-9.2" y="9" width="20.4" height="4" fill="#FFCC00"/>
+    <!-- тень страницы -->
+    <path d="M11 0v14l-6-3" fill="#F0F2F5" opacity="0.9"/>
+  </g>
+  <!-- небольшая говорящая метка "DE" (внутр. угол) -->
+  <rect x="40" y="8" width="14" height="10" rx="2" fill="#2B2F3A" opacity="0.95"/>
+  <text x="47" y="15" font-family="Segoe UI, Roboto, Arial, sans-serif" font-size="7" fill="#FFFFFF" font-weight="700">DE</text>
+  <!-- улыбка -->
+  <path d="M19 22 q3 3 6 0" stroke="#A76A3A" stroke-width="1" fill="none" stroke-linecap="round"/>
+</svg>
+
