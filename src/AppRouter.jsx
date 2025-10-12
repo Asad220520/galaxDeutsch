@@ -4,7 +4,6 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import HomePage from "./pages/homePage/HomePage";
 import DictionaryPage from "./pages/DictionaryPage/DictionaryPage";
 import SettingsPage from "./pages/settingsPage/SettingsPage";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
 // Импорт хедера
 import Header from "./components/header/Header";
 // Импорт страниц уроков и упражнений
@@ -18,6 +17,7 @@ import NotFoundPage from "./pages/LessonPage/pages/NotFoundPage";
 import TopikPage from "./pages/LessonPage/Topik/TopikPage";
 import TopikLesson from "./pages/LessonPage/Topik/TopikLesson";
 import TypingPage from "./pages/LessonPage/pages/TypingPage";
+import ArtikelPage from "./pages/ArtikelPage/ArtikelPage";
 
 const AppRouter = () => {
   const location = useLocation();
@@ -40,7 +40,7 @@ const AppRouter = () => {
       {!shouldHideHeader && <Header />}
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/artikel" element={<ArtikelPage />} />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/dictionary" element={<DictionaryPage />} />
         <Route path="/topik-page" element={<TopikPage />} />
