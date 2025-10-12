@@ -27,12 +27,19 @@ export const fullCasesData = {
           ],
           examples: [
             {
-              german: "Der Mann sieht den Hund.",
+              german:
+                "Der Mann sieht den Hund.  (den — AKK, кого? что?)",
               russian: "Мужчина видит собаку.",
             },
             {
-              german: "Der Mann liest ein Buch.",
-              russian: "Мужчина читает книгу.",
+              german:
+                "Ich gebe dem Kind ein Buch.  (dem — DAT, кому?)",
+              russian: "Я даю ребёнку книгу.",
+            },
+            {
+              german:
+                "Das Geschenk gehört dem Mann.  (dem — DAT, кому?)",
+              russian: "Подарок принадлежит мужчине.",
             },
           ],
         },
@@ -48,12 +55,16 @@ export const fullCasesData = {
           ],
           examples: [
             {
-              german: "Die Frau kocht das Abendessen.",
-              russian: "Женщина готовит ужин.",
+              german: "Die Frau liest ein Buch.  (Die — NM, кто? что?)",
+              russian: "Женщина читает книгу.",
             },
             {
-              german: "Die Frau liest eine Zeitung.",
-              russian: "Женщина читает газету.",
+              german: "Ich sehe die Frau.  (die — AKK, кого? что?)",
+              russian: "Я вижу женщину.",
+            },
+            {
+              german: "Ich gebe der Frau ein Buch.  (der — DT, кому?)",
+              russian: "Я даю женщине книгу.",
             },
           ],
         },
@@ -68,21 +79,37 @@ export const fullCasesData = {
             "ребёнку",
           ],
           examples: [
+            // Средний род, единственное число
             {
-              german: "Das Kind spielt im Garten.",
+              german: "Das Kind spielt im Garten.  (Das — NM, кто? что?)",
               russian: "Ребёнок играет в саду.",
             },
-            { german: "Ich sehe das Kind.", russian: "Я вижу ребёнка." },
+            {
+              german: "Ich sehe das Kind.  (das — AKK, кого? что?)",
+              russian: "Я вижу ребёнка.",
+            },
+            {
+              german: "Ich gebe dem Kind ein Buch.  (dem — DT, кому?)",
+              russian: "Я даю ребёнку книгу.",
+            },
           ],
         },
         {
           word: ["die Kinder", "die", "дети", "die", "детей", "den", "детям"],
           examples: [
+            // Множественное число
             {
-              german: "Die Kinder lernen Deutsch.",
-              russian: "Дети учат немецкий.",
+              german: "Die Kinder spielen im Garten.  (Die — NM, кто? что?)",
+              russian: "Дети играют в саду.",
             },
-            { german: "Ich helfe den Kindern.", russian: "Я помогаю детям." },
+            {
+              german: "Ich sehe die Kinder.  (die — AKK, кого? что?)",
+              russian: "Я вижу детей.",
+            },
+            {
+              german: "Ich gebe den Kindern Bücher.  (den — DT, кому?)",
+              russian: "Я даю детям книги.",
+            },
           ],
         },
       ],
@@ -111,12 +138,16 @@ export const fullCasesData = {
           ],
           examples: [
             {
-              german: "Ich sehe einen Mann.",
-              russian: "Я вижу одного мужчину.",
+              german: "Der Mann liest ein Buch.",
+              russian: "Мужчина читает книгу.",
             },
             {
-              german: "Ein Mann hilft dem Kind.",
-              russian: "Один мужчина помогает ребёнку.",
+              german: "Ich sehe den Mann.",
+              russian: "Я вижу мужчину.",
+            },
+            {
+              german: "Ich gebe dem Mann ein Buch.",
+              russian: "Я даю мужчине книгу.",
             },
           ],
         },
@@ -131,10 +162,18 @@ export const fullCasesData = {
             "одной женщине",
           ],
           examples: [
-            { german: "Ich kenne eine Frau.", russian: "Я знаю одну женщину." },
+            // Женский род
             {
-              german: "Eine Frau liest ein Buch.",
-              russian: "Одна женщина читает книгу.",
+              german: "Die Frau liest ein Buch.",
+              russian: "Женщина читает книгу.",
+            },
+            {
+              german: "Ich sehe die Frau.",
+              russian: "Я вижу женщину.",
+            },
+            {
+              german: "Ich gebe der Frau ein Buch.",
+              russian: "Я даю женщине книгу.",
             },
           ],
         },
@@ -149,13 +188,18 @@ export const fullCasesData = {
             "одному дитю",
           ],
           examples: [
+            // Средний род
             {
-              german: "Ein Kind spielt im Park.",
-              russian: "Одно дитя играет в парке.",
+              german: "Das Kind spielt im Garten.",
+              russian: "Ребёнок играет в саду.",
             },
             {
-              german: "Ich gebe einem Kind einen Ball.",
-              russian: "Я даю одному ребёнку мяч.",
+              german: "Ich sehe das Kind.",
+              russian: "Я вижу ребёнка.",
+            },
+            {
+              german: "Ich gebe dem Kind ein Buch.",
+              russian: "Я даю ребёнку книгу.",
             },
           ],
         },
@@ -176,56 +220,155 @@ export const fullCasesData = {
         {
           word: ["ich", "ich", "я", "mich", "меня", "mir", "мне"],
           examples: [
-            { german: "Ich liebe dich.", russian: "Я люблю тебя." },
+            // Именительный падеж (Nominativ) — кто делает действие
             {
-              german: "Ich sehe mich im Spiegel.",
-              russian: "Я вижу себя в зеркале.",
+              german: "Ich lese ein Buch.",
+              russian: "Я читаю книгу.",
+            },
+
+            // Винительный падеж (Akkusativ) — кого/что видят
+            {
+              german: "Er sieht mich.",
+              russian: "Он видит меня.",
+            },
+
+            // Дательный падеж (Dativ) — кому что-то дают
+            {
+              german: "Er gibt mir ein Buch.",
+              russian: "Он даёт мне книгу.",
             },
           ],
         },
         {
           word: ["du", "du", "ты", "dich", "тебя", "dir", "тебе"],
           examples: [
-            { german: "Du siehst mich.", russian: "Ты видишь меня." },
-            { german: "Ich helfe dir.", russian: "Я помогаю тебе." },
+            // Именительный падеж (Nominativ) — кто делает действие
+            {
+              german: "Du liest ein Buch.",
+              russian: "Ты читаешь книгу.",
+            },
+
+            // Винительный падеж (Akkusativ) — кого/что видят
+            {
+              german: "Ich sehe dich.",
+              russian: "Я вижу тебя.",
+            },
+
+            // Дательный падеж (Dativ) — кому что-то дают
+            {
+              german: "Ich gebe dir ein Buch.",
+              russian: "Я даю тебе книгу.",
+            },
           ],
         },
         {
           word: ["er", "er", "он", "ihn", "его", "ihm", "ему"],
           examples: [
-            { german: "Er kennt ihn.", russian: "Он знает его." },
-            { german: "Ich gebe ihm das Buch.", russian: "Я даю ему книгу." },
+            // Именительный падеж (Nominativ) — кто делает действие
+            {
+              german: "Er liest ein Buch.",
+              russian: "Он читает книгу.",
+            },
+
+            // Винительный падеж (Akkusativ) — кого/что видят
+            {
+              german: "Ich sehe ihn.",
+              russian: "Я вижу его.",
+            },
+
+            // Дательный падеж (Dativ) — кому что-то дают
+            {
+              german: "Ich gebe ihm ein Buch.",
+              russian: "Я даю ему книгу.",
+            },
           ],
         },
         {
           word: ["sie", "sie", "она", "sie", "её", "ihr", "ей"],
           examples: [
-            { german: "Ich sehe sie.", russian: "Я вижу её." },
+            // Именительный падеж (Nominativ) — кто делает действие
             {
-              german: "Ich gebe ihr einen Apfel.",
-              russian: "Я даю ей яблоко.",
+              german: "Sie liest ein Buch.",
+              russian: "Она читает книгу.",
+            },
+
+            // Винительный падеж (Akkusativ) — кого/что видят
+            {
+              german: "Ich sehe sie.",
+              russian: "Я вижу её.",
+            },
+
+            // Дательный падеж (Dativ) — кому что-то дают
+            {
+              german: "Ich gebe ihr ein Buch.",
+              russian: "Я даю ей книгу.",
             },
           ],
         },
         {
           word: ["es", "es", "оно", "es", "его/её", "ihm", "ему/ей"],
           examples: [
-            { german: "Ich sehe es.", russian: "Я вижу это." },
-            { german: "Ich helfe ihm.", russian: "Я помогаю ему." },
+            // Именительный падеж (Nominativ) — кто делает действие
+            {
+              german: "Es liest ein Buch.",
+              russian: "Оно читает книгу.",
+            },
+
+            // Винительный падеж (Akkusativ) — кого/что видят
+            {
+              german: "Ich sehe es.",
+              russian: "Я вижу его/её.",
+            },
+
+            // Дательный падеж (Dativ) — кому что-то дают
+            {
+              german: "Ich gebe ihm ein Buch.",
+              russian: "Я даю ему/ей книгу.",
+            },
           ],
         },
         {
           word: ["wir", "wir", "мы", "uns", "нас", "uns", "нам"],
           examples: [
-            { german: "Wir sehen uns.", russian: "Мы видим друг друга." },
-            { german: "Er hilft uns.", russian: "Он помогает нам." },
+            // Именительный падеж (Nominativ) — кто делает действие
+            {
+              german: "Wir lesen ein Buch.",
+              russian: "Мы читаем книгу.",
+            },
+
+            // Винительный падеж (Akkusativ) — кого/что видят
+            {
+              german: "Er sieht uns.",
+              russian: "Он видит нас.",
+            },
+
+            // Дательный падеж (Dativ) — кому что-то дают
+            {
+              german: "Er gibt uns ein Buch.",
+              russian: "Он даёт нам книгу.",
+            },
           ],
         },
         {
           word: ["ihr", "ihr", "вы", "euch", "вас", "euch", "вам"],
           examples: [
-            { german: "Ich sehe euch.", russian: "Я вижу вас." },
-            { german: "Wir helfen euch.", russian: "Мы помогаем вам." },
+            // Именительный падеж (Nominativ) — кто делает действие
+            {
+              german: "Ihr lest ein Buch.",
+              russian: "Вы читаете книгу.",
+            },
+
+            // Винительный падеж (Akkusativ) — кого/что видят
+            {
+              german: "Ich sehe euch.",
+              russian: "Я вижу вас.",
+            },
+
+            // Дательный падеж (Dativ) — кому что-то дают
+            {
+              german: "Ich gebe euch ein Buch.",
+              russian: "Я даю вам книгу.",
+            },
           ],
         },
         {
@@ -239,8 +382,23 @@ export const fullCasesData = {
             "им/Вам",
           ],
           examples: [
-            { german: "Ich sehe sie.", russian: "Я вижу их." },
-            { german: "Ich helfe Ihnen.", russian: "Я помогаю Вам." },
+            // Именительный падеж (Nominativ) — кто делает действие
+            {
+              german: "Sie lesen ein Buch.", // можно "Sie" = они или Вы (вежл.)
+              russian: "Они читают книгу / Вы читаете книгу.",
+            },
+
+            // Винительный падеж (Akkusativ) — кого/что видят
+            {
+              german: "Ich sehe sie/Sie.",
+              russian: "Я вижу их / Вас.",
+            },
+
+            // Дательный падеж (Dativ) — кому что-то дают
+            {
+              german: "Ich gebe ihnen/Ihnen ein Buch.",
+              russian: "Я даю им / Вам книгу.",
+            },
           ],
         },
       ],
@@ -268,13 +426,22 @@ export const fullCasesData = {
             "моему",
           ],
           examples: [
+            // Именительный падеж (Nominativ)
             {
-              german: "Mein Vater liest ein Buch.",
-              russian: "Мой отец читает книгу.",
+              german: "Mein Hund ist groß.",
+              russian: "Моя собака большая.",
             },
+
+            // Винительный падеж (Akkusativ)
             {
-              german: "Ich zeige meinem Freund mein Buch.",
-              russian: "Я показываю мою книгу другу.",
+              german: "Ich sehe meinen Hund.",
+              russian: "Я вижу мою собаку.",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Ich gebe meinem Hund einen Knochen.",
+              russian: "Я даю моей собаке кость.",
             },
           ],
         },
@@ -289,33 +456,66 @@ export const fullCasesData = {
             "твоему",
           ],
           examples: [
-            { german: "Dein Hund ist groß.", russian: "Твоя собака большая." },
+            // Именительный падеж (Nominativ)
             {
-              german: "Ich gebe deinem Bruder das Buch.",
-              russian: "Я даю твоему брату книгу.",
+              german: "Dein Hund ist groß.",
+              russian: "Твоя собака большая.",
+            },
+
+            // Винительный падеж (Akkusativ)
+            {
+              german: "Ich sehe deinen Hund.",
+              russian: "Я вижу твою собаку.",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Ich gebe deinem Hund einen Knochen.",
+              russian: "Я даю твоей собаке кость.",
             },
           ],
         },
         {
           word: ["3 лицо м.", "sein", "его", "seinen", "его", "seinem", "ему"],
           examples: [
+            // Именительный падеж (Nominativ)
             {
-              german: "Sein Auto ist schnell.",
-              russian: "Его машина быстрая.",
+              german: "Sein Hund ist groß.",
+              russian: "Его собака большая.",
             },
+
+            // Винительный падеж (Akkusativ)
             {
-              german: "Ich zeige seinem Freund das Bild.",
-              russian: "Я показываю его другу картину.",
+              german: "Ich sehe seinen Hund.",
+              russian: "Я вижу его собаку.",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Ich gebe seinem Hund einen Knochen.",
+              russian: "Я даю его собаке кость.",
             },
           ],
         },
         {
           word: ["3 лицо ж.", "ihr", "её", "ihre", "её", "ihrer", "ей"],
           examples: [
-            { german: "Ihr Kleid ist schön.", russian: "Её платье красивое." },
+            // Именительный падеж (Nominativ)
             {
-              german: "Ich gebe ihrer Schwester das Buch.",
-              russian: "Я даю её сестре книгу.",
+              german: "Ihr Hund ist groß.",
+              russian: "Её собака большая.",
+            },
+
+            // Винительный падеж (Akkusativ)
+            {
+              german: "Ich sehe ihre Hund.",
+              russian: "Я вижу её собаку.",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Ich gebe ihrer Hund einen Knochen.",
+              russian: "Я даю её собаке кость.",
             },
           ],
         },
@@ -330,10 +530,22 @@ export const fullCasesData = {
             "ему/ей",
           ],
           examples: [
-            { german: "Sein Haus ist groß.", russian: "Его/Её дом большой." },
+            // Именительный падеж (Nominativ)
             {
-              german: "Ich helfe seinem Kind.",
-              russian: "Я помогаю его/её ребёнку.",
+              german: "Sein Buch ist interessant.",
+              russian: "Его/её книга интересная.",
+            },
+
+            // Винительный падеж (Akkusativ)
+            {
+              german: "Ich sehe sein Buch.",
+              russian: "Я вижу его/её книгу.",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Ich gebe seinem Buch einen Umschlag.",
+              russian: "Я даю его/её книге обложку.",
             },
           ],
         },
@@ -348,13 +560,22 @@ export const fullCasesData = {
             "нашему",
           ],
           examples: [
+            // Именительный падеж (Nominativ)
             {
-              german: "Unser Lehrer ist nett.",
-              russian: "Наш учитель хороший.",
+              german: "Unser Hund ist groß.",
+              russian: "Наша собака большая.",
             },
+
+            // Винительный падеж (Akkusativ)
             {
-              german: "Ich zeige unserem Freund das Bild.",
-              russian: "Я показываю нашему другу картину.",
+              german: "Ich sehe unseren Hund.",
+              russian: "Я вижу нашу собаку.",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Ich gebe unserem Hund einen Knochen.",
+              russian: "Я даю нашей собаке кость.",
             },
           ],
         },
@@ -369,10 +590,22 @@ export const fullCasesData = {
             "вашему",
           ],
           examples: [
-            { german: "Euer Hund ist groß.", russian: "Ваша собака большая." },
+            // Именительный падеж (Nominativ)
             {
-              german: "Ich gebe eurem Bruder das Buch.",
-              russian: "Я даю вашему брату книгу.",
+              german: "Euer Hund ist groß.",
+              russian: "Ваша собака большая.",
+            },
+
+            // Винительный падеж (Akkusativ)
+            {
+              german: "Ich sehe euren Hund.",
+              russian: "Я вижу вашу собаку.",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Ich gebe eurem Hund einen Knochen.",
+              russian: "Я даю вашей собаке кость.",
             },
           ],
         },
@@ -387,13 +620,23 @@ export const fullCasesData = {
             "им/Вам",
           ],
           examples: [
+            // Именительный падеж (Nominativ)
             {
-              german: "Ihr Auto ist schnell.",
-              russian: "Их/Ваш автомобиль быстрый.",
+              german: "Ihr Hund ist groß. / Ihr Hund ist groß.",
+              russian: "Их собака большая. / Ваша собака большая.",
             },
+
+            // Винительный падеж (Akkusativ)
             {
-              german: "Ich zeige ihrem Freund das Bild.",
-              russian: "Я показываю их/Вашему другу картину.",
+              german: "Ich sehe ihren Hund. / Ich sehe Ihren Hund.",
+              russian: "Я вижу их собаку. / Я вижу Вашу собаку.",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german:
+                "Ich gebe ihrem Hund einen Knochen. / Ich gebe Ihrem Hund einen Knochen.",
+              russian: "Я даю их собаке кость. / Я даю Вашей собаке кость.",
             },
           ],
         },
@@ -414,20 +657,44 @@ export const fullCasesData = {
         {
           word: ["1 лицо ед.", "ich", "я", "mich", "себя", "mir", "себе"],
           examples: [
-            { german: "Ich freue mich.", russian: "Я радуюсь." },
+            // Именительный падеж (Nominativ)
             {
               german: "Ich sehe mich im Spiegel.",
               russian: "Я вижу себя в зеркале.",
+            },
+
+            // Винительный падеж (Akkusativ)
+            {
+              german: "Ich liebe mich.",
+              russian: "Я люблю себя.",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Ich kaufe mir ein Buch.",
+              russian: "Я покупаю себе книгу.",
             },
           ],
         },
         {
           word: ["2 лицо ед.", "du", "ты", "dich", "себя", "dir", "себе"],
           examples: [
-            { german: "Du freust dich.", russian: "Ты радуешься." },
+            // Именительный падеж (Nominativ)
             {
               german: "Du siehst dich im Spiegel.",
               russian: "Ты видишь себя в зеркале.",
+            },
+
+            // Винительный падеж (Akkusativ)
+            {
+              german: "Du liebst dich.",
+              russian: "Ты любишь себя.",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Du kaufst dir ein Buch.",
+              russian: "Ты покупаешь себе книгу.",
             },
           ],
         },
@@ -442,27 +709,66 @@ export const fullCasesData = {
             "себе",
           ],
           examples: [
-            { german: "Er freut sich.", russian: "Он радуется." },
-            { german: "Sie freut sich.", russian: "Она радуется." },
+            // Именительный падеж (Nominativ)
+            {
+              german: "Er/Sie/Es sieht sich im Spiegel.",
+              russian: "Он/Она/Оно видит себя в зеркале.",
+            },
+
+            // Винительный падеж (Akkusativ)
+            {
+              german: "Er/Sie/Es liebt sich.",
+              russian: "Он/Она/Оно любит себя.",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Er/Sie/Es kauft sich ein Buch.",
+              russian: "Он/Она/Оно покупает себе книгу.",
+            },
           ],
         },
         {
           word: ["1 лицо мн.", "wir", "мы", "uns", "себя", "uns", "себе"],
           examples: [
-            { german: "Wir freuen uns.", russian: "Мы радуемся." },
+            // Именительный падеж (Nominativ)
             {
               german: "Wir sehen uns im Spiegel.",
               russian: "Мы видим себя в зеркале.",
+            },
+
+            // Винительный падеж (Akkusativ)
+            {
+              german: "Wir lieben uns.",
+              russian: "Мы любим себя.",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Wir kaufen uns ein Buch.",
+              russian: "Мы покупаем себе книгу.",
             },
           ],
         },
         {
           word: ["2 лицо мн.", "ihr", "вы", "euch", "себя", "euch", "себе"],
           examples: [
-            { german: "Ihr freut euch.", russian: "Вы радуетесь." },
+            // Именительный падеж (Nominativ)
             {
               german: "Ihr seht euch im Spiegel.",
               russian: "Вы видите себя в зеркале.",
+            },
+
+            // Винительный падеж (Akkusativ)
+            {
+              german: "Ihr liebt euch.",
+              russian: "Вы любите себя.",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Ihr kauft euch ein Buch.",
+              russian: "Вы покупаете себе книгу.",
             },
           ],
         },
@@ -477,8 +783,23 @@ export const fullCasesData = {
             "себе",
           ],
           examples: [
-            { german: "Sie freuen sich.", russian: "Они радуются." },
-            { german: "Sie sehen sich.", russian: "Они видят друг друга." },
+            // Именительный падеж (Nominativ)
+            {
+              german: "Sie sehen sich im Spiegel. / Sie sehen sich im Spiegel.",
+              russian: "Они видят себя в зеркале. / Вы видите себя в зеркале.",
+            },
+
+            // Винительный падеж (Akkusativ)
+            {
+              german: "Sie lieben sich. / Sie lieben sich.",
+              russian: "Они любят себя. / Вы любите себя.",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Sie kaufen sich ein Buch. / Sie kaufen sich ein Buch.",
+              russian: "Они покупают себе книгу. / Вы покупаете себе книгу.",
+            },
           ],
         },
       ],
@@ -506,21 +827,45 @@ export const fullCasesData = {
             "этому",
           ],
           examples: [
+            // Именительный падеж (Nominativ)
             {
-              german: "Dieser Mann ist freundlich.",
-              russian: "Этот мужчина дружелюбный.",
+              german: "Dieser Hund ist groß.",
+              russian: "Этот пёс большой.",
             },
+
+            // Винительный падеж (Akkusativ)
             {
-              german: "Ich sehe diesen Mann.",
-              russian: "Я вижу этого мужчину.",
+              german: "Ich sehe diesen Hund.",
+              russian: "Я вижу этого пса.",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Ich gebe diesem Hund einen Knochen.",
+              russian: "Я даю этому псу кость.",
             },
           ],
         },
         {
           word: ["женский", "diese", "эта", "diese", "эту", "dieser", "этой"],
           examples: [
-            { german: "Diese Frau ist nett.", russian: "Эта женщина милая." },
-            { german: "Ich kenne diese Frau.", russian: "Я знаю эту женщину." },
+            // Именительный падеж (Nominativ)
+            {
+              german: "Diese Frau ist nett.",
+              russian: "Эта женщина приятная.",
+            },
+
+            // Винительный падеж (Akkusativ)
+            {
+              german: "Ich sehe diese Frau.",
+              russian: "Я вижу эту женщину.",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Ich gebe dieser Frau ein Buch.",
+              russian: "Я даю этой женщине книгу.",
+            },
           ],
         },
         {
@@ -534,10 +879,22 @@ export const fullCasesData = {
             "этому",
           ],
           examples: [
-            { german: "Dieses Kind spielt.", russian: "Этот ребёнок играет." },
+            // Именительный падеж (Nominativ)
             {
-              german: "Ich sehe dieses Kind.",
-              russian: "Я вижу этого ребёнка.",
+              german: "Dieses Buch ist interessant.",
+              russian: "Эта книга интересная.",
+            },
+
+            // Винительный падеж (Akkusativ)
+            {
+              german: "Ich sehe dieses Buch.",
+              russian: "Я вижу эту книгу.",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Ich gebe diesem Buch einen Umschlag.",
+              russian: "Я даю этой книге обложку.",
             },
           ],
         },
@@ -552,13 +909,23 @@ export const fullCasesData = {
             "этим",
           ],
           examples: [
+            // Множественное число
+            // Именительный падеж (Nominativ)
             {
-              german: "Diese Kinder lernen Deutsch.",
-              russian: "Эти дети учат немецкий.",
+              german: "Diese Bücher sind interessant.",
+              russian: "Эти книги интересные.",
             },
+
+            // Винительный падеж (Akkusativ)
             {
-              german: "Ich helfe diesen Kindern.",
-              russian: "Я помогаю этим детям.",
+              german: "Ich sehe diese Bücher.",
+              russian: "Я вижу эти книги.",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Ich gebe diesen Büchern Umschläge.",
+              russian: "Я даю этим книгам обложки.",
             },
           ],
         },
@@ -587,13 +954,22 @@ export const fullCasesData = {
             "какому",
           ],
           examples: [
+            // Именительный падеж (Nominativ)
             {
-              german: "Welcher Mann ist dein Freund?",
-              russian: "Какой мужчина твой друг?",
+              german: "Welcher Hund ist groß?",
+              russian: "Какой пёс большой?",
             },
+
+            // Винительный падеж (Akkusativ)
             {
-              german: "Ich kenne welchen Mann.",
-              russian: "Я знаю какого мужчину.",
+              german: "Welchen Hund siehst du?",
+              russian: "Какого пса ты видишь?",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Welchem Hund gibst du einen Knochen?",
+              russian: "Какому псу ты даёшь кость?",
             },
           ],
         },
@@ -608,13 +984,23 @@ export const fullCasesData = {
             "какой",
           ],
           examples: [
+            // Женский род
+            // Именительный падеж (Nominativ)
             {
               german: "Welche Frau ist nett?",
-              russian: "Какая женщина милая?",
+              russian: "Какая женщина приятная?",
             },
+
+            // Винительный падеж (Akkusativ)
             {
-              german: "Ich sehe welche Frau.",
-              russian: "Я вижу какую женщину.",
+              german: "Welche Frau siehst du?",
+              russian: "Какую женщину ты видишь?",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Welcher Frau gibst du ein Buch?",
+              russian: "Какой женщине ты даёшь книгу?",
             },
           ],
         },
@@ -629,13 +1015,23 @@ export const fullCasesData = {
             "какому",
           ],
           examples: [
+            // Средний род
+            // Именительный падеж (Nominativ)
             {
-              german: "Welches Kind spielt?",
-              russian: "Какой ребёнок играет?",
+              german: "Welches Buch ist interessant?",
+              russian: "Какая книга интересная?",
             },
+
+            // Винительный падеж (Akkusativ)
             {
-              german: "Ich kenne welches Kind.",
-              russian: "Я знаю какое дитя.",
+              german: "Welches Buch siehst du?",
+              russian: "Какую книгу ты видишь?",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Welchem Buch gibst du einen Umschlag?",
+              russian: "Какой книге ты даёшь обложку?",
             },
           ],
         },
@@ -650,13 +1046,23 @@ export const fullCasesData = {
             "каким",
           ],
           examples: [
+            // Множественное число
+            // Именительный падеж (Nominativ)
             {
-              german: "Welche Kinder lernen Deutsch?",
-              russian: "Какие дети учат немецкий?",
+              german: "Welche Bücher sind interessant?",
+              russian: "Какие книги интересные?",
             },
+
+            // Винительный падеж (Akkusativ)
             {
-              german: "Ich helfe welchen Kindern.",
-              russian: "Я помогаю каким детям.",
+              german: "Welche Bücher siehst du?",
+              russian: "Какие книги ты видишь?",
+            },
+
+            // Дательный падеж (Dativ)
+            {
+              german: "Welchen Büchern gibst du Umschläge?",
+              russian: "Каким книгам ты даёшь обложки?",
             },
           ],
         },
