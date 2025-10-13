@@ -1,0 +1,65 @@
+{
+  "title": "Schulzeit - Fragen und Antworten",
+  "dialogs": [
+    {
+      "german": "Wo sind Sie geboren?",
+      "russian": "Где вы родились?",
+      "germanantwort": "Ich bin in Zhalal-Abad geboren.",
+      "russianantwort": "Я родилась в Жалал-Абаде."
+    },
+    {
+      "german": "Wo haben Sie Ihre Kindheit verbracht?",
+      "russian": "Где вы провели детство?",
+      "germanantwort": "Ich habe meine Kindheit in Zhalal-Abad verbracht.",
+      "russianantwort": "Я провела детство в Жалал-Абаде."
+    },
+    {
+      "german": "Wann sind Sie in die Schule gegangen?",
+      "russian": "Когда вы пошли в школу?",
+      "germanantwort": "Ich bin mit 6 Jahren in die 1. Klasse gegangen.",
+      "russianantwort": "Я пошла в первый класс в 6 лет."
+    },
+    {
+      "german": "Wo haben Sie lesen gelernt?",
+      "russian": "Где вы научились читать?",
+      "germanantwort": "Ich habe zu Hause lesen gelernt.",
+      "russianantwort": "Я научилась читать дома."
+    },
+    {
+      "german": "Wie war es in der Schule?",
+      "russian": "Как было в школе?",
+      "germanantwort": "Ich war gern in der Schule und habe Hausaufgaben gemacht.",
+      "russianantwort": "Мне нравилось в школе, я делала домашние задания."
+    },
+    {
+      "german": "Wann sind Sie nach Bischkek umgezogen?",
+      "russian": "Когда вы переехали в Бишкек?",
+      "germanantwort": "Wir sind nach Bischkek gezogen, als ich 9 Jahre alt war.",
+      "russianantwort": "Мы переехали в Бишкек, когда мне было 9 лет."
+    },
+    {
+      "german": "Welche Noten hatten Sie in der Schule?",
+      "russian": "Какие у вас были оценки в школе?",
+      "germanantwort": "Manchmal hatte ich schlechte Noten, aber später war ich Klassenbeste.",
+      "russianantwort": "Иногда у меня были плохие оценки, но позже я стала лучшей в классе."
+    },
+    {
+      "german": "In welchen Fächern waren Sie gut?",
+      "russian": "В каких предметах вы были хороши?",
+      "germanantwort": "Ich war gut in Mathematik, Physik, Englisch und Zeichnen.",
+      "russianantwort": "Я хорошо училась по математике, физике, английскому и рисованию."
+    },
+    {
+      "german": "Was war Ihr Lieblingsfach?",
+      "russian": "Какой был ваш любимый предмет?",
+      "germanantwort": "Mein Lieblingsfach war Mathematik.",
+      "russianantwort": "Мой любимый предмет был математика."
+    },
+    {
+      "german": "Wie lange geht man in Kirgisistan in die Schule?",
+      "russian": "Сколько лет учатся в школе в Киргизии?",
+      "germanantwort": "Man geht 9 oder 11 Jahre in die Schule.",
+      "russianantwort": "В Киргизии учатся 9 или 11 лет."
+    }
+  ]
+}

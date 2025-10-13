@@ -18,6 +18,8 @@ import TopikPage from "./pages/LessonPage/Topik/TopikPage";
 import TopikLesson from "./pages/LessonPage/Topik/TopikLesson";
 import TypingPage from "./pages/LessonPage/pages/TypingPage";
 import ArtikelPage from "./pages/ArtikelPage/ArtikelPage";
+import App from "./pages/homePage/Fragen";
+import FragenPage from "./pages/homePage/FragenPage";
 
 const AppRouter = () => {
   const location = useLocation();
@@ -53,11 +55,13 @@ const AppRouter = () => {
         {/* Страницы упражнений с уровнями */}
         <Route path="/lesson/:id/theory/:level" element={<TheoryPage />} />
         <Route path="/lesson/:id/matching/:level" element={<MatchingPage />} />
-       
+
         <Route path="/lesson/:id/puzzle/:level" element={<PuzzlePage />} />
         <Route path="/lesson/:id/audio/:level" element={<AudioPage />} />
         <Route path="/lesson/:id/text/:level" element={<TextPage />} />
         <Route path="/lesson/:id/typing/:level" element={<TypingPage />} />
+        <Route path="/fragen" element={<FragenPage />} />
+        <Route path="/fragen/:id" element={<App />} />
       </Routes>
     </div>
   );

@@ -1,0 +1,59 @@
+{
+  "title": "Mein letzter Geburtstag - Fragen und Antworten",
+  "dialogs": [
+    {
+      "german": "Wann haben Sie Geburtstag?",
+      "russian": "Когда у вас день рождения?",
+      "germanantwort": "Ich habe am 3. Oktober Geburtstag.",
+      "russianantwort": "У меня день рождения 3 октября."
+    },
+    {
+      "german": "Wie haben Sie Ihren Geburtstag gefeiert?",
+      "russian": "Как вы праздновали свой день рождения?",
+      "germanantwort": "Ich habe meinen Geburtstag mit meinen Freundinnen gefeiert.",
+      "russianantwort": "Я праздновала день рождения с подругами."
+    },
+    {
+      "german": "Wo haben Sie gefeiert?",
+      "russian": "Где вы праздновали?",
+      "germanantwort": "Wir haben zu Hause gefeiert.",
+      "russianantwort": "Мы праздновали дома."
+    },
+    {
+      "german": "Was haben Sie mit Ihren Freunden gemacht?",
+      "russian": "Что вы делали с друзьями?",
+      "germanantwort": "Wir haben Salate und Kuchen gegessen, Karaoke gesungen und sind im Park spazieren gegangen.",
+      "russianantwort": "Мы ели салаты и торт, пели караоке и гуляли в парке."
+    },
+    {
+      "german": "Wie war das Wetter?",
+      "russian": "Какая была погода?",
+      "germanantwort": "Das Wetter war wunderbar.",
+      "russianantwort": "Погода была замечательная."
+    },
+    {
+      "german": "Wer hat Ihnen gratuliert?",
+      "russian": "Кто поздравил вас?",
+      "germanantwort": "Meine Freundinnen und meine Eltern haben mir gratuliert.",
+      "russianantwort": "Мои подруги и родители поздравили меня."
+    },
+    {
+      "german": "Welche Geschenke haben Sie gekriegt?",
+      "russian": "Какие подарки вы получили?",
+      "germanantwort": "Ich habe viele Geschenke und Postkarten von meinen Freundinnen bekommen.",
+      "russianantwort": "Я получила много подарков и открыток от подруг."
+    },
+    {
+      "german": "Was haben Ihnen Ihre Eltern geschenkt?",
+      "russian": "Что вам подарили родители?",
+      "germanantwort": "Meine Eltern haben mir Geld geschenkt.",
+      "russianantwort": "Мои родители подарили мне деньги."
+    },
+    {
+      "german": "Wie alt sind Sie geworden?",
+      "russian": "Сколько вам исполнилось лет?",
+      "germanantwort": "Ich bin 20 Jahre alt geworden.",
+      "russianantwort": "Мне исполнилось 20 лет."
+    }
+  ]
+}

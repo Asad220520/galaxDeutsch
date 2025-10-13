@@ -1,0 +1,65 @@
+{
+  "title": "Mein Praktikum im Ausland - Fragen und Antworten",
+  "dialogs": [
+    {
+      "german": "In welchen Ländern sind Sie schon mal gewesen?",
+      "russian": "В каких странах вы уже были?",
+      "germanantwort": "Ich war in der Türkei und in Deutschland.",
+      "russianantwort": "Я была в Турции и в Германии."
+    },
+    {
+      "german": "Was haben Sie in der Türkei gemacht?",
+      "russian": "Что вы делали в Турции?",
+      "germanantwort": "Ich habe ein Praktikum in einem Hotel gemacht.",
+      "russianantwort": "Я проходила практику в отеле."
+    },
+    {
+      "german": "Wo haben Sie Ihr Praktikum absolviert?",
+      "russian": "Где вы проходили практику?",
+      "germanantwort": "Mein Praktikum war in Antalya in einem Hotel.",
+      "russianantwort": "Моя практика была в Анталье в отеле."
+    },
+    {
+      "german": "Wie war Ihr Praktikum dort?",
+      "russian": "Как прошла ваша практика там?",
+      "germanantwort": "Mein Praktikum war sehr gut und interessant.",
+      "russianantwort": "Моя практика была очень хорошей и интересной."
+    },
+    {
+      "german": "In welcher Abteilung haben Sie gearbeitet?",
+      "russian": "В каком отделе вы работали?",
+      "germanantwort": "Ich habe in der Küche gearbeitet und den Köchen geholfen.",
+      "russianantwort": "Я работала на кухне и помогала поварам."
+    },
+    {
+      "german": "Aus welchen Ländern kamen die Touristen?",
+      "russian": "Из каких стран были туристы?",
+      "germanantwort": "Die Touristen kamen aus Deutschland, Russland und anderen europäischen Ländern.",
+      "russianantwort": "Туристы были из Германии, России и других европейских стран."
+    },
+    {
+      "german": "Auf welcher Sprache haben Sie mit deutschen Touristen gesprochen?",
+      "russian": "На каком языке вы говорили с немецкими туристами?",
+      "germanantwort": "Ich habe mit den deutschen Touristen auf Englisch gesprochen.",
+      "russianantwort": "Я говорила с немецкими туристами на английском."
+    },
+    {
+      "german": "Wie haben Sie diese Stelle bekommen?",
+      "russian": "Как вы получили эту работу/практику?",
+      "germanantwort": "Ich habe eine Arbeitsagentur angerufen und gesagt, dass ich ein Praktikum machen möchte.",
+      "russianantwort": "Я позвонила в агентство по трудоустройству и сказала, что хочу пройти практику."
+    },
+    {
+      "german": "Was haben Sie verdient?",
+      "russian": "Сколько вы заработали?",
+      "germanantwort": "Ich habe 400-500 Dollar pro Monat verdient.",
+      "russianantwort": "Я заработала 400-500 долларов в месяц."
+    },
+    {
+      "german": "Wie viel mussten Sie für Unterkunft und Essen zahlen?",
+      "russian": "Сколько вы платили за жильё и еду?",
+      "germanantwort": "Ich musste nichts für Unterkunft und Essen zahlen.",
+      "russianantwort": "Я не платила за жильё и еду."
+    }
+  ]
+}

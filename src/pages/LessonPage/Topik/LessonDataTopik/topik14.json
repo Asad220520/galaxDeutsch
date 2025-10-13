@@ -1,0 +1,59 @@
+{
+  "title": "Pläne für die Zukunft - Fragen und Antworten",
+  "dialogs": [
+    {
+      "german": "Welche Pläne haben Sie nach dem Studium?",
+      "russian": "Какие у вас планы после окончания учебы?",
+      "germanantwort": "Nach dem Studium möchte ich arbeiten und Erfahrungen sammeln.",
+      "russianantwort": "После окончания учебы я хочу работать и получать опыт."
+    },
+    {
+      "german": "Was wollen Sie werden, wenn Sie fertig studiert haben?",
+      "russian": "Кем вы хотите стать, когда закончите учебу?",
+      "germanantwort": "Ich möchte im Handel arbeiten, vielleicht als Verkäuferin.",
+      "russianantwort": "Я хочу работать в торговле, возможно, продавцом."
+    },
+    {
+      "german": "Was machen Sie, wenn Sie zurückkommen?",
+      "russian": "Что вы будете делать, когда вернетесь?",
+      "germanantwort": "Wenn ich aus Deutschland zurückkomme, setze ich mein Studium an der Manas Universität fort.",
+      "russianantwort": "Когда я вернусь из Германии, я продолжу учебу в университете Манаса."
+    },
+    {
+      "german": "Wie sieht Ihr Leben in der Zukunft aus?",
+      "russian": "Как будет выглядеть ваша жизнь в будущем?",
+      "germanantwort": "Ich möchte selbstständig sein, Geld verdienen und meine Ziele erreichen.",
+      "russianantwort": "Я хочу быть самостоятельной, зарабатывать деньги и достигать своих целей."
+    },
+    {
+      "german": "Wo möchten Sie Ihren Master machen?",
+      "russian": "Где вы хотите учиться в магистратуре?",
+      "germanantwort": "Ich möchte vielleicht meinen Master in der Türkei machen.",
+      "russianantwort": "Я, возможно, буду учиться в магистратуре в Турции."
+    },
+    {
+      "german": "Was machen Sie in den Ferien?",
+      "russian": "Что вы делаете на каникулах?",
+      "germanantwort": "In den Ferien möchte ich arbeiten, Geld verdienen und reisen.",
+      "russianantwort": "На каникулах я хочу работать, зарабатывать деньги и путешествовать."
+    },
+    {
+      "german": "Wer unterstützt Sie finanziell?",
+      "russian": "Кто поддерживает вас финансово?",
+      "germanantwort": "Ich bin finanziell unabhängig, weil ich ein Stipendium bekomme.",
+      "russianantwort": "Я финансово независима, потому что получаю стипендию."
+    },
+    {
+      "german": "Wie lange haben Sie Ferien?",
+      "russian": "Как долго у вас каникулы?",
+      "germanantwort": "Wir haben Sommerferien vom 12. Mai bis zum 9. Oktober.",
+      "russianantwort": "У нас летние каникулы с 12 мая до 9 октября."
+    },
+    {
+      "german": "Warum wollen Sie nach Deutschland fahren?",
+      "russian": "Почему вы хотите поехать в Германию?",
+      "germanantwort": "Ich möchte in Deutschland arbeiten, Deutsch üben und neue Erfahrungen sammeln.",
+      "russianantwort": "Я хочу поехать в Германию, чтобы работать, практиковать немецкий и получить новый опыт."
+    }
+  ]
+}

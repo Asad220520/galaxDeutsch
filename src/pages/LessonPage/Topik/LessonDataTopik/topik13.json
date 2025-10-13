@@ -1,0 +1,47 @@
+{
+  "title": "Meine Wohnung - Fragen und Antworten",
+  "dialogs": [
+    {
+      "german": "Wie wohnen Sie?",
+      "russian": "Как вы живёте?",
+      "germanantwort": "Ich wohne in einer Wohnung mit meiner Familie. Die Wohnung ist sehr gemütlich und hell.",
+      "russianantwort": "Я живу в квартире с семьёй. Квартира очень уютная и светлая."
+    },
+    {
+      "german": "Wie viele Zimmer hat Ihre Wohnung?",
+      "russian": "Сколько комнат в вашей квартире?",
+      "germanantwort": "Unsere Wohnung hat fünf Zimmer: Wohnzimmer, zwei Schlafzimmer, Küche und Bad.",
+      "russianantwort": "В нашей квартире пять комнат: гостиная, две спальни, кухня и ванная."
+    },
+    {
+      "german": "Wie viele Personen wohnen in Ihrer Wohnung?",
+      "russian": "Сколько человек живёт в этой квартире?",
+      "germanantwort": "In unserer Wohnung wohnen drei Personen.",
+      "russianantwort": "В нашей квартире живут три человека."
+    },
+    {
+      "german": "Was gibt es in Ihrem Zimmer?",
+      "russian": "Что есть в вашей комнате?",
+      "germanantwort": "In meinem Zimmer gibt es ein Bett, einen Tisch mit Stuhl, einen Schrank und einen Teppich. Auf dem Fensterbrett stehen Blumen.",
+      "russianantwort": "В моей комнате есть кровать, стол со стулом, шкаф и ковер. На подоконнике стоят цветы."
+    },
+    {
+      "german": "Wo liegt Ihre Wohnung?",
+      "russian": "Где находится ваша квартира?",
+      "germanantwort": "Unsere Wohnung liegt im Stadtzentrum, im fünften Stock.",
+      "russianantwort": "Наша квартира находится в центре города, на пятом этаже."
+    },
+    {
+      "german": "Welches Verkehrsmittel benutzen Sie öfter?",
+      "russian": "Каким транспортом вы пользуетесь чаще всего?",
+      "germanantwort": "Ich fahre meistens mit dem Minibus, weil er oft fährt und nicht so voll ist.",
+      "russianantwort": "Я чаще всего езжу на маршрутке, потому что она ходит часто и не очень переполнена."
+    },
+    {
+      "german": "Welches Haustier hätten Sie gern?",
+      "russian": "Какое домашнее животное вы хотели бы завести?",
+      "germanantwort": "Ich möchte gerne einen Hund haben.",
+      "russianantwort": "Я хотела бы завести собаку."
+    }
+  ]
+}
