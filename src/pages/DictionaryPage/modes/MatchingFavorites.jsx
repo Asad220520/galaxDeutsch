@@ -1,23 +1,63 @@
-// RepeatFavoritesMatching.jsx
-import { useState, useEffect, useMemo } from "react";
+// RepeatFavoritesQuiz.jsx
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setQueue, markCorrect, markWrong } from "../../../store/repeatSlice";
-import AudioPlayer from "../../../components/UI/AudioPlayer";
+// ⭐️ Важно: Используем setQueueFromWrong, но не используем removeWord
+import {
+  setQueue,
+  markCorrect,
+  markWrong,
+  setQueueFromWrong,
+} from "../../../store/repeatSlice";
 
-function MatchingFavorites({ pageSize = 5 }) {
+// Компонент AudioPlayer (без изменений)
+const AudioPlayer = ({ word }) => {
+  const speak = (w) => {
+    if (!w) return;
+    const utterance = new SpeechSynthesisUtterance(w);
+    utterance.lang = "de-DE";
+    speechSynthesis.speak(utterance);
+  };
+  return (
+    <button
+      onClick={(e) => {
+        e.stopPropagation();
+        speak(word);
+      }}
+      className="text-2xl p-3 rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 flex-shrink-0 transition-colors"
+      title={`Прослушать "${word}"`}
+    >
+      🔊
+    </button>
+  );
+};
+
+// Константа для количества вариантов ответа
+const QUIZ_OPTIONS = 4;
+
+function RepeatFavoritesQuiz() {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites.items);
-  const queue = useSelector((state) => state.repeat.queue);
+  // Используем все данные из слайса
+  const { queue, currentIndex, correct, wrong } = useSelector(
+    (state) => state.repeat
+  );
+  const totalFavoriteLength = favorites.length;
 
-  const [currentPage, setCurrentPage] = useState(0);
-  const [selectedLeft, setSelectedLeft] = useState(null);
-  const [matches, setMatches] = useState({});
-  const [shakeWord, setShakeWord] = useState(null);
-  const [highlightWord, setHighlightWord] = useState(null);
-  const [wrongWord, setWrongWord] = useState(null);
-  const [showCongrats, setShowCongrats] = useState(false);
-  const [previewMode, setPreviewMode] = useState(true);
-  const [rightWords, setRightWords] = useState([]);
+  const [options, setOptions] = useState([]);
+  const [answerState, setAnswerState] = useState(null); // 'correct', 'wrong', null
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+
+  // Определяем текущее слово через индекс
+  const currentWord = useMemo(() => {
+    return queue.length > 0 && currentIndex < queue.length
+      ? queue[currentIndex]
+      : null;
+  }, [queue, currentIndex]);
+
+  // Проверка завершения: True, если индекс достиг конца очереди
+  const isFinished = currentIndex >= queue.length && queue.length > 0;
+
+  // === Вспомогательные функции ===
 
   const shuffle = (array) => {
     const arr = [...array];
@@ -28,246 +68,181 @@ function MatchingFavorites({ pageSize = 5 }) {
     return arr;
   };
 
-  // Загружаем очередь из избранного
+  const getDistractors = useCallback((correctRussian, allRussians) => {
+    const available = allRussians.filter((r) => r !== correctRussian);
+    const shuffledAvailable = shuffle(available);
+    return shuffledAvailable.slice(0, QUIZ_OPTIONS - 1);
+  }, []);
+
+  const setupOptions = useCallback(() => {
+    if (!currentWord) {
+      setOptions([]);
+      return;
+    }
+
+    const correctRussian = currentWord.russian;
+    // Используем все переводы из избранного в качестве потенциальных отвлекающих
+    const allRussians = favorites.map((w) => w.russian);
+    const distractors = getDistractors(correctRussian, allRussians);
+
+    const newOptions = shuffle([correctRussian, ...distractors]);
+
+    setOptions(newOptions);
+    setAnswerState(null);
+    setSelectedAnswer(null);
+  }, [currentWord, favorites, getDistractors]);
+
+  // === Эффекты ===
+
+  // 1. Инициализация очереди (при первом запуске)
   useEffect(() => {
-    if (favorites.length) dispatch(setQueue(favorites));
-  }, [favorites, dispatch]);
+    if (totalFavoriteLength > 0 && queue.length === 0) {
+      // Если избранное есть, а очередь пуста, инициализируем ее
+      dispatch(setQueue(shuffle([...favorites])));
+    }
+  }, [favorites, dispatch, queue.length, totalFavoriteLength]);
 
-  const pageItems = useMemo(
-    () =>
-      queue.slice(currentPage * pageSize, currentPage * pageSize + pageSize),
-    [queue, currentPage, pageSize]
-  );
-
-  const leftWords = useMemo(() => pageItems.map((w) => w.german), [pageItems]);
-
+  // 2. Установка вариантов ответа при смене слова
   useEffect(() => {
-    setRightWords(shuffle(pageItems.map((w) => w.russian)));
-    setSelectedLeft(null);
-    setMatches({});
-    setShowCongrats(false);
-    setShakeWord(null);
-    setHighlightWord(null);
-    setWrongWord(null);
-    setPreviewMode(true);
-  }, [pageItems]);
+    if (currentWord) {
+      setupOptions();
+    }
+  }, [currentWord, setupOptions]);
 
-  const isCorrect = (german, russian) =>
-    queue.find((w) => w.german === german)?.russian === russian;
+  // === Обработчик выбора ===
 
-  const playSound = (correct = true) => {
-    const audioPath = correct ? "/sounds/correct.mp3" : "/sounds/wrong.mp3";
-    const audio = new Audio(audioPath);
-    audio.play().catch((err) => console.log("Ошибка воспроизведения:", err));
-  };
+  const handleAnswer = (selected) => {
+    if (answerState || !currentWord) return;
 
-  const handleSelect = (side, value) => {
-    if (side === "left") {
-      if (matches[value]) return;
-      setSelectedLeft(value);
-      setShakeWord(null);
-      setWrongWord(null);
-    } else if (side === "right" && selectedLeft) {
-      if (isCorrect(selectedLeft, value)) {
-        setMatches((prev) => ({ ...prev, [selectedLeft]: value }));
-        setSelectedLeft(null);
-        dispatch(markCorrect());
-        playSound(true);
-        setHighlightWord(selectedLeft);
-        setTimeout(() => setHighlightWord(null), 600);
-      } else {
-        setShakeWord(selectedLeft);
-        setWrongWord(selectedLeft);
-        dispatch(markWrong());
-        playSound(false);
-        setTimeout(() => setShakeWord(null), 400);
-        setTimeout(() => setWrongWord(null), 600);
-      }
+    setSelectedAnswer(selected);
+
+    if (selected === currentWord.russian) {
+      setAnswerState("correct");
+      // ⭐️ Используем markCorrect, которое сдвигает currentIndex
+      dispatch(markCorrect());
+
+      // Немедленно генерируем варианты для следующего слова, чтобы подготовить UI
+      setTimeout(() => {
+        // Ничего не делаем, useEffect сам сработает при изменении currentIndex
+      }, 500);
+    } else {
+      setAnswerState("wrong");
+      // ⭐️ Используем markWrong, которое сдвигает currentIndex
+      dispatch(markWrong());
+
+      // Сброс состояния для возможности перейти к следующему вопросу, но с фидбэком
+      setTimeout(() => {
+        // Ничего не делаем, useEffect сам сработает при изменении currentIndex
+      }, 1500);
     }
   };
 
-  const allMatched = pageItems.every((item) => matches[item.german]);
-  const totalPages = Math.ceil(queue.length / pageSize);
+  // === Классы ===
 
-  useEffect(() => {
-    if (allMatched && pageItems.length > 0) setShowCongrats(true);
-  }, [allMatched, pageItems]);
+  const getButtonClasses = (option) => {
+    let base =
+      "w-full p-4 rounded-xl font-bold text-lg transition-all duration-300 shadow-md";
 
-  const repeatPage = () => {
-    const incorrect = pageItems
-      .filter((item) => !matches[item.german])
-      .map((item) => item.russian);
+    if (!answerState) {
+      // До выбора: нейтральный
+      base +=
+        " bg-white hover:bg-indigo-100 dark:bg-gray-700 dark:hover:bg-gray-600";
+    } else if (option === currentWord.russian) {
+      // Верный ответ
+      base += " bg-emerald-500 text-white shadow-lg scale-[1.02]";
+    } else if (option === selectedAnswer && answerState === "wrong") {
+      // Неверный ответ, который выбрал пользователь
+      base += " bg-red-500 text-white shake";
+    } else {
+      // Отключенные неверные варианты
+      base += " bg-slate-200 text-slate-500 dark:bg-slate-700 opacity-60";
+    }
 
-    setRightWords(shuffle(incorrect));
-    setSelectedLeft(null);
-    setShowCongrats(false);
-    setPreviewMode(true);
+    return base;
   };
 
-  const handleNext = () => {
-    if (currentPage < totalPages - 1) setCurrentPage((p) => p + 1);
-  };
-
-  const handlePrev = () => {
-    if (currentPage > 0) setCurrentPage((p) => p - 1);
-  };
-
-  const handleShuffle = () => {
-    const incorrect = pageItems
-      .filter((item) => !matches[item.german])
-      .map((item) => item.russian);
-    setRightWords(shuffle(incorrect));
-    setPreviewMode(false);
-  };
-
-  const getLeftButtonClasses = (word) => {
-    const matched = !!matches[word];
-    const wrong = wrongWord === word;
-    const shake = shakeWord === word;
-    const highlight = highlightWord === word;
-    const selected = selectedLeft === word;
-
-    return [
-      "flex-1 p-4 rounded-lg border font-medium text-lg transition relative",
-      matched
-        ? "bg-green-500 text-white border-green-600 font-bold fade-green"
-        : "bg-white hover:bg-gray-100",
-      highlight ? "animate-bounce" : "",
-      wrong ? "fade-red" : "",
-      shake ? "shake" : "",
-      selected ? "bg-blue-200 border-2 border-blue-500" : "",
-      previewMode ? "opacity-50 cursor-not-allowed" : "",
-    ].join(" ");
-  };
-
-  const getRightButtonClasses = (word) => {
-    const leftKey = Object.keys(matches).find((k) => matches[k] === word);
-    const disabled = !!leftKey || previewMode || !selectedLeft;
-
-    return [
-      "flex-1 p-4 rounded-lg font-medium text-lg border border-gray-300 transition-opacity",
-      leftKey
-        ? "opacity-50 cursor-not-allowed"
-        : "bg-white hover:bg-gray-100 fade-in",
-      disabled ? "opacity-50 cursor-not-allowed" : "",
-    ].join(" ");
-  };
-
-  if (!queue.length)
+  if (totalFavoriteLength === 0)
     return (
-      <div className="text-center mt-10">
-        <p>Сначала добавьте слова в избранное!</p>
+      <div className="text-center mt-10 p-4">
+        <p className="text-xl text-gray-600 dark:text-gray-300">
+          Сначала добавьте слова в избранное, чтобы начать тест!
+        </p>
+      </div>
+    );
+
+  if (isFinished)
+    return (
+      <div className="text-center py-10 bg-white dark:bg-gray-800 rounded-xl shadow-2xl">
+        <h2 className="text-3xl text-emerald-500 mb-6 font-extrabold">
+          🎉 Тест завершен!
+        </h2>
+        <p className="text-xl mb-6">
+          Правильных ответов:{" "}
+          <span className="text-emerald-500">{correct.length}</span> / Ошибок:{" "}
+          <span className="text-red-500">{wrong.length}</span>
+        </p>
+        {wrong.length > 0 && (
+          <button
+            className="w-full max-w-xs mx-auto px-6 py-3 mb-3 bg-amber-600 text-white rounded-xl font-bold shadow-md hover:bg-amber-700 transition-colors"
+            onClick={() => dispatch(setQueueFromWrong())}
+          >
+            Повторить {wrong.length} ошибочных слов
+          </button>
+        )}
+        <button
+          className="w-full max-w-xs mx-auto px-6 py-3 bg-indigo-600 text-white rounded-xl font-bold shadow-md hover:bg-indigo-700 transition-colors"
+          onClick={() => dispatch(setQueue(shuffle([...favorites])))}
+        >
+          Начать сначала ({totalFavoriteLength} слов)
+        </button>
       </div>
     );
 
   return (
-    <div className="p-4 max-w-md mx-auto bg-white rounded-xl shadow-lg">
-      <h2 className="text-2xl font-bold mb-4 text-center">
-        Повторение избранного
+    <div className="p-4 max-w-sm mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-2xl">
+      <h2 className="text-2xl font-bold mb-4 text-center text-gray-800 dark:text-white">
+        Тест (Выбери перевод)
       </h2>
 
-      {/* Унифицированный прогресс-бар */}
-      <div className="w-full bg-gray-200 rounded-full h-4 mb-4">
-        <div
-          className="bg-blue-500 h-4 rounded-full transition-all duration-500"
-          style={{
-            width: `${(Object.keys(matches).length / pageItems.length) * 100}%`,
-          }}
-        ></div>
+      {/* Прогресс */}
+      <div className="text-center text-sm text-gray-500 dark:text-gray-400 mb-4">
+        Прогресс: <span className="font-bold">{currentIndex}</span> /{" "}
+        {queue.length}
       </div>
 
-      {/* Кнопка перемешать */}
-      {previewMode && !allMatched && (
-        <div className="text-center mb-4">
-          <button
-            onClick={handleShuffle}
-            className="px-4 py-2 bg-yellow-500 text-white rounded-lg font-semibold"
-          >
-            Перемешать слова
-          </button>
-        </div>
-      )}
-
-      {/* Экран "Отлично!" */}
-      {showCongrats ? (
-        <div className="text-center py-6">
-          <h2 className="text-2xl text-green-500 mb-4 animate-bounce">
-            🎉 Отлично!
-          </h2>
-          <div className="flex justify-center gap-4">
-            {currentPage > 0 && (
-              <button
-                className="px-4 py-2 bg-gray-500 text-white rounded-lg font-semibold"
-                onClick={handlePrev}
-              >
-                Назад
-              </button>
-            )}
-            {currentPage < totalPages - 1 && (
-              <button
-                className="px-4 py-2 bg-blue-500 text-white rounded-lg font-semibold"
-                onClick={handleNext}
-              >
-                Следующая страница
-              </button>
-            )}
-            <button
-              className="px-4 py-2 bg-yellow-500 text-white rounded-lg font-semibold"
-              onClick={repeatPage}
-            >
-              Повторить страницу
-            </button>
-          </div>
-        </div>
-      ) : (
-        <div className="grid grid-cols-2 gap-2">
-          {/* Левая колонка */}
-          <div className="space-y-2">
-            {leftWords.map((word) => (
-              <div key={word} className="flex items-center">
-                <AudioPlayer word={word} />
-                <button
-                  onClick={() => handleSelect("left", word)}
-                  disabled={!!matches[word] || previewMode}
-                  className={getLeftButtonClasses(word)}
-                >
-                  🇩🇪 {word}
-                </button>
-              </div>
-            ))}
+      {currentWord && (
+        <>
+          {/* Немецкое слово */}
+          <div className="flex items-center justify-center p-6 mb-6 bg-indigo-100 dark:bg-indigo-900 rounded-xl shadow-inner border-2 border-indigo-300 dark:border-indigo-700">
+            <AudioPlayer word={currentWord.german} />
+            <h3 className="text-3xl font-extrabold text-indigo-800 dark:text-indigo-200 ml-4">
+              {currentWord.german}
+            </h3>
           </div>
 
-          {/* Правая колонка */}
-          <div className="space-y-2">
-            {rightWords.map((word, idx) => (
+          {/* Варианты ответов */}
+          <div className="space-y-3">
+            {options.map((option, idx) => (
               <button
-                key={word + idx}
-                disabled={!!matches[word] || previewMode || !selectedLeft}
-                onClick={() => handleSelect("right", word)}
-                className={getRightButtonClasses(word)}
+                key={idx}
+                onClick={() => handleAnswer(option)}
+                disabled={!!answerState}
+                className={getButtonClasses(option)}
               >
-                🇷🇺 {word}
+                {option}
               </button>
             ))}
           </div>
-        </div>
+        </>
       )}
 
+      {/* Анимация Shake */}
       <style>{`
         .shake { animation: shake 0.3s ease-in-out; }
         @keyframes shake { 0% { transform: translateX(0); } 25% { transform: translateX(-6px); } 50% { transform: translateX(6px); } 75% { transform: translateX(-6px); } 100% { transform: translateX(0); } }
-
-        .fade-green { animation: fadeGreen 0.6s ease-in-out; }
-        @keyframes fadeGreen { 0% { background-color: #22c55e; transform: scale(1); } 50% { background-color: #16a34a; transform: scale(1.1); } 100% { background-color: #22c55e; transform: scale(1); } }
-
-        .fade-red { animation: fadeRed 0.6s ease-in-out; }
-        @keyframes fadeRed { 0% { background-color: #ef4444; transform: scale(1); } 50% { background-color: #b91c1c; transform: scale(1.05); } 100% { background-color: #ef4444; transform: scale(1); } }
-
-        .fade-in { animation: fadeIn 0.4s ease-in-out; }
-        @keyframes fadeIn { 0% { opacity: 0; transform: translateY(-5px); } 100% { opacity: 1; transform: translateY(0); } }
       `}</style>
     </div>
   );
 }
 
-export default MatchingFavorites;
+export default RepeatFavoritesQuiz;
