@@ -39,15 +39,19 @@ const highlightMatch = (text, query) => {
   );
 };
 
-// ===== Цвет карточки =====
+// ===== Цвет карточки с поддержкой темной темы =====
 const getCardBg = (text) => {
   const match = text.match(/^(der|die|das)\s+/i);
-  if (!match) return "bg-gray-50 dark:bg-gray-800";
+  if (!match)
+    return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200";
   const article = match[1].toLowerCase();
-  if (article === "der") return "bg-blue-400 text-white";
-  if (article === "die") return "bg-red-400 text-white";
-  if (article === "das") return "bg-green-400 text-white";
-  return "bg-gray-50 dark:bg-gray-800";
+  if (article === "der")
+    return "bg-blue-300 text-white dark:bg-blue-700 dark:text-white";
+  if (article === "die")
+    return "bg-pink-300 text-white dark:bg-pink-700 dark:text-white";
+  if (article === "das")
+    return "bg-green-300 text-white dark:bg-green-700 dark:text-white";
+  return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200";
 };
 
 const DictionaryPage = () => {
@@ -59,6 +63,7 @@ const DictionaryPage = () => {
   const [selectedLesson, setSelectedLesson] = useState("all");
   const [selectedLevel, setSelectedLevel] = useState("all");
 
+  // ===== Словарь =====
   const getDictionaryItems = () => {
     const vocab = [];
     allLessons.forEach((lesson) => {
@@ -111,7 +116,7 @@ const DictionaryPage = () => {
       <div key="repeat" className="max-w-xl mx-auto p-4">
         <button
           onClick={() => setTab("favorites")}
-          className="mb-4 px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded w-full text-center"
+          className="mb-4 px-4 py-2 bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 rounded w-full text-center"
         >
           ← Назад к избранному
         </button>
@@ -140,7 +145,7 @@ const DictionaryPage = () => {
             key={t}
             className={`px-4 py-2 rounded w-full sm:w-auto text-center ${
               tab === t
-                ? "bg-blue-500 text-white"
+                ? "bg-blue-500 text-white dark:bg-blue-600"
                 : "bg-gray-200 dark:bg-gray-700"
             }`}
             onClick={() => setTab(t)}
@@ -159,12 +164,12 @@ const DictionaryPage = () => {
         <input
           type="text"
           placeholder="Поиск..."
-          className="px-4 py-2 border rounded flex-1 w-full"
+          className="px-4 py-2 border rounded flex-1 w-full dark:bg-gray-700 dark:text-gray-200"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
         <select
-          className="px-4 py-2 border rounded w-full sm:w-auto"
+          className="px-4 py-2 border rounded w-full sm:w-auto dark:bg-gray-700 dark:text-gray-200"
           value={selectedLesson}
           onChange={(e) => {
             setSelectedLesson(e.target.value);
@@ -180,7 +185,7 @@ const DictionaryPage = () => {
         </select>
         {levelsForLesson.length > 0 && (
           <select
-            className="px-4 py-2 border rounded w-full sm:w-auto"
+            className="px-4 py-2 border rounded w-full sm:w-auto dark:bg-gray-700 dark:text-gray-200"
             value={selectedLevel}
             onChange={(e) => setSelectedLevel(e.target.value)}
           >
@@ -227,10 +232,10 @@ const DictionaryPage = () => {
               </div>
             </div>
             <button
-              className={`px-4 py-2 rounded text-white mt-2 sm:mt-0 ${
+              className={`px-4 py-2 rounded mt-2 sm:mt-0 ${
                 favorites.find((w) => w.german === item.german)
-                  ? "bg-red-500"
-                  : "bg-green-500"
+                  ? "bg-red-400 hover:bg-red-500 text-white dark:bg-red-700 dark:hover:bg-red-600"
+                  : "bg-yellow-400 hover:bg-yellow-500 text-gray-800 dark:bg-yellow-700 dark:text-gray-200 dark:hover:bg-yellow-600"
               }`}
               onClick={() => toggleFavorite(item)}
             >
