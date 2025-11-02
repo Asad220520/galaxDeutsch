@@ -48,9 +48,6 @@ function HomePage() {
       <h1 className="text-3xl font-bold text-center mb-6 text-gray-800">
         Уроки немецкого языка
       </h1>
-      <Link to="/fragen" className="text-4xl p-10 text-red-500">
-        fragen
-      </Link>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {allLessons.map((lesson) => {
