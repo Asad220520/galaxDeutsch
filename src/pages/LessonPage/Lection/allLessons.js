@@ -21,7 +21,10 @@ import { lesson21 } from "./LessonsData/lesson21";
 import { lesson22 } from "./LessonsData/lesson22";
 import { lesson23 } from "./LessonsData/lesson23";
 import { lesson24 } from "./LessonsData/lesson24";
+import { lesson25 } from "./LessonsData/lesson25";
+import { lesson26 } from "./LessonsData/lesson26";
 import { lesson50 } from "./LessonsData/lesson50";
+import { lesson51 } from "./LessonsData/lesson51";
 
 export const allLessons = [
   lesson1,
@@ -46,6 +49,9 @@ export const allLessons = [
   lesson22,
   lesson23,
   lesson24,
+  lesson25,
+  lesson26,
   lesson50,
+  lesson51,
 ];
 // export const allLessons = [lesson100];

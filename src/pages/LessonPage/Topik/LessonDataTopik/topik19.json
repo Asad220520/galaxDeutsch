@@ -1,0 +1,29 @@
+{
+  "title": "Die schönsten Momente in meinem Leben - Fragen und Antworten",
+  "dialogs": [
+    {
+      "german": "Was war einer der schönsten Momente in Ihrem Leben?",
+      "russian": "Какой был один из самых красивых моментов в вашей жизни?",
+      "germanantwort": "Einer der schönsten Momente in meinem Leben war, als ich mein erstes Projekt als Freelancer gemacht habe.",
+      "russianantwort": "Один из самых красивых моментов в моей жизни был, когда я сделал свой первый проект на фрилансе."
+    },
+    {
+      "german": "Wie hat der Kunde reagiert?",
+      "russian": "Как отреагировал клиент?",
+      "germanantwort": "Der Kunde war sehr zufrieden und hat mir gedankt.",
+      "russianantwort": "Клиент был очень доволен и поблагодарил меня."
+    },
+    {
+      "german": "Wie haben Sie sich gefühlt?",
+      "russian": "Какие у вас были чувства?",
+      "germanantwort": "Ich war sehr glücklich und stolz.",
+      "russianantwort": "Я был очень счастлив и горд собой."
+    },
+    {
+      "german": "Warum war dieser Moment wichtig für Sie?",
+      "russian": "Почему этот момент был важен для вас?",
+      "germanantwort": "Dieser Moment war sehr wichtig für mich, weil ich gesehen habe, dass meine Arbeit geschätzt wird.",
+      "russianantwort": "Этот момент был для меня очень важным, потому что я видел, что моя работа ценится."
+    }
+  ]
+}

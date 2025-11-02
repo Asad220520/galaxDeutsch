@@ -1,0 +1,71 @@
+{
+  "title": "Arbeitserfahrung - Fragen und Antworten",
+  "dialogs": [
+    {
+      "german": "Wo haben Sie gearbeitet?",
+      "russian": "Где вы работали?",
+      "germanantwort": "Ich habe in einem Park in Moskau als Barista gearbeitet.",
+      "russianantwort": "Я работал в Москве в парке баристой."
+    },
+    {
+      "german": "Als was haben Sie gearbeitet?",
+      "russian": "На какой должности работали?",
+      "germanantwort": "Ich war Barista.",
+      "russianantwort": "Бариста."
+    },
+    {
+      "german": "Was waren Ihre Aufgaben?",
+      "russian": "Каковы были ваши обязанности?",
+      "germanantwort": "Ich habe Kunden mit Kaffee bewirtet.",
+      "russianantwort": "Я угощал клиентов кофе."
+    },
+    {
+      "german": "Was mussten Sie dort machen?",
+      "russian": "Что вы должны были делать на работе?",
+      "germanantwort": "Ich musste süßen Kaffee und andere Getränke zubereiten.",
+      "russianantwort": "Я должен был готовить сладкий кофе и другие напитки."
+    },
+    {
+      "german": "Was haben Sie für Ihre Arbeit bekommen? Was haben Sie verdient?",
+      "russian": "Что вы получали за работу? Сколько зарабатывали?",
+      "germanantwort": "Ich habe 4500 Rubel pro Schicht bekommen.",
+      "russianantwort": "За смену я получал 4500 рублей."
+    },
+    {
+      "german": "Wie viele Stunden mussten Sie arbeiten?",
+      "russian": "Сколько часов вы работали?",
+      "germanantwort": "Ich habe 12 Stunden am Tag gearbeitet.",
+      "russianantwort": "12 часов в день."
+    },
+    {
+      "german": "Wie gut war die Arbeit?",
+      "russian": "Насколько вам понравилась работа?",
+      "germanantwort": "Mir hat die Arbeit sehr gefallen, weil ich gerne Kaffee zubereitet habe, Latte-Art gemacht habe und es den Kunden gefallen hat.",
+      "russianantwort": "Мне очень нравилась моя работа, потому что я с удовольствием готовил кофе, рисовал на кофе, и клиентам это было приятно."
+    },
+    {
+      "german": "Wie haben Sie diese Arbeit gefunden?",
+      "russian": "Как вы нашли эту работу?",
+      "germanantwort": "Meine Freundin hat dort gearbeitet und mir die Stelle empfohlen.",
+      "russianantwort": "Я нашёл эту работу через подругу, которая там работала."
+    },
+    {
+      "german": "Wie viele Mitarbeiter gab es dort?",
+      "russian": "Сколько сотрудников там работало?",
+      "germanantwort": "Es waren 2 bis 3 Personen insgesamt.",
+      "russianantwort": "Всего на работе было 2–3 человека."
+    },
+    {
+      "german": "Warum haben Sie die Arbeit verlassen?",
+      "russian": "Почему вы ушли с работы?",
+      "germanantwort": "Ich wollte in einer anderen Branche arbeiten, bei IT-Firmen, deshalb habe ich gekündigt.",
+      "russianantwort": "Я решил уйти, потому что хотел работать в другой сфере — с айтишниками."
+    },
+    {
+      "german": "Was haben Sie dort gelernt?",
+      "russian": "Чему вы там научились?",
+      "germanantwort": "Ich habe verschiedene Kaffeespezialitäten zubereitet.",
+      "russianantwort": "На этой работе я научился делать разные виды кофе."
+    }
+  ]
+}

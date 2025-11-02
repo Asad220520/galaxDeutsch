@@ -1,282 +1,322 @@
-import React, { useState } from "react";
-import data from "./data";
+import { useState } from "react";
 
-export default function GermanArticleTrainer() {
-  const [selectedTab, setSelectedTab] = useState("list"); // "list", "quiz", "pairs"
-  const [selectedCase, setSelectedCase] = useState("Nominativ");
-  const [selectedGender, setSelectedGender] = useState("Maskulin");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [showAnswer, setShowAnswer] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("");
+const verbsPart2 = [
+  {
+    infinitiv: "anfangen",
+    praeteritum: "fing an",
+    perfekt: "hat angefangen",
+    translation: "начинать",
+    exampleDE: "Der Kurs hat um 9 Uhr angefangen.",
+    exampleRU: "Курс начался в 9 часов.",
+  },
+  {
+    infinitiv: "aussehen",
+    praeteritum: "sah aus",
+    perfekt: "hat ausgesehen",
+    translation: "выглядеть",
+    exampleDE: "Du hast müde ausgesehen.",
+    exampleRU: "Ты выглядел усталым.",
+  },
+  {
+    infinitiv: "backen",
+    praeteritum: "buk/backte",
+    perfekt: "hat gebacken",
+    translation: "печь",
+    exampleDE: "Sie hat einen Kuchen gebacken.",
+    exampleRU: "Она испекла торт.",
+  },
+  {
+    infinitiv: "beginnen",
+    praeteritum: "begann",
+    perfekt: "hat begonnen",
+    translation: "начинать",
+    exampleDE: "Das Spiel begann um 18 Uhr.",
+    exampleRU: "Игра началась в 18 часов.",
+  },
+  {
+    infinitiv: "bekommen",
+    praeteritum: "bekam",
+    perfekt: "hat bekommen",
+    translation: "получать",
+    exampleDE: "Ich habe ein Geschenk bekommen.",
+    exampleRU: "Я получил подарок.",
+  },
+  {
+    infinitiv: "einladen",
+    praeteritum: "lud ein",
+    perfekt: "hat eingeladen",
+    translation: "приглашать",
+    exampleDE: "Wir haben unsere Freunde eingeladen.",
+    exampleRU: "Мы пригласили наших друзей.",
+  },
+  {
+    infinitiv: "fahren",
+    praeteritum: "fuhr",
+    perfekt: "ist gefahren",
+    translation: "ехать, водить",
+    exampleDE: "Wir sind nach Berlin gefahren.",
+    exampleRU: "Мы поехали в Берлин.",
+  },
+  {
+    infinitiv: "finden",
+    praeteritum: "fand",
+    perfekt: "hat gefunden",
+    translation: "находить",
+    exampleDE: "Ich habe meinen Schlüssel gefunden.",
+    exampleRU: "Я нашёл свои ключи.",
+  },
+  {
+    infinitiv: "geben",
+    praeteritum: "gab",
+    perfekt: "hat gegeben",
+    translation: "давать",
+    exampleDE: "Er hat mir ein Buch gegeben.",
+    exampleRU: "Он дал мне книгу.",
+  },
+  {
+    infinitiv: "gehen",
+    praeteritum: "ging",
+    perfekt: "ist gegangen",
+    translation: "идти",
+    exampleDE: "Wir sind zur Schule gegangen.",
+    exampleRU: "Мы пошли в школу.",
+  },
+  {
+    infinitiv: "halten",
+    praeteritum: "hielt",
+    perfekt: "hat gehalten",
+    translation: "держать, остановиться",
+    exampleDE: "Er hat die Hand festgehalten.",
+    exampleRU: "Он крепко держал руку.",
+  },
+  {
+    infinitiv: "helfen",
+    praeteritum: "half",
+    perfekt: "hat geholfen",
+    translation: "помогать",
+    exampleDE: "Sie hat mir geholfen.",
+    exampleRU: "Она мне помогла.",
+  },
+  {
+    infinitiv: "kennen",
+    praeteritum: "kannte",
+    perfekt: "hat gekannt",
+    translation: "знать (человека/место)",
+    exampleDE: "Ich habe ihn gut gekannt.",
+    exampleRU: "Я его хорошо знал.",
+  },
+  {
+    infinitiv: "kommen",
+    praeteritum: "kam",
+    perfekt: "ist gekommen",
+    translation: "приходить",
+    exampleDE: "Er ist spät gekommen.",
+    exampleRU: "Он пришёл поздно.",
+  },
+  {
+    infinitiv: "laufen",
+    praeteritum: "lief",
+    perfekt: "ist gelaufen",
+    translation: "бегать, идти пешком",
+    exampleDE: "Wir sind schnell gelaufen.",
+    exampleRU: "Мы быстро шли.",
+  },
+];
+const verbsPart6 = [
+  {
+    infinitiv: "spazieren gehen",
+    praeteritum: "ging spazieren",
+    perfekt: "ist spazieren gegangen",
+    translation: "гулять (пешком)",
+    exampleDE: "Wir gehen jeden Abend spazieren.",
+    exampleRU: "Мы каждый вечер гуляем.",
+  },
+  {
+    infinitiv: "springen",
+    praeteritum: "sprang",
+    perfekt: "ist gesprungen",
+    translation: "прыгать",
+    exampleDE: "Das Kind sprang über den Zaun.",
+    exampleRU: "Ребёнок перепрыгнул через забор.",
+  },
+  {
+    infinitiv: "stattfinden",
+    praeteritum: "fand statt",
+    perfekt: "hat stattgefunden",
+    translation: "состояться, происходить",
+    exampleDE: "Das Konzert hat gestern stattgefunden.",
+    exampleRU: "Концерт состоялся вчера.",
+  },
+  {
+    infinitiv: "stehen",
+    praeteritum: "stand",
+    perfekt: "hat gestanden",
+    translation: "стоять",
+    exampleDE: "Der Tisch steht in der Küche.",
+    exampleRU: "Стол стоит на кухне.",
+  },
+  {
+    infinitiv: "tragen",
+    praeteritum: "trug",
+    perfekt: "hat getragen",
+    translation: "носить, нести",
+    exampleDE: "Sie hat eine schwere Tasche getragen.",
+    exampleRU: "Она несла тяжёлую сумку.",
+  },
+  {
+    infinitiv: "überweisen",
+    praeteritum: "überwies",
+    perfekt: "hat überwiesen",
+    translation: "переводить (деньги)",
+    exampleDE: "Ich habe das Geld überwiesen.",
+    exampleRU: "Я перевёл деньги.",
+  },
+  {
+    infinitiv: "verbringen",
+    praeteritum: "verbrachte",
+    perfekt: "hat verbracht",
+    translation: "проводить (время)",
+    exampleDE: "Wir haben den Sommer am Meer verbracht.",
+    exampleRU: "Мы провели лето у моря.",
+  },
+  {
+    infinitiv: "vergleichen",
+    praeteritum: "verglich",
+    perfekt: "hat verglichen",
+    translation: "сравнивать",
+    exampleDE: "Er hat die Preise verglichen.",
+    exampleRU: "Он сравнил цены.",
+  },
+  {
+    infinitiv: "versprechen",
+    praeteritum: "versprach",
+    perfekt: "hat versprochen",
+    translation: "обещать",
+    exampleDE: "Ich habe es dir versprochen.",
+    exampleRU: "Я тебе это обещал.",
+  },
+  {
+    infinitiv: "bitten",
+    praeteritum: "bat",
+    perfekt: "hat gebeten",
+    translation: "просить",
+    exampleDE: "Sie hat ihn um Hilfe gebeten.",
+    exampleRU: "Она попросила у него помощи.",
+  },
+  {
+    infinitiv: "vorschlagen",
+    praeteritum: "schlug vor",
+    perfekt: "hat vorgeschlagen",
+    translation: "предлагать",
+    exampleDE: "Ich schlage vor, wir gehen ins Kino.",
+    exampleRU: "Предлагаю пойти в кино.",
+  },
+  {
+    infinitiv: "verschieben",
+    praeteritum: "verschob",
+    perfekt: "hat verschoben",
+    translation: "переносить (встречу и т.п.)",
+    exampleDE: "Wir müssen den Termin verschieben.",
+    exampleRU: "Нам нужно перенести встречу.",
+  },
+  {
+    infinitiv: "zurechtkommen",
+    praeteritum: "kam zurecht",
+    perfekt: "ist zurechtgekommen",
+    translation: "справляться, ладить",
+    exampleDE: "Kommst du mit der neuen Arbeit zurecht?",
+    exampleRU: "Ты справляешься с новой работой?",
+  },
+  {
+    infinitiv: "verschwinden",
+    praeteritum: "verschwand",
+    perfekt: "ist verschwunden",
+    translation: "исчезать",
+    exampleDE: "Meine Schlüssel sind verschwunden!",
+    exampleRU: "Мои ключи исчезли!",
+  },
+  {
+    infinitiv: "verzeihen",
+    praeteritum: "verzieh",
+    perfekt: "hat verziehen",
+    translation: "прощать",
+    exampleDE: "Verzeih mir, bitte!",
+    exampleRU: "Прости меня, пожалуйста!",
+  },
+];
+const allParts = [
+  { title: "Часть 2", verbs: verbsPart2 },
+  { title: "Часть 6", verbs: verbsPart6 },
+];
 
-  const cases = Object.keys(data || {});
-  const genders = data[selectedCase] ? Object.keys(data[selectedCase]) : [];
-  const examples = data[selectedCase]?.[selectedGender] || [];
-  const pairsExercise = data.pairsExercise || [];
+export default function VerbListMulti() {
+  const [currentPartIndex, setCurrentPartIndex] = useState(0); // Начало с первой части
+  const [openIndex, setOpenIndex] = useState(null);
 
-  const caseNames = {
-    Nominativ: "Именительный (кто? что?)",
-    Akkusativ: "Винительный (кого? что?)",
-    Dativ: "Дательный (кому? чему?)",
-    Genitiv: "Родительный (чей?)",
-  };
+  const verbs = allParts[currentPartIndex].verbs;
 
-  const genderNames = {
-    Maskulin: "Мужской род",
-    Feminin: "Женский род",
-    Neutrum: "Средний род",
-    Plural: "Множественное число",
-  };
-
-  const handleNext = () => {
-    setShowAnswer(false);
-    setCurrentIndex((prev) =>
-      selectedTab === "pairs"
-        ? prev < pairsExercise.length - 1
-          ? prev + 1
-          : 0
-        : prev < examples.length - 1
-        ? prev + 1
-        : 0
-    );
-    setSelectedOption("");
-  };
-
-  const handlePrev = () => {
-    setShowAnswer(false);
-    setCurrentIndex((prev) =>
-      selectedTab === "pairs"
-        ? prev > 0
-          ? prev - 1
-          : pairsExercise.length - 1
-        : prev > 0
-        ? prev - 1
-        : examples.length - 1
-    );
-    setSelectedOption("");
-  };
-
-  const handleCaseChange = (e) => {
-    setSelectedCase(e.target.value);
-    setCurrentIndex(0);
-    setShowAnswer(false);
-    setSelectedOption("");
-  };
-
-  const handleGenderChange = (e) => {
-    setSelectedGender(e.target.value);
-    setCurrentIndex(0);
-    setShowAnswer(false);
-    setSelectedOption("");
-  };
-
-  const handleOptionClick = (option) => {
-    setSelectedOption(option);
-    setShowAnswer(true);
-  };
-
-  const currentExample = examples[currentIndex] || {};
-  const currentPair = pairsExercise[currentIndex % pairsExercise.length] || {
-    question: "",
-    options: [],
-    answer: "",
-    explanation: "",
+  const toggle = (i) => {
+    setOpenIndex(openIndex === i ? null : i);
   };
 
   return (
-    <div className="p-4 bg-white rounded-2xl shadow-lg max-w-md mx-auto flex flex-col h-screen">
-      <h2 className="text-xl font-bold text-blue-700 mb-3 text-center">
-        Немецкие артикли и местоимения
-      </h2>
+    <div className="max-w-4xl mx-auto mt-10 p-6 bg-gray-50 rounded-2xl shadow-lg">
+      <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">
+        Глаголы на немецком — {allParts[currentPartIndex].title}
+      </h1>
 
-      {/* Таб переключения */}
-      <div className="flex mb-4">
-        <button
-          className={`flex-1 py-2 rounded-t-xl font-semibold ${
-            selectedTab === "list" ? "bg-blue-600 text-white" : "bg-gray-200"
-          }`}
-          onClick={() => setSelectedTab("list")}
-        >
-          Список
-        </button>
-        <button
-          className={`flex-1 py-2 rounded-t-xl font-semibold ${
-            selectedTab === "quiz" ? "bg-blue-600 text-white" : "bg-gray-200"
-          }`}
-          onClick={() => setSelectedTab("quiz")}
-        >
-          Мини-тест
-        </button>
-        <button
-          className={`flex-1 py-2 rounded-t-xl font-semibold ${
-            selectedTab === "pairs" ? "bg-blue-600 text-white" : "bg-gray-200"
-          }`}
-          onClick={() => {
-            setSelectedTab("pairs");
-            setCurrentIndex(0);
-            setShowAnswer(false);
-            setSelectedOption("");
-          }}
-        >
-          Парочки
-        </button>
+      {/* Кнопки переключения частей */}
+      <div className="flex justify-center mb-6 flex-wrap gap-2">
+        {allParts.map((part, i) => (
+          <button
+            key={i}
+            className={`px-4 py-2 rounded-lg ${
+              currentPartIndex === i ? "bg-blue-500 text-white" : "bg-gray-200"
+            }`}
+            onClick={() => {
+              setCurrentPartIndex(i);
+              setOpenIndex(null);
+            }}
+          >
+            {part.title}
+          </button>
+        ))}
       </div>
 
-      {/* Селекты */}
-      {selectedTab !== "pairs" && (
-        <div className="flex flex-col gap-2 mb-4">
-          <select
-            value={selectedCase}
-            onChange={handleCaseChange}
-            className="p-2 border rounded-lg w-full"
-          >
-            {cases.map((c) => (
-              <option key={c} value={c}>
-                {c} — {caseNames[c]}
-              </option>
-            ))}
-          </select>
-          <select
-            value={selectedGender}
-            onChange={handleGenderChange}
-            className="p-2 border rounded-lg w-full"
-          >
-            {genders.map((g) => (
-              <option key={g} value={g}>
-                {genderNames[g]}
-              </option>
-            ))}
-          </select>
-        </div>
-      )}
-
-      {/* Список */}
-      {selectedTab === "list" && (
-        <div className="space-y-3 overflow-y-auto flex-1">
-          {examples.length > 0 ? (
-            examples.map((ex) => (
-              <div
-                key={ex.word + ex.sentence}
-                className="p-3 rounded-xl border border-gray-200 bg-gray-50 text-left"
-              >
-                <p className="font-bold text-blue-700 text-lg">{ex.word}</p>
-                <p className="text-gray-900">{ex.sentence}</p>
-                <p className="text-gray-600 text-sm italic">{ex.translation}</p>
-                <p className="text-gray-500 text-xs mt-1">{ex.note}</p>
-              </div>
-            ))
-          ) : (
-            <p className="text-gray-500 text-center mt-4">
-              Нет примеров для выбранного случая/рода.
-            </p>
-          )}
-        </div>
-      )}
-
-      {/* Мини-тест */}
-      {selectedTab === "quiz" && examples.length > 0 && (
-        <div className="flex-1 flex flex-col justify-center items-center">
-          <div className="p-6 rounded-2xl border border-gray-200 bg-gradient-to-r from-blue-50 to-white shadow-md text-center w-full">
-            <p className="text-gray-900 text-lg mb-4">
-              Вставьте правильный артикль/местоимение:
-            </p>
-            <p className="font-bold text-2xl text-blue-700">
-              {currentExample.sentence.replace(currentExample.word, "___")}
-            </p>
-          </div>
-
-          <div className="flex justify-between mt-6 w-full">
+      <ul className="space-y-3">
+        {verbs.map((verb, i) => (
+          <li key={i} className="bg-white rounded-xl shadow-md overflow-hidden">
             <button
-              onClick={handlePrev}
-              className="px-4 py-2 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700"
+              className="w-full text-left p-4 flex justify-between items-center hover:bg-gray-100"
+              onClick={() => toggle(i)}
             >
-              Предыдущий
+              <span className="font-semibold text-lg">
+                {i + 1}. {verb.infinitiv}
+              </span>
+              <span>{openIndex === i ? "▲" : "▼"}</span>
             </button>
-            {!showAnswer ? (
-              <button
-                onClick={() => setShowAnswer(true)}
-                className="px-4 py-2 bg-green-600 text-white rounded-xl shadow hover:bg-green-700"
-              >
-                Показать ответ
-              </button>
-            ) : (
-              <button
-                onClick={handleNext}
-                className="px-4 py-2 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700"
-              >
-                Следующий
-              </button>
-            )}
-          </div>
-
-          {showAnswer && (
-            <div className="mt-4 p-4 bg-white border-l-4 border-blue-600 rounded shadow w-full text-left">
-              <p className="text-lg font-bold text-blue-700">
-                Ответ: {currentExample.word}
-              </p>
-              <p className="text-gray-900 mt-1">{currentExample.sentence}</p>
-              <p className="text-gray-800 italic mt-1">
-                {currentExample.translation}
-              </p>
-              <p className="text-gray-500 mt-2">{currentExample.note}</p>
-            </div>
-          )}
-
-          <p className="text-gray-500 text-sm mt-4 text-center">
-            Пример {currentIndex + 1} из {examples.length}
-          </p>
-        </div>
-      )}
-
-      {/* Парочки */}
-      {selectedTab === "pairs" && pairsExercise.length > 0 && (
-        <div className="flex-1 flex flex-col justify-center items-center">
-          <div className="p-6 rounded-2xl border border-gray-200 bg-gradient-to-r from-blue-50 to-white shadow-md flex-1 flex flex-col justify-center w-full">
-            <p className="text-gray-900 text-lg mb-4">{currentPair.question}</p>
-
-            <div className="grid grid-cols-2 gap-3">
-              {currentPair.options.map((option) => (
-                <button
-                  key={option}
-                  onClick={() => handleOptionClick(option)}
-                  disabled={showAnswer}
-                  className={`p-3 rounded-xl border shadow font-semibold ${
-                    showAnswer
-                      ? option === currentPair.answer
-                        ? "bg-green-600 text-white"
-                        : option === selectedOption
-                        ? "bg-red-600 text-white"
-                        : "bg-gray-100 text-gray-800"
-                      : "bg-blue-200 text-gray-900 hover:bg-blue-300"
-                  }`}
-                >
-                  {option}
-                </button>
-              ))}
-            </div>
-
-            {showAnswer && (
-              <div className="mt-4 p-4 bg-white border-l-4 border-blue-600 rounded shadow text-left">
-                <p className="text-lg font-bold text-blue-700">
-                  Правильный ответ: {currentPair.answer}
+            {openIndex === i && (
+              <div className="p-4 border-t border-gray-200 bg-gray-50 space-y-1">
+                <p>
+                  <strong>Präteritum:</strong> {verb.praeteritum}
                 </p>
-                <p className="text-gray-500 mt-2">{currentPair.explanation}</p>
+                <p>
+                  <strong>Perfekt:</strong> {verb.perfekt}
+                </p>
+                <p>
+                  <strong>Перевод:</strong> {verb.translation}
+                </p>
+                <p>
+                  <strong>Пример DE:</strong> {verb.exampleDE}
+                </p>
+                <p>
+                  <strong>Пример RU:</strong> {verb.exampleRU}
+                </p>
               </div>
             )}
-
-            <button
-              onClick={handleNext}
-              className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-xl shadow hover:bg-blue-700 self-center"
-            >
-              Следующий
-            </button>
-
-            <p className="text-gray-500 text-sm mt-4 text-center">
-              Вопрос {currentIndex + 1} из {pairsExercise.length}
-            </p>
-          </div>
-        </div>
-      )}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

@@ -15,6 +15,8 @@ import topik14 from "./LessonDataTopik/topik14.json";
 import topik15 from "./LessonDataTopik/topik15.json";
 import topik16 from "./LessonDataTopik/topik16.json";
 import topik17 from "./LessonDataTopik/topik17.json";
+import topik18 from "./LessonDataTopik/topik18.json";
+import topik19 from "./LessonDataTopik/topik19.json";
 
 export const topikLessons = [
   { id: 1, title: "meine Familie - О себе и семье", data: topik1 },
@@ -72,5 +74,15 @@ export const topikLessons = [
     id: 17,
     title: "Schulzeit - Время в школе",
     data: topik17,
+  },
+  {
+    id: 18,
+    title: "Arbeitserfahrung - Время работы",
+    data: topik18,
+  },
+  {
+    id: 19,
+    title: "Die schönsten Momente in meinem Leben - Самые красивые моменты в моей жизни",
+    data: topik19,
   },
 ];
